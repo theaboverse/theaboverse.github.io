@@ -1,1 +1,62 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>TheAboverse - Explore Beyond</title><style>*{margin:0;padding:0;box-sizing:border-box}body{background:#020208;color:#fff;font-family:system-ui,sans-serif;overflow-x:hidden}canvas#stars{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1}nav{display:flex;justify-content:space-between;padding:20px 5%;position:fixed;top:0;width:100%;background:rgba(2,2,8,0.6);backdrop-filter:blur(16px);z-index:100;border-bottom:1px solid #1a1a2a}.logo{font-size:24px;font-weight:800;background:linear-gradient(90deg,#7c3aed,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:20px}.hero h1{font-size:clamp(45px,9vw,90px);font-weight:900;line-height:0.9;margin-bottom:20px}.hero h1 span{background:linear-gradient(90deg,#7c3aed,#06b6d4,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.hero p{color:#a1a1aa;max-width:650px;font-size:18px;margin-bottom:35px;line-height:1.6}.btn{padding:16px 36px;border-radius:999px;border:none;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block;transition:0.3s}.btn-primary{background:#fff;color:#000;box-shadow:0 0 30px rgba(255,255,255,0.3)}.btn-sec{border:1px solid #333;color:#fff;background:rgba(255,255,255,0.05);margin-left:12px}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;padding:80px 5%}.card{background:rgba(21,21,30,0.6);border:1px solid #23232f;padding:30px;border-radius:24px;backdrop-filter:blur(20px);transition:0.4s}.card:hover{transform:translateY(-8px);border-color:#7c3aed}.card p{color:#71717a;font-size:15px;margin-top:10px}footer{text-align:center;padding:50px;color:#52525b;border-top:1px solid #18181b;margin-top:40px}</style></head><body><canvas id="stars"></canvas><nav><div class="logo">TheAboverse</div><div><a href="https://github.com/theaboverse" style="color:#a78bfa;text-decoration:none;font-weight:600">GitHub</a></div></nav><section class="hero"><h1>Build.<br><span>Above & Beyond.</span></h1><p>Official website of The Aboverse - AI Projects, Web Development, YouTube Content & Modern Tech Experiments in a 3D Universe.</p><div><a class="btn btn-primary" href="https://github.com/theaboverse">Explore GitHub</a><a class="btn btn-sec" href="https://www.youtube.com/@theaboverse">YouTube</a></div></section><section class="cards"><div class="card"><h3>🤖 AI Projects</h3><p>Exploring Artificial Intelligence, Machine Learning & Automation tools.</p></div><div class="card"><h3>💻 Web Development</h3><p>Modern, fast & aesthetic websites built with latest tech.</p></div><div class="card"><h3>🎥 YouTube Content</h3><p>Tutorials, tech breakdowns and building in public.</p></div><div class="card"><h3>🌌 3D Universe</h3><p>Immersive web experiences with WebGL & interactive 3D designs.</p></div></section><footer>© 2026 TheAboverse | Crafted in the Aboverse</footer><script>const c=document.getElementById('stars'),x=c.getContext('2d');let w,h,stars=[];function init(){w=c.width=innerWidth;h=c.height=innerHeight;stars=[];for(let i=0;i<250;i++)stars.push({x:Math.random()*w,y:Math.random()*h,z:Math.random()*2+0.2,r:Math.random()*1.5+0.3})}function draw(){x.clearRect(0,0,w,h);for(let s of stars){x.beginPath();x.arc(s.x,s.y,s.r,0,Math.PI*2);x.fillStyle=`rgba(255,255,255,${s.z})`;x.fill();s.y+=s.z*0.6;if(s.y>h){s.y=0;s.x=Math.random()*w}}requestAnimationFrame(draw)}init();draw();addEventListener('resize',init);</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TheAboverse - Explore Beyond</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#020208;color:#fff;font-family:system-ui,sans-serif;overflow-x:hidden}
+canvas#stars{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1}
+nav{display:flex;justify-content:space-between;padding:18px 5%;position:fixed;top:0;width:100%;background:rgba(2,2,8,0.6);backdrop-filter:blur(20px);z-index:100;border-bottom:1px solid rgba(255,255,255,0.08)}
+.logo{font-size:24px;font-weight:900;background:linear-gradient(90deg,#7c3aed,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:80px 20px 20px}
+.hero h1{font-size:clamp(42px,9vw,88px);font-weight:900;line-height:0.9;margin-bottom:20px;letter-spacing:-2px}
+.hero h1 span{background:linear-gradient(90deg,#7c3aed,#06b6d4,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:glow 3s infinite}
+@keyframes glow{0%,100%{filter:brightness(1)}50%{filter:brightness(1.3)}}
+.hero p{color:#a1a1aa;max-width:650px;font-size:18px;margin-bottom:35px;line-height:1.6}
+.btn{padding:15px 34px;border-radius:999px;border:none;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block;transition:0.3s}
+.btn-primary{background:#fff;color:#000;box-shadow:0 0 30px rgba(255,255,255,0.3)}
+.btn-primary:hover{transform:scale(1.05)}
+.btn-sec{border:1px solid rgba(255,255,255,0.15);color:#fff;background:rgba(255,255,255,0.06);backdrop-filter:blur(10px);margin-left:12px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;padding:60px 5% 80px}
+.card{background:linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02));border:1px solid rgba(255,255,255,0.1);padding:32px;border-radius:28px;backdrop-filter:blur(25px);transition:0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);position:relative;overflow:hidden}
+.card:before{content:'';position:absolute;top:0;left:0;width:100%;height:1px;background:linear-gradient(90deg,transparent,#7c3aed,transparent);opacity:0;transition:0.4s}
+.card:hover{transform:translateY(-10px) scale(1.02);border-color:rgba(124,58,237,0.5);box-shadow:0 25px 50px -12px rgba(124,58,237,0.25)}
+.card:hover:before{opacity:1}
+.card.icon{width:48px;height:48px;background:rgba(124,58,237,0.15);border:1px solid rgba(124,58,237,0.3);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:18px}
+.card h3{margin-bottom:10px;font-size:19px;letter-spacing:-0.3px}
+.card p{color:#8b8b9a;font-size:14.5px;line-height:1.6}
+footer{text-align:center;padding:50px;color:#52525b;border-top:1px solid rgba(255,255,255,0.06);margin-top:20px}
+</style>
+</head>
+<body>
+<canvas id="stars"></canvas>
+<nav><div class="logo">TheAboverse</div><div><a href="https://github.com/theaboverse" style="color:#a78bfa;text-decoration:none;font-weight:600">GitHub</a></div></nav>
+<section class="hero">
+<h1>Build.<br><span>Above & Beyond.</span></h1>
+<p>Official website of The Aboverse - AI Projects, Web Development, YouTube Content & Modern Tech Experiments in a 3D Universe.</p>
+<div>
+<a class="btn btn-primary" href="https://github.com/theaboverse">Explore GitHub</a>
+<a class="btn btn-sec" href="https://www.youtube.com/@theaboverse">YouTube</a>
+</div>
+</section>
+<section class="cards">
+<div class="card"><div class="icon">🤖</div><h3>AI Projects</h3><p>Exploring Artificial Intelligence, Machine Learning & Automation tools for the future. Building smart solutions.</p></div>
+<div class="card"><div class="icon">💻</div><h3>Web Development</h3><p>Modern, fast & aesthetic websites built with latest technologies. Crafted for performance.</p></div>
+<div class="card"><div class="icon">🎥</div><h3>YouTube Content</h3><p>Tutorials, tech breakdowns and journey of building in public. Learn and grow together.</p></div>
+<div class="card"><div class="icon">🌌</div><h3>3D Universe</h3><p>Immersive web experiences with Three.js, WebGL & interactive 3D designs. Beyond imagination.</p></div>
+</section>
+<footer>© 2026 TheAboverse | Crafted in the Aboverse<br><br><a href="https://github.com/theaboverse/theaboverse.github.io" style="color:#a78bfa">Source Code</a></footer>
+<script>
+const c=document.getElementById('stars'),x=c.getContext('2d');
+let w,h,stars=[],mx=0,my=0;
+function init(){w=c.width=window.innerWidth;h=c.height=window.innerHeight;stars=[];for(let i=0;i<300;i++){stars.push({x:Math.random()*w,y:Math.random()*h,z:Math.random()*2+0.2,r:Math.random()*1.6+0.3,ox:Math.random()*w,oy:Math.random()*h})}}
+function draw(){x.clearRect(0,0,w,h);for(let s of stars){let dx=(mx-w/2)*s.z*0.02;let dy=(my-h/2)*s.z*0.02; x.beginPath();x.arc(s.x+dx,s.y+dy,s.r,0,Math.PI*2);x.fillStyle=`rgba(255,255,255,${s.z})`;x.fill();s.y+=s.z*0.4;if(s.y>h){s.y=0;s.x=Math.random()*w}}requestAnimationFrame(draw)}
+init();draw();
+window.addEventListener('resize',init);
+window.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
+window.addEventListener('touchmove',e=>{mx=e.touches[0].clientX;my=e.touches[0].clientY});
+</script>
+</body>
+</html>
