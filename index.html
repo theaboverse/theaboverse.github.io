@@ -3,69 +3,120 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TheAboverse - Explore Beyond</title>
+<title>TheAboverse - Premium Web Agency | ₹20k to ₹1 Lakh</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='url(%23g)'/><text x='50%25' y='58%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-weight='900' font-size='50' fill='white'>A</text><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%25' stop-color='%237c3aed'/><stop offset='100%25' stop-color='%2306b6d4'/></linearGradient></defs></svg>">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:#020208;color:#fff;font-family:system-ui,sans-serif;overflow-x:hidden;perspective:1000px}
+*{margin:0;padding:0;box-sizing:border-box}body{background:#020208;color:#fff;font-family:system-ui,sans-serif;overflow-x:hidden}
 canvas#stars{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1}
-nav{display:flex;justify-content:space-between;padding:18px 5%;position:fixed;top:0;width:100%;background:rgba(2,2,8,0.8);backdrop-filter:blur(20px);z-index:100;border-bottom:1px solid rgba(255,255,255,0.08)}
-.logo{font-size:24px;font-weight:900;background:linear-gradient(90deg,#7c3aed,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:100px 20px 40px;position:relative;z-index:1}
-.hero h1{font-size:clamp(42px,9vw,88px);font-weight:900;line-height:0.9;margin-bottom:20px;letter-spacing:-2px;transform-style:preserve-3d}
-.hero h1 span{background:linear-gradient(90deg,#7c3aed,#06b6d4,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:glow 3s infinite}
-@keyframes glow{0%,100%{filter:brightness(1)}50%{filter:brightness(1.4) drop-shadow(0 0 20px #7c3aed)}}
-.hero p{color:#a1a1aa;max-width:650px;font-size:18px;margin-bottom:35px;line-height:1.6}
-.btn{padding:15px 34px;border-radius:999px;border:none;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block;transition:0.3s}
-.btn-primary{background:#fff;color:#000;box-shadow:0 0 30px rgba(255,255,255,0.3)}
-.btn-primary:hover{transform:scale(1.05) translateZ(20px)}
-.btn-sec{border:1px solid rgba(255,255,255,0.15);color:#fff;background:rgba(255,255,255,0.06);backdrop-filter:blur(10px);margin-left:12px}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;padding:40px 5% 80px;position:relative;z-index:1}
-.card{background:linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02));border:1px solid rgba(255,255,255,0.1);padding:32px;border-radius:28px;backdrop-filter:blur(25px);transition:transform 0.15s ease, border-color 0.4s, box-shadow 0.4s;transform-style:preserve-3d;will-change:transform;position:relative;overflow:hidden}
-.card:before{content:'';position:absolute;top:0;left:0;width:100%;height:1px;background:linear-gradient(90deg,transparent,#7c3aed,transparent);opacity:0;transition:0.4s}
-.card:hover{border-color:rgba(124,58,237,0.5);box-shadow:0 25px 50px -12px rgba(124,58,237,0.35)}
-.card:hover:before{opacity:1}
-.card.icon{width:52px;height:52px;background:rgba(124,58,237,0.15);border:1px solid rgba(124,58,237,0.3);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:18px;transform:translateZ(30px)}
-.card h3{margin-bottom:10px;font-size:20px;transform:translateZ(20px)}
-.card p{color:#8b8b9a;font-size:14.5px;line-height:1.6;transform:translateZ(10px)}
-footer{text-align:center;padding:50px;color:#52525b;border-top:1px solid rgba(255,255,255,0.06);position:relative;z-index:1}
+nav{display:flex;justify-content:space-between;padding:16px 5%;position:fixed;top:0;width:100%;background:rgba(2,2,8,0.92);backdrop-filter:blur(22px);z-index:100;border-bottom:1px solid rgba(255,255,255,0.08);align-items:center}
+.hero{padding:120px 5% 30px;text-align:center;position:relative;z-index:1}
+.hero h1{font-size:clamp(36px,6.5vw,64px);font-weight:900;letter-spacing:-2px;line-height:0.95}
+.hero h1 span{background:linear-gradient(90deg,#7c3aed,#06b6d4,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:#9f9fa9;max-width:720px;margin:16px auto;line-height:1.6}
+.toggle{margin:18px auto;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);padding:6px;border-radius:999px;display:inline-flex;gap:6px}
+.toggle button{padding:10px 22px;border-radius:999px;border:none;font-weight:700;cursor:pointer;background:transparent;color:#9f9fa9}
+.toggle button.active{background:#fff;color:#000}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px;max-width:1280px;margin:0 auto;padding:20px 5% 40px;position:relative;z-index:1}
+.card{background:linear-gradient(180deg,rgba(255,255,255,0.09),rgba(255,255,255,0.02));border:1px solid rgba(255,255,255,0.11);padding:28px;border-radius:26px;backdrop-filter:blur(24px);transition:0.35s;position:relative;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-8px);border-color:#7c3aed}
+.card.pop{border-color:#7c3aed;transform:scale(1.02);box-shadow:0 0 50px rgba(124,58,237,0.25)}
+.badge{position:absolute;top:14px;right:14px;background:linear-gradient(90deg,#7c3aed,#06b6d4);padding:5px 12px;border-radius:999px;font-size:11px;font-weight:800}
+.price{font-size:34px;font-weight:900;margin:10px 0}.price small{font-size:13px;color:#8b8b9a}
+.adv{background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.25);padding:10px;border-radius:12px;margin:12px 0;text-align:center;color:#fbbf24;font-weight:700;font-size:13px}
+.card ul{list-style:none;margin:14px 0;flex:1}.card ul li{font-size:13.5px;color:#a1a1aa;margin:10px 0;display:flex;gap:8px}
+.btn{padding:13px;border-radius:999px;text-decoration:none;display:block;text-align:center;font-weight:800;margin-top:10px;transition:0.3s}
+.btn-w{background:#fff;color:#000}.btn-u{background:linear-gradient(90deg,#7c3aed,#06b6d4);color:#fff}
+.section{max-width:1280px;margin:0 auto;padding:50px 5%;position:relative;z-index:1}
+.sec-title{font-size:clamp(28px,5vw,42px);font-weight:900;letter-spacing:-1px;margin-bottom:8px;text-align:center}
+.sec-sub{color:#8b8b9a;text-align:center;margin-bottom:30px;font-size:15px}
+.reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.rev{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);padding:22px;border-radius:20px}
+.port{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.port-item{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:18px;overflow:hidden;transition:0.3s}.port-item:hover{transform:translateY(-5px);border-color:#7c3aed}
+.port-item .img{height:160px;background:linear-gradient(135deg,#7c3aed,#06b6d4);display:flex;align-items:center;justify-content:center;font-size:50px}.port-item .info{padding:16px}
+.faq{max-width:800px;margin:0 auto}.faq-item{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:14px;margin:12px 0;padding:18px;cursor:pointer}.faq-item p{color:#8b8b9a;font-size:13.5px;margin-top:10px;display:none;line-height:1.6}.faq-item.open p{display:block}
+.wa-float{position:fixed;bottom:20px;right:20px;background:#25D366;color:#fff;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 8px 24px rgba(0,0,0,0.4);z-index:999;text-decoration:none}
+footer{text-align:center;padding:40px 5%;color:#52525b;border-top:1px solid rgba(255,255,255,0.06);position:relative;z-index:1;font-size:12px;line-height:1.8}
 </style>
 </head>
 <body>
 <canvas id="stars"></canvas>
-<nav><div class="logo">TheAboverse</div><div><a href="https://github.com/theaboverse" style="color:#a78bfa;text-decoration:none;font-weight:600">GitHub</a></div></nav>
-<section class="hero">
-<h1 id="heroText">Build.<br><span>Above & Beyond.</span></h1>
-<p>Official website of The Aboverse - AI Projects, Web Development, YouTube Content & Modern Tech Experiments in a 3D Universe.</p>
+<nav>
+<div style="display:flex;align-items:center;gap:12px">
+<div style="width:40px;height:40px;background:linear-gradient(135deg,#7c3aed,#06b6d4);border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:22px;box-shadow:0 0 24px rgba(124,58,237,0.6);position:relative">A<span style="position:absolute;top:-5px;right:-5px;background:#fff;color:#7c3aed;width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900">↗</span></div>
 <div>
-<a class="btn btn-primary" href="https://github.com/theaboverse">Explore GitHub</a>
-<a class="btn btn-sec" href="https://www.youtube.com/@theaboverse">YouTube</a>
+<div style="font-size:19px;font-weight:900;letter-spacing:-0.5px;line-height:1">TheAboverse</div>
+<div style="font-size:9px;letter-spacing:2.5px;color:#06b6d4;font-weight:800;margin-top:2px">ABOVE & BEYOND</div>
+</div>
+</div>
+<a href="https://wa.me/918127968129" style="color:#fff;background:rgba(124,58,237,0.2);border:1px solid rgba(124,58,237,0.4);text-decoration:none;font-weight:700;font-size:13px;padding:9px 16px;border-radius:999px">💬 8127968129</a>
+</nav>
+
+<section class="hero">
+<h1>Premium Websites<br><span>₹20,000 to ₹1,00,000</span></h1>
+<p>Revenue-focused custom websites. 50% Advance to start work. 50% after delivery. No templates.</p>
+<div class="toggle"><button id="bINR" class="active" onclick="setCur('INR')">🇮🇳 INR</button><button id="bUSD" onclick="setCur('USD')">🇺🇸 USD</button></div>
+</section>
+
+<div id="grid" class="grid"></div>
+
+<section class="section" id="portfolio">
+<h2 class="sec-title">Recent Work 💼</h2><p class="sec-sub">Delivered in last 30 days</p>
+<div class="port">
+<div class="port-item"><div class="img">🛍️</div><div class="info"><h4 style="font-size:16px">Fashion Ecom Store</h4><p style="font-size:12px;color:#8b8b9a;margin-top:4px">₹55k | Razorpay + WhatsApp Orders</p></div></div>
+<div class="port-item"><div class="img">🏥</div><div class="info"><h4 style="font-size:16px">Clinic Booking</h4><p style="font-size:12px;color:#8b8b9a;margin-top:4px">₹35k | Appointment + CRM</p></div></div>
+<div class="port-item"><div class="img">🚀</div><div class="info"><h4 style="font-size:16px">Startup 3D Landing</h4><p style="font-size:12px;color:#8b8b9a;margin-top:4px">₹75k | Three.js + Blog</p></div></div>
 </div>
 </section>
-<section class="cards">
-<div class="card"><div class="icon">🤖</div><h3>AI Projects</h3><p>Exploring Artificial Intelligence, Machine Learning & Automation tools for the future. Building smart solutions.</p></div>
-<div class="card"><div class="icon">💻</div><h3>Web Development</h3><p>Modern, fast & aesthetic websites built with latest technologies. Crafted for performance.</p></div>
-<div class="card"><div class="icon">🎥</div><h3>YouTube Content</h3><p>Tutorials, tech breakdowns and journey of building in public. Learn and grow together.</p></div>
-<div class="card"><div class="icon">🌌</div><h3>3D Universe</h3><p>Immersive web experiences with Three.js, WebGL & interactive 3D designs. Beyond imagination.</p></div>
+
+<section class="section">
+<h2 class="sec-title">Client Reviews ⭐</h2><p class="sec-sub">Trusted by 50+ brands</p>
+<div class="reviews">
+<div class="rev"><div style="color:#f59e0b;margin-bottom:6px">⭐⭐⭐⭐⭐</div><b style="font-size:14px">Rohit Sharma - Delhi</b><p style="color:#a1a1aa;font-size:13px;margin-top:6px;line-height:1.6">"4 din me shop ki site bana di. Full paisa vasool. 50% advance diya tha."</p></div>
+<div class="rev"><div style="color:#f59e0b;margin-bottom:6px">⭐⭐⭐⭐⭐</div><b style="font-size:14px">Ayesha Khan - Dubai $900</b><p style="color:#a1a1aa;font-size:13px;margin-top:6px;line-height:1.6">"Best agency! Took $450 advance, delivered in 8 days. Next level 3D."</p></div>
+<div class="rev"><div style="color:#f59e0b;margin-bottom:6px">⭐⭐⭐⭐⭐</div><b style="font-size:14px">Amit Patel - Mumbai</b><p style="color:#a1a1aa;font-size:13px;margin-top:6px;line-height:1.6">"₹35k business site - leads double. 1 year support bhi hai."</p></div>
+</div>
 </section>
-<footer>© 2026 TheAboverse | Crafted in the Aboverse<br><br><a href="https://github.com/theaboverse/theaboverse.github.io" style="color:#a78bfa">Source Code</a></footer>
+
+<section class="section">
+<h2 class="sec-title">FAQ</h2>
+<div class="faq">
+<div class="faq-item" onclick="this.classList.toggle('open')"><h4 style="font-size:15px;display:flex;justify-content:space-between">50% Advance kyu? <span>+</span></h4><p>Domain, hosting aur design start karne ke liye. Bina advance time waste hota hai. Remaining 50% delivery ke baad.</p></div>
+<div class="faq-item" onclick="this.classList.toggle('open')"><h4 style="font-size:15px;display:flex;justify-content:space-between">Refund Policy? <span>+</span></h4><p>Work start ke baad refund nahi. 2 free revisions milenge. 100% satisfaction.</p></div>
+<div class="faq-item" onclick="this.classList.toggle('open')"><h4 style="font-size:15px;display:flex;justify-content:space-between">Payment kaise? <span>+</span></h4><p>UPI: abodharabia@axl | Screenshot WhatsApp 8127968129 pe bhejo.</p></div>
+</div>
+</section>
+
+<a class="wa-float" href="https://wa.me/918127968129?text=Hi%20TheAboverse!%20Advance%20ready%20hai!">💬</a>
+<footer>© 2026 TheAboverse | ABOVE & BEYOND<br>8127968129 | abodharabia@axl | 50% Advance Policy<br>Custom Coded - No Templates - 3 to 15 Days Delivery</footer>
+
 <script>
-const c=document.getElementById('stars'),x=c.getContext('2d');
-let w,h,stars=[],mx=0,my=0;
-function init(){w=c.width=innerWidth;h=c.height=innerHeight;c.width=w;c.height=h;stars=[];for(let i=0;i<350;i++){stars.push({x:Math.random()*w,y:Math.random()*h,z:Math.random()*2+0.5,r:Math.random()*1.8+0.2})}}
-function draw(){x.clearRect(0,0,w,h);for(let s of stars){let dx=(mx-w/2)*s.z*0.03;let dy=(my-h/2)*s.z*0.03; x.beginPath();x.arc(s.x+dx,s.y+dy,s.r,0,Math.PI*2);x.fillStyle=`rgba(255,255,255,${s.z*0.5})`;x.fill();s.y+=s.z*0.5;if(s.y>h){s.y=0;s.x=Math.random()*w}}requestAnimationFrame(draw)}
-init();draw();
-addEventListener('resize',init);
-addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;
-  document.getElementById('heroText').style.transform=`rotateY(${(e.clientX-w/2)/60}deg) rotateX(${-(e.clientY-h/2)/60}deg)`;
-  document.querySelectorAll('.card').forEach(card=>{
-    let rect=card.getBoundingClientRect();
-    let cx=rect.left+rect.width/2, cy=rect.top+rect.height/2;
-    let dx=(e.clientX-cx)/18, dy=(e.clientY-cy)/18;
-    card.style.transform=`rotateY(${dx}deg) rotateX(${-dy}deg) translateZ(0)`;
-  });
-});
-addEventListener('touchmove',e=>{mx=e.touches[0].clientX;my=e.touches[0].clientY});
-document.querySelectorAll('.card').forEach(card=>{card.addEventListener('mouseleave',()=>{card.style.transform='rotateY(0) rotateX(0)';})});
+const c=document.getElementById('stars'),x=c.getContext('2d');let w,h,stars=[],mx=0,my=0;
+function init(){w=c.width=innerWidth;h=c.height=innerHeight;c.width=w;c.height=h;stars=[];for(let i=0;i<300;i++){stars.push({x:Math.random()*w,y:Math.random()*h,z:Math.random()*2+0.3,r:Math.random()*1.4+0.2})}}
+function draw(){x.clearRect(0,0,w,h);for(let s of stars){let dx=(mx-w/2)*s.z*0.02;let dy=(my-h/2)*s.z*0.02; x.beginPath();x.arc(s.x+dx,s.y+dy,s.r,0,Math.PI*2);x.fillStyle=`rgba(255,255,255,${s.z*0.5})`;x.fill();s.y+=s.z*0.25;if(s.y>h){s.y=0;s.x=Math.random()*w}}requestAnimationFrame(draw)}
+init();draw();addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});addEventListener('resize',init);
+let cur='INR';
+const plans=[
+{title:"Starter Portfolio",type:"FOR CREATORS",inr:20000,usd:240,adv_inr:10000,adv_usd:120,features:["1-3 Pages Premium","3D Glass UI","Mobile + SEO","WhatsApp Form","3 Days Delivery"],pop:false},
+{title:"Business Standard",type:"MOST POPULAR",inr:35000,usd:420,adv_inr:17500,adv_usd:210,features:["5-7 Pages Business","UPI + Razorpay","Admin + Leads","Google Maps + SEO","5 Days + Revisions"],pop:true},
+{title:"E-Commerce Power",type:"ONLINE STORE",inr:55000,usd:660,adv_inr:27500,adv_usd:330,features:["Unlimited Products","Cart + Payments","Auto WhatsApp Orders","Coupons + Inventory","7 Days Delivery"],pop:false},
+{title:"Premium Brand",type:"AGENCY LEVEL",inr:75000,usd:900,adv_inr:37500,adv_usd:450,features:["Custom 3D Animations","Apple Level UI/UX","Blog + Booking + CMS","CRM + Live Chat","10 Days + Support"],pop:false},
+{title:"Ultra Custom AI",type:"AI / SAAS / APP",inr:100000,usd:1200,adv_inr:50000,adv_usd:600,features:["Web App + AI","Login + DB + API","Analytics Dashboard","Android App Included","15 Days + 1 Year"],pop:false},
+];
+function render(){
+document.getElementById('grid').innerHTML=plans.map(p=>`
+<div class="card ${p.pop?'pop':''}">
+${p.pop?'<div class="badge">🔥 POPULAR</div>':''}
+<h3>${p.title}</h3><div style="color:#06b6d4;font-size:11px;font-weight:800;letter-spacing:1px;margin-bottom:10px">${p.type}</div>
+<div class="price">${cur==='INR'?'₹'+p.inr.toLocaleString('en-IN'):'$'+p.usd} <small>/ total</small></div>
+<div class="adv">🔒 50% Advance: ${cur==='INR'?'₹'+p.adv_inr.toLocaleString('en-IN'):'$'+p.adv_usd} to Start</div>
+<ul>${p.features.map(f=>`<li>✅ ${f}</li>`).join('')}</ul>
+<a class="btn btn-w" href="https://wa.me/918127968129?text=Hi%20TheAboverse!%20I%20want%20${encodeURIComponent(p.title)}%20Advance%20${cur==='INR'?'Rs'+p.adv_inr:'$'+p.adv_usd}%20ready!">Chat on WhatsApp</a>
+<a class="btn btn-u" href="upi://pay?pa=abodharabia@axl&pn=TheAboverse&am=${p.adv_inr}&cu=INR&tn=Advance%20${encodeURIComponent(p.title)}">Pay 50% Advance ${cur==='INR'?'₹'+p.adv_inr.toLocaleString('en-IN'):'$'+p.adv_usd} - UPI</a>
+</div>`).join('');
+}
+function setCur(v){cur=v;document.getElementById('bINR').classList.toggle('active',v==='INR');document.getElementById('bUSD').classList.toggle('active',v==='USD');render();}
+render();
 </script>
 </body>
 </html>
