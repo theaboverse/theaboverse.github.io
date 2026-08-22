@@ -6,26 +6,27 @@
 <title>TheAboverse - Explore Beyond</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#020208;color:#fff;font-family:system-ui,sans-serif;overflow-x:hidden}
+body{background:#020208;color:#fff;font-family:system-ui,sans-serif;overflow-x:hidden;perspective:1000px}
 canvas#stars{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1}
 nav{display:flex;justify-content:space-between;padding:18px 5%;position:fixed;top:0;width:100%;background:rgba(2,2,8,0.8);backdrop-filter:blur(20px);z-index:100;border-bottom:1px solid rgba(255,255,255,0.08)}
 .logo{font-size:24px;font-weight:900;background:linear-gradient(90deg,#7c3aed,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:100px 20px 40px;position:relative;z-index:1}
-.hero h1{font-size:clamp(42px,9vw,88px);font-weight:900;line-height:0.9;margin-bottom:20px;letter-spacing:-2px}
+.hero h1{font-size:clamp(42px,9vw,88px);font-weight:900;line-height:0.9;margin-bottom:20px;letter-spacing:-2px;transform-style:preserve-3d}
 .hero h1 span{background:linear-gradient(90deg,#7c3aed,#06b6d4,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:glow 3s infinite}
-@keyframes glow{0%,100%{filter:brightness(1)}50%{filter:brightness(1.3)}}
+@keyframes glow{0%,100%{filter:brightness(1)}50%{filter:brightness(1.4) drop-shadow(0 0 20px #7c3aed)}}
 .hero p{color:#a1a1aa;max-width:650px;font-size:18px;margin-bottom:35px;line-height:1.6}
 .btn{padding:15px 34px;border-radius:999px;border:none;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block;transition:0.3s}
 .btn-primary{background:#fff;color:#000;box-shadow:0 0 30px rgba(255,255,255,0.3)}
+.btn-primary:hover{transform:scale(1.05) translateZ(20px)}
 .btn-sec{border:1px solid rgba(255,255,255,0.15);color:#fff;background:rgba(255,255,255,0.06);backdrop-filter:blur(10px);margin-left:12px}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;padding:40px 5% 80px;position:relative;z-index:1}
-.card{background:linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02));border:1px solid rgba(255,255,255,0.1);padding:32px;border-radius:28px;backdrop-filter:blur(25px);transition:0.4s}
+.card{background:linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02));border:1px solid rgba(255,255,255,0.1);padding:32px;border-radius:28px;backdrop-filter:blur(25px);transition:transform 0.15s ease, border-color 0.4s, box-shadow 0.4s;transform-style:preserve-3d;will-change:transform;position:relative;overflow:hidden}
 .card:before{content:'';position:absolute;top:0;left:0;width:100%;height:1px;background:linear-gradient(90deg,transparent,#7c3aed,transparent);opacity:0;transition:0.4s}
-.card:hover{transform:translateY(-10px);border-color:rgba(124,58,237,0.5);box-shadow:0 25px 50px -12px rgba(124,58,237,0.25)}
+.card:hover{border-color:rgba(124,58,237,0.5);box-shadow:0 25px 50px -12px rgba(124,58,237,0.35)}
 .card:hover:before{opacity:1}
-.card.icon{width:52px;height:52px;background:rgba(124,58,237,0.15);border:1px solid rgba(124,58,237,0.3);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:18px}
-.card h3{margin-bottom:10px;font-size:20px}
-.card p{color:#8b8b9a;font-size:14.5px;line-height:1.6}
+.card.icon{width:52px;height:52px;background:rgba(124,58,237,0.15);border:1px solid rgba(124,58,237,0.3);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:18px;transform:translateZ(30px)}
+.card h3{margin-bottom:10px;font-size:20px;transform:translateZ(20px)}
+.card p{color:#8b8b9a;font-size:14.5px;line-height:1.6;transform:translateZ(10px)}
 footer{text-align:center;padding:50px;color:#52525b;border-top:1px solid rgba(255,255,255,0.06);position:relative;z-index:1}
 </style>
 </head>
@@ -33,7 +34,7 @@ footer{text-align:center;padding:50px;color:#52525b;border-top:1px solid rgba(25
 <canvas id="stars"></canvas>
 <nav><div class="logo">TheAboverse</div><div><a href="https://github.com/theaboverse" style="color:#a78bfa;text-decoration:none;font-weight:600">GitHub</a></div></nav>
 <section class="hero">
-<h1>Build.<br><span>Above & Beyond.</span></h1>
+<h1 id="heroText">Build.<br><span>Above & Beyond.</span></h1>
 <p>Official website of The Aboverse - AI Projects, Web Development, YouTube Content & Modern Tech Experiments in a 3D Universe.</p>
 <div>
 <a class="btn btn-primary" href="https://github.com/theaboverse">Explore GitHub</a>
@@ -50,12 +51,21 @@ footer{text-align:center;padding:50px;color:#52525b;border-top:1px solid rgba(25
 <script>
 const c=document.getElementById('stars'),x=c.getContext('2d');
 let w,h,stars=[],mx=0,my=0;
-function init(){w=c.width=window.innerWidth;h=c.height=window.innerHeight;stars=[];for(let i=0;i<300;i++){stars.push({x:Math.random()*w,y:Math.random()*h,z:Math.random()*2+0.2,r:Math.random()*1.6+0.3})}}
-function draw(){x.clearRect(0,0,w,h);for(let s of stars){let dx=(mx-w/2)*s.z*0.02;let dy=(my-h/2)*s.z*0.02; x.beginPath();x.arc(s.x+dx,s.y+dy,s.r,0,Math.PI*2);x.fillStyle=`rgba(255,255,255,${s.z})`;x.fill();s.y+=s.z*0.4;if(s.y>h){s.y=0;s.x=Math.random()*w}}requestAnimationFrame(draw)}
+function init(){w=c.width=innerWidth;h=c.height=innerHeight;c.width=w;c.height=h;stars=[];for(let i=0;i<350;i++){stars.push({x:Math.random()*w,y:Math.random()*h,z:Math.random()*2+0.5,r:Math.random()*1.8+0.2})}}
+function draw(){x.clearRect(0,0,w,h);for(let s of stars){let dx=(mx-w/2)*s.z*0.03;let dy=(my-h/2)*s.z*0.03; x.beginPath();x.arc(s.x+dx,s.y+dy,s.r,0,Math.PI*2);x.fillStyle=`rgba(255,255,255,${s.z*0.5})`;x.fill();s.y+=s.z*0.5;if(s.y>h){s.y=0;s.x=Math.random()*w}}requestAnimationFrame(draw)}
 init();draw();
-window.addEventListener('resize',init);
-window.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
-window.addEventListener('touchmove',e=>{mx=e.touches[0].clientX;my=e.touches[0].clientY});
+addEventListener('resize',init);
+addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;
+  document.getElementById('heroText').style.transform=`rotateY(${(e.clientX-w/2)/60}deg) rotateX(${-(e.clientY-h/2)/60}deg)`;
+  document.querySelectorAll('.card').forEach(card=>{
+    let rect=card.getBoundingClientRect();
+    let cx=rect.left+rect.width/2, cy=rect.top+rect.height/2;
+    let dx=(e.clientX-cx)/18, dy=(e.clientY-cy)/18;
+    card.style.transform=`rotateY(${dx}deg) rotateX(${-dy}deg) translateZ(0)`;
+  });
+});
+addEventListener('touchmove',e=>{mx=e.touches[0].clientX;my=e.touches[0].clientY});
+document.querySelectorAll('.card').forEach(card=>{card.addEventListener('mouseleave',()=>{card.style.transform='rotateY(0) rotateX(0)';})});
 </script>
 </body>
 </html>
