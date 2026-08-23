@@ -136,11 +136,12 @@ footer{text-align:center;padding:22px;color:#666;font-size:11px;border-top:1px s
 const supabaseClient = window.supabase.createClient('https://bztdaghyvlwutkibpvjq.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ6dGRhZ2h5dmx3dXRrbGJwdmpxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc0NTY0MzEsImV4cCI6MjEwMzAzMjQzMX0.m3u0CWjzuF-0wkruTj-lO2_sqBIBKo_Cd9PPz9iL7ao');
 let stars=0,userEmail='';
 async function sendOTP(){
- let email=document.getElementById('emailInput').value;
- if(!email)return alert('Email dalo');
- let {error}=await supabaseClient.auth.signInWithOtp({email:email,options:{emailRedirectTo:'https://theaboverse.github.io'}});
- if(error)alert(error.message);
- else alert('Email me link bhej diya! Gmail kholo aur Confirm pe click karo.');
+ async function sendOTP(){
+let email=document.getElementById('emailInput').value;
+if(!email)return alert('Enter email');
+let {error}=await supabaseClient.auth.signInWithOtp({email:email});
+if(error)alert(error.message);
+else alert('Check your email! Link sent. Open Gmail and click Confirm.');
 }
 supabaseClient.auth.onAuthStateChange(async (event, session)=>{
  if(session){
