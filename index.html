@@ -133,72 +133,49 @@ footer{text-align:center;padding:22px;color:#666;font-size:11px;border-top:1px s
 </div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-const supa = supabase.createClient('https://bztidaghylwutkibpvjq.supabase.co', 'sb_publishable_kKGh-bugJ1deyRupPZV45Q_4o4u7r... apna pura key yahan paste karna');
+const supabaseClient = window.supabase.createClient('https://bztdaghyvlwutkibpvjq.supabase.co', 'sb_publishable_kKGW-bugJ1dEyRupPZV45Q_46ygvC1W');
 let stars=0,userEmail='';
-
 async function sendOTP(){
-  let email=document.getElementById('emailInput').value;
-  if(!email) return alert('Email dalo');
-  let {error}=await supa.auth.signInWithOtp({
-    email:email,
-    options:{emailRedirectTo:'https://theaboverse.github.io'}
-  });
-  if(error) alert(error.message);
-  else alert('Email me link bhej diya! Gmail kholo aur Confirm pe click karo.');
+ let email=document.getElementById('emailInput').value;
+ if(!email)return alert('Email dalo');
+ let {error}=await supabaseClient.auth.signInWithOtp({email:email,options:{emailRedirectTo:'https://theaboverse.github.io'}});
+ if(error)alert(error.message);
+ else alert('Email me link bhej diya! Gmail kholo aur Confirm pe click karo.');
 }
-
-supa.auth.onAuthStateChange(async (event, session)=>{
-  if(session){
-    userEmail=session.user.email;
-    document.getElementById('authBox').style.display='none';
-    document.getElementById('rateBox').style.display='block';
-    document.getElementById('loggedEmail').innerText=userEmail;
-  }
+supabaseClient.auth.onAuthStateChange(async (event, session)=>{
+ if(session){
+   userEmail=session.user.email;
+   document.getElementById('authBox').style.display='none';
+   document.getElementById('rateBox').style.display='block';
+   document.getElementById('loggedEmail').innerText=userEmail;
+ }
 });
-
 (async()=>{
-  let {data:{session}}=await supa.auth.getSession();
-  if(session){
-    userEmail=session.user.email;
-    document.getElementById('authBox').style.display='none';
-    document.getElementById('rateBox').style.display='block';
-    document.getElementById('loggedEmail').innerText=userEmail;
-  }
+ let {data:{session}}=await supabaseClient.auth.getSession();
+ if(session){
+   userEmail=session.user.email;
+   document.getElementById('authBox').style.display='none';
+   document.getElementById('rateBox').style.display='block';
+   document.getElementById('loggedEmail').innerText=userEmail;
+ }
 })();
-
 function rate(s){
-  stars=s;
-  document.querySelectorAll('#stars span').forEach((si,i)=>{
-    si.textContent=i<s?'★':'☆';
-    si.style.color=i<s?'#FFD700':'#fff'
-  });
+ stars=s;
+ document.querySelectorAll('#stars span').forEach((si,i)=>{
+   si.textContent=i<s?'★':'☆';
+   si.style.color=i<s?'#FFD700':'#fff';
+ });
 }
-
-async function verifyOTP(){}
 async function postReview(){
-  const name=document.getElementById('Name').value;
-  const text=document.getElementById('Text').value;
-  if(!stars||!name||!text) return alert('Please fill all');
-  let {error}=await supa.from('reviews').insert([{name:name, review:text, stars:stars, email:userEmail}]);
-  if(error) alert(error.message);
-  else {alert('Review posted!'); location.reload();}
+ let name=document.getElementById('Name').value;
+ let text=document.getElementById('Text').value;
+ if(!stars||!name||!text)return alert('Please fill all');
+ let {error}=await supabaseClient.from('reviews').insert([{name:name,review:text,stars:stars,email:userEmail}]);
+ if(error)alert(error.message);
+ else {alert('Review posted!'); location.reload();}
 }
+function openWhatsApp(){
+ window.open('https://wa.me/918127968129?text=Hi%20I%20want%20to%20know%20about%20reviews','_blank');
+}
+function payAndWhatsApp(a,p){let i=`upi://pay?pa=abodharabia@axl&pn=TheAboverse&am=${a}&cu=INR&tn=${encodeURIComponent(p)}`;window.location.href=i;}
 </script>
-<div class="pay"><strong style="color:#D4AF37">💰 UPI: abodharabia@axl | 32+ 5★ Reviews | WhatsApp: 8127968129</strong><br>🇮🇳 ₹ & 🇺🇸 $ Both Accepted • Pay & Send Screenshot</div>
-
-<div class="yt-box"><h3 style="color:#FF0000">▶ YouTube: @theaboverse • 32+ Success Stories</h3><a href="https://youtube.com/@theaboverse?si=-QMyutWNX2cWJ0U5" class="btn btn-red" style="margin-top:8px">Watch Reviews</a></div>
-</section>
-
-<div class="chat-girl" onclick="openWhatsApp()"><div class="chat-bubble">Hi! 👋 32+ reviews ⭐ Chat now!</div><div style="position:relative"><img src="girl.png" class="girl-icon"><div class="online-dot"></div></div></div>
-
-<footer>⭐ 32+ 5 Star Ratings | UPI: <span style="color:#D4AF37">abodharabia@axl</span> | WhatsApp: 8127968129<br>© 2026 The Aboverse - Varanasi Global - Trusted Worldwide 🌍</footer>
-
-<script>
-let bg=document.getElementById('bgAnim');
-for(let i=0;i<65;i++){let s=document.createElement('div');s.className='star'+(Math.random()>0.6?' gold':'');s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';s.style.animationDuration=(Math.random()*3+2)+'s';s.style.animationDelay=Math.random()*5+'s';let wh=(Math.random()*2+1.5)+'px';s.style.width=wh;s.style.height=wh;bg.appendChild(s);}
-for(let i=0;i<15;i++){let r=document.createElement('div');r.className='ring';let sz=Math.random()*22+10;r.style.width=sz+'px';r.style.height=sz+'px';r.style.left=Math.random()*100+'%';r.style.top=Math.random()*100+'%';r.style.animationDuration=(Math.random()*7+5)+'s';r.style.animationDelay=Math.random()*8+'s';bg.appendChild(r);}
-function openWhatsApp(){window.open('https://wa.me/918127968129?text=Hi%20Aboverse!%20I%20saw%2032+%20reviews%20⭐%20Want%20luxury%20website%20INR%20₹20k-1.5L%20USD%20$240-1800','_blank');}
-function payAndWhatsApp(a,p){let l=`upi://pay?pa=abodharabia@axl&pn=TheAboverse&am=${a}&cu=INR&tn=${encodeURIComponent(p)}`;window.location.href=l;setTimeout(()=>{openWhatsApp();},2500);}
-</script>
-</body>
-</html>
