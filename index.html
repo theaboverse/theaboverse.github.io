@@ -133,12 +133,56 @@ footer{text-align:center;padding:22px;color:#666;font-size:11px;border-top:1px s
 </div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-const supa = supabase.createClient('https://bztdaghyvlwutklbpvjq.supabase.co', 'sb_publishable_kKGW-bugjldEyRupPZV45Q_46ygvC1W');
+const supa = supabase.createClient('https://bztidaghylwutkibpvjq.supabase.co', 'sb_publishable_kKGh-bugJ1deyRupPZV45Q_4o4u7r... apna pura key yahan paste karna');
 let stars=0,userEmail='';
-function rate(n){stars=n;document.querySelectorAll('#stars span').forEach((s,i)=>{s.textContent=i<n?'★':'☆';s.style.color=i<n?'#DAAF37':'#fff'})}
-async function sendOTP(){let email=document.getElementById('emailInput').value;const {error}=await supa.auth.signInWithOtp({email});if(error){alert(error.message)}else{document.getElementById('authBox').style.display='none';document.getElementById('otpBox').style.display='block';userEmail=email;}}
-async function verifyOTP(){const otp=document.getElementById('otpInput').value;const {error}=await supa.auth.verifyOtp({email:userEmail,token:otp,type:'email'});if(error){alert(error.message)}else{document.getElementById('otpBox').style.display='none';document.getElementById('rateBox').style.display='block';document.getElementById('loggedEmail').textContent=userEmail;}}
-async function postReview(){const name=rName.value,text=rText.value;if(!stars||!name||!text)return alert('Please fill all fields');const {error}=await supa.from('reviews').insert([{name:name,comment:text,rating:stars,email:userEmail}]);if(error)alert(error.message);else{alert('Review Posted! ✅');location.reload();}}
+
+async function sendOTP(){
+  let email=document.getElementById('emailInput').value;
+  if(!email) return alert('Email dalo');
+  let {error}=await supa.auth.signInWithOtp({
+    email:email,
+    options:{emailRedirectTo:'https://theaboverse.github.io'}
+  });
+  if(error) alert(error.message);
+  else alert('Email me link bhej diya! Gmail kholo aur Confirm pe click karo.');
+}
+
+supa.auth.onAuthStateChange(async (event, session)=>{
+  if(session){
+    userEmail=session.user.email;
+    document.getElementById('authBox').style.display='none';
+    document.getElementById('rateBox').style.display='block';
+    document.getElementById('loggedEmail').innerText=userEmail;
+  }
+});
+
+(async()=>{
+  let {data:{session}}=await supa.auth.getSession();
+  if(session){
+    userEmail=session.user.email;
+    document.getElementById('authBox').style.display='none';
+    document.getElementById('rateBox').style.display='block';
+    document.getElementById('loggedEmail').innerText=userEmail;
+  }
+})();
+
+function rate(s){
+  stars=s;
+  document.querySelectorAll('#stars span').forEach((si,i)=>{
+    si.textContent=i<s?'★':'☆';
+    si.style.color=i<s?'#FFD700':'#fff'
+  });
+}
+
+async function verifyOTP(){}
+async function postReview(){
+  const name=document.getElementById('Name').value;
+  const text=document.getElementById('Text').value;
+  if(!stars||!name||!text) return alert('Please fill all');
+  let {error}=await supa.from('reviews').insert([{name:name, review:text, stars:stars, email:userEmail}]);
+  if(error) alert(error.message);
+  else {alert('Review posted!'); location.reload();}
+}
 </script>
 <div class="pay"><strong style="color:#D4AF37">💰 UPI: abodharabia@axl | 32+ 5★ Reviews | WhatsApp: 8127968129</strong><br>🇮🇳 ₹ & 🇺🇸 $ Both Accepted • Pay & Send Screenshot</div>
 
