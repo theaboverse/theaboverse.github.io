@@ -112,36 +112,34 @@ footer{text-align:center;padding:22px;color:#666;font-size:11px;border-top:1px s
 <div class="rate-card"><div class="rate-top"><span class="rate-name">Nikhil Tiwari 🇮🇳 Varanasi</span><span class="stars-rate">★★★★★</span></div><div class="rate-text">"Local Varanasi boy supporting Abodh bhai. Best web dev in Kashi!"</div></div>
 </div>
 
-  <!-- EMAIL LOGIN + REAL RATING SYSTEM START -->
-<div style="background:#111;border:2px solid #D4AF37;border-radius:18px;padding:20px;margin:20px 10px;max-width:520px;margin-left:auto;margin-right:auto">
-<h3 style="color:#D4AF37;text-align:center;font-family:'Playfair Display',serif">⭐ Apna Real Review Do</h3>
+  <div style="background:#111;border:2px solid #DAAF37;border-radius:18px;padding:20px;margin:20px auto;max-width:520px;">
+<h3 style="color:#DAAF37;text-align:center;font-family:'Playfair Display',serif;">⭐ Leave a Real Review</h3>
 <div id="authBox">
-<input id="emailInput" type="email" placeholder="Apna Email likho" style="width:100%;padding:12px;background:#000;border:1px solid #333;color:#fff;border-radius:10px">
-<button onclick="sendOTP()" style="width:100%;margin-top:10px;background:#fff;color:#000;padding:12px;border-radius:10px;font-weight:800;border:none;cursor:pointer">📩 OTP Bhejo</button>
+<input id="emailInput" type="email" placeholder="Enter your Email" style="width:100%;padding:12px;background:#000;border:1px solid #333;color:#fff;border-radius:10px;">
+<button onclick="sendOTP()" style="width:100%;margin-top:10px;background:#fff;color:#000;padding:12px;border-radius:10px;font-weight:bold;">Send OTP</button>
 </div>
 <div id="otpBox" style="display:none">
-<input id="otpInput" placeholder="OTP daalo" style="width:100%;padding:12px;background:#000;border:1px solid #333;color:#fff;border-radius:10px">
-<button onclick="verifyOTP()" style="width:100%;margin-top:10px;background:#D4AF37;color:#000;padding:12px;border-radius:10px;font-weight:800;border:none;cursor:pointer">✅ Verify</button>
+<input id="otpInput" placeholder="Enter OTP" style="width:100%;padding:12px;background:#000;border:1px solid #333;color:#fff;border-radius:10px;">
+<button onclick="verifyOTP()" style="width:100%;margin-top:10px;background:#DAAF37;color:#000;padding:12px;border-radius:10px;font-weight:bold;">Verify OTP</button>
 </div>
 <div id="rateBox" style="display:none">
-<p style="color:#25D366;font-size:12px">✔️ <span id="loggedEmail"></span></p>
-<div style="text-align:center;font-size:36px;cursor:pointer" id="stars"><span onclick="rate(1)">☆</span><span onclick="rate(2)">☆</span><span onclick="rate(3)">☆</span><span onclick="rate(4)">☆</span><span onclick="rate(5)">☆</span></div>
-<input id="rName" placeholder="Naam + City" style="width:100%;padding:10px;background:#000;border:1px solid #333;color:#fff;border-radius:8px;margin-top:10px">
-<textarea id="rText" placeholder="Review likho..." style="width:100%;padding:10px;background:#000;border:1px solid #333;color:#fff;border-radius:8px;margin-top:10px;height:70px"></textarea>
-<button onclick="postReview()" style="width:100%;margin-top:10px;background:#D4AF37;color:#000;padding:12px;border-radius:8px;font-weight:900;border:none">⭐ Post Karo</button>
+<p style="color:#23D360;font-size:12px;">✔ Verified: <span id="loggedEmail"></span></p>
+<div style="text-align:center;font-size:32px;cursor:pointer" id="stars"><span onclick="rate(1)">☆</span><span onclick="rate(2)">☆</span><span onclick="rate(3)">☆</span><span onclick="rate(4)">☆</span><span onclick="rate(5)">☆</span></div>
+<input id="rName" placeholder="Your Name + City" style="width:100%;padding:10px;background:#000;border:1px solid #333;color:#fff;border-radius:10px;margin-top:10px;">
+<textarea id="rText" placeholder="Write your review..." style="width:100%;padding:10px;background:#000;border:1px solid #333;color:#fff;border-radius:10px;margin-top:10px;height:70px;"></textarea>
+<button onclick="postReview()" style="width:100%;margin-top:10px;background:#04AF37;color:#000;padding:12px;border-radius:10px;font-weight:bold;">Post Review</button>
 </div>
-<p style="text-align:center;color:#777;font-size:10px;margin-top:8px">Email verify se fake review band</p>
+<p style="text-align:center;color:#777;font-size:10px;margin-top:8px;">Email verification stops fake reviews</p>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-const supa = supabase.createClient('https://YOUR_PROJECT.supabase.co', 'YOUR_ANON_KEY');
+const supa = supabase.createClient('https://bztdaghyvlwutklbpvjq.supabase.co', 'sb_publishable_kKGW-bugjldEyRupPZV45Q_46ygvC1W');
 let stars=0,userEmail='';
-function rate(n){stars=n;document.querySelectorAll('#stars span').forEach((s,i)=>{s.textContent=i<n?'★':'☆';s.style.color=i<n?'#D4AF37':'#555'})}
-async function sendOTP(){userEmail=document.getElementById('emailInput').value;const{error}=await supa.auth.signInWithOtp({email:userEmail});if(error)alert(error.message);else{alert('OTP bheja!');authBox.style.display='none';otpBox.style.display='block'}}
-async function verifyOTP(){const otp=document.getElementById('otpInput').value;const{error}=await supa.auth.verifyOtp({email:userEmail,token:otp,type:'email'});if(error)alert('Galat OTP');else{otpBox.style.display='none';rateBox.style.display='block';loggedEmail.textContent=userEmail}}
-async function postReview(){const name=rName.value,text=rText.value;if(!stars||!name||!text)return alert('Sab bharo');await supa.from('reviews').insert([{email:userEmail,name:name,text:text,stars:stars}]);alert('Review Posted!');location.reload()}
+function rate(n){stars=n;document.querySelectorAll('#stars span').forEach((s,i)=>{s.textContent=i<n?'★':'☆';s.style.color=i<n?'#DAAF37':'#fff'})}
+async function sendOTP(){let email=document.getElementById('emailInput').value;const {error}=await supa.auth.signInWithOtp({email});if(error){alert(error.message)}else{document.getElementById('authBox').style.display='none';document.getElementById('otpBox').style.display='block';userEmail=email;}}
+async function verifyOTP(){const otp=document.getElementById('otpInput').value;const {error}=await supa.auth.verifyOtp({email:userEmail,token:otp,type:'email'});if(error){alert(error.message)}else{document.getElementById('otpBox').style.display='none';document.getElementById('rateBox').style.display='block';document.getElementById('loggedEmail').textContent=userEmail;}}
+async function postReview(){const name=rName.value,text=rText.value;if(!stars||!name||!text)return alert('Please fill all fields');const {error}=await supa.from('reviews').insert([{name:name,comment:text,rating:stars,email:userEmail}]);if(error)alert(error.message);else{alert('Review Posted! ✅');location.reload();}}
 </script>
-<!-- EMAIL LOGIN + REAL RATING SYSTEM END -->
 <div class="pay"><strong style="color:#D4AF37">💰 UPI: abodharabia@axl | 32+ 5★ Reviews | WhatsApp: 8127968129</strong><br>🇮🇳 ₹ & 🇺🇸 $ Both Accepted • Pay & Send Screenshot</div>
 
 <div class="yt-box"><h3 style="color:#FF0000">▶ YouTube: @theaboverse • 32+ Success Stories</h3><a href="https://youtube.com/@theaboverse?si=-QMyutWNX2cWJ0U5" class="btn btn-red" style="margin-top:8px">Watch Reviews</a></div>
