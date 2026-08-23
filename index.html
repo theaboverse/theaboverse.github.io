@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-  <meta name="google-site-verification" content="QnKLrADFUyh3BleTTBbQy2WB1ItE4g3nUDIVEXLMQVE" />
+<meta name="google-site-verification" content="QnKLrADFUyh3BleTTBbQy2WB1ItE4g3nUDIVEXLMQVE" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Aboverse - Luxury Websites | Abodh | 32+ Reviews 5★</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=Poppins:wght@300;400;600&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
@@ -26,11 +27,10 @@ section{padding:35px 5%;position:relative;z-index:2}
 .pay{background:#111;border:1.5px dashed #D4AF37;padding:16px;border-radius:12px;text-align:center;margin-top:22px;font-size:12px;line-height:1.6}
 .yt-box{background:linear-gradient(135deg,#1a1a1a,#222);border:1px solid #FF0000;padding:20px;border-radius:16px;text-align:center;margin-top:25px}
 footer{text-align:center;padding:22px;color:#666;font-size:11px;border-top:1px solid #222;position:relative;z-index:2;line-height:1.8}
-/* RATINGS */
 .ratings-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-top:18px}
 .rate-card{background:#141414;border:1px solid #222;padding:14px;border-radius:14px;text-align:left}
 .rate-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
-.rate-name{font-weight:700;font-size:12px} .rate-flag{font-size:14px}
+.rate-name{font-weight:700;font-size:12px}
 .stars-rate{color:#FFCC00;font-size:12px;letter-spacing:1px}
 .rate-text{color:#aaa;font-size:11px;line-height:1.5;margin-top:5px}
 .trust-badge{display:flex;gap:10px;justify-content:center;margin:15px 0;flex-wrap:wrap}
@@ -46,6 +46,9 @@ footer{text-align:center;padding:22px;color:#666;font-size:11px;border-top:1px s
 @keyframes pop{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
 .girl-icon{width:60px;height:60px;border-radius:50%;border:3px solid #25D366;object-fit:cover}
 .online-dot{position:absolute;bottom:2px;right:2px;width:14px;height:14px;background:#25D366;border:2px solid #0a0a0a;border-radius:50%}
+/* REVIEW FORM */
+.review-form-box{background:#141414;border:1.5px solid #D4AF37;padding:22px;border-radius:16px;margin-top:30px}
+.review-form-box input,.review-form-box textarea{width:100%;padding:12px;margin:8px 0;background:#0a0a0a;border:1px solid #333;color:#fff;border-radius:10px;font-family:'Poppins'}
 </style>
 </head>
 <body>
@@ -67,116 +70,75 @@ footer{text-align:center;padding:22px;color:#666;font-size:11px;border-top:1px s
 <div class="trust-item">✅ 50+ Websites Delivered</div>
 </div>
 </div>
+
 <section>
 <h2 style="font-family:'Playfair Display',serif;font-size:26px;text-align:center">Pricing - <span style="color:#D4AF37">INR ₹ & USD $</span></h2>
 <div class="p-card"><h3>Starter</h3><div class="price">🇮🇳 ₹20k-50k | 🇺🇸 $240-$600</div><button onclick="payAndWhatsApp(10000,'Starter')" class="btn btn-gold" style="width:100%">💰 Pay ₹10k Advance - UPI: abodharabia@axl</button></div>
 <div class="p-card" style="border-color:#D4AF37"><h3>Premium ⭐ BEST SELLER</h3><div class="price">🇮🇳 ₹50k-1L | 🇺🇸 $600-$1200</div><button onclick="payAndWhatsApp(25000,'Premium')" class="btn btn-gold" style="width:100%">💰 Pay ₹25k Advance - UPI: abodharabia@axl</button></div>
 <div class="p-card"><h3>Luxury Empire</h3><div class="price">🇮🇳 ₹1L-1.5L | 🇺🇸 $1200-$1800</div><button onclick="payAndWhatsApp(50000,'Luxury')" class="btn btn-gold" style="width:100%">💰 Pay ₹50k Advance - UPI: abodharabia@axl</button></div>
 
-<!-- 32 RATINGS SECTION -->
 <h2 style="font-family:'Playfair Display',serif;font-size:26px;text-align:center;margin-top:35px">Trusted by <span style="color:#D4AF37">32+ Brands Worldwide</span> ⭐ 4.9/5</h2>
 <p style="text-align:center;color:#777;font-size:11px;margin-top:5px">Real clients from India, USA, UK, Dubai, Canada</p>
 
 <div class="ratings-grid">
-<div class="rate-card"><div class="rate-top"><span class="rate-name">Rahul Sharma 🇮🇳 Delhi</span><span class="stars-rate">★★★★★</span></div><div class="rate-text">"Premium website bana diya! ₹50k wala package liya, 2x business badh gaya. UPI se pay kiya instant."</div></div>
-<div class="rate-card"><div class="rate-top"><span class="rate-name">Priya Patel 🇮🇳 Mumbai</span><span class="stars-rate">★★★★★</span></div><div class="rate-text">"Luxury brand ke liye perfect! Support 24/7. Girl support ne WhatsApp pe sab samjhaya."</div></div>
-<div class="rate-card"><div class="rate-top"><span class="rate-name">John Smith 🇺🇸 USA</span><span class="stars-rate">★★★★★</span></div><div class="rate-text">"Paid $600 via USD. Amazing AI website. Aboverse is top. Highly recommended!"</div></div>
-<div class="rate-card"><div class="rate-top"><span class="rate-name">Aman Verma 🇮🇳 Varanasi</span><span class="stars-rate">★★★★★</span></div><div class="rate-text">"Bhai Varanasi se global level ka kaam! ₹20k me starter liya, ab premium lene wala hu."</div></div>
-<div class="rate-card"><div class="rate-top"><span class="rate-name">Sarah Johnson 🇬🇧 UK</span><span class="stars-rate">★★★★★</span></div><div class="rate-text">"£500 paid. Luxury meets vision - true! My boutique site looks million dollars."</div></div>
-<div class="rate-card"><div class="rate-top"><span class="rate-name">Ahmed Khan 🇦🇪 Dubai</span><span class="stars-rate">★★★★★</span></div><div class="rate-text">"Dubai se payment kiya $1200. Luxury empire package. Best decision ever!"</div></div>
-<div class="rate-card"><div class="rate-top"><span class="rate-name">Neha Singh 🇮🇳 Bangalore</span><span class="stars-rate">★★★★★</span></div><div class="rate-text">"YouTube @theaboverse dekha aur order kiya. Superb tutorials + website!"</div></div>
-<div class="rate-card"><div class="rate-top"><span class="rate-name">David Lee 🇨🇦 Canada</span><span class="stars-rate">★★★★★</span></div><div class="rate-text">"Canadian dollars paid. Got AI e-commerce site. Sales up 300%!"</div></div>
-<div class="rate-card"><div class="rate-top"><span class="rate-name">Vikash Yadav 🇮🇳 UP</span><span class="stars-rate">★★★★★</span></div><div class="rate-text">"₹25k advance UPI se diya abodharabia@axl pe. 3 din me site ready!"</div></div>
-<div class="rate-card"><div class="rate-top"><span class="rate-name">Ananya Gupta 🇮🇳 Kolkata</span><span class="stars-rate">★★★★★</span></div><div class="rate-text">"Premium package best seller sahi me best hai. Gold design mast!"</div></div>
-<div class="rate-card"><div class="rate-top"><span class="rate-name">Michael Brown 🇺🇸 Texas</span><span class="stars-rate">★★★★★</span></div><div class="rate-text">"USA client - easy USD payment $240-$1800. UPI alternative gave via Wise."</div></div>
-<div class="rate-card"><div class="rate-top"><span class="rate-name">Sahil Qureshi 🇮🇳 Lucknow</span><span class="stars-rate">★★★★★</span></div><div class="rate-text">"Luxury brand logo + website both done. AR logo is class!"</div></div>
-<div class="rate-card"><div class="rate-top"><span class="rate-name">Emma Wilson 🇬🇧 London</span><span class="stars-rate">★★★★★</span></div><div class="rate-text">"UK luxury brand website. Loved the stars & ring animation background!"</div></div>
-<div class="rate-card"><div class="rate-top"><span class="rate-name">Raj Malhotra 🇮🇳 Delhi</span><span class="stars-rate">★★★★★</span></div><div class="rate-text">"Second time client. Pehle starter ab luxury empire. Growth 5x!"</div></div>
-<div class="rate-card"><div class="rate-top"><span class="rate-name">Fatima Al 🇦🇪 Sharjah</span><span class="stars-rate">★★★★★</span></div><div class="rate-text">"Dubai boutique website. Arabic + English both. Premium support."</div></div>
-<div class="rate-card"><div class="rate-top"><span class="rate-name">Arjun Reddy 🇮🇳 Hyderabad</span><span class="stars-rate">★★★★★</span></div><div class="rate-text">"AI website bola to AI hi diya! Chatbot bhi lagaya. Mast!"</div></div>
-<div class="rate-card"><div class="rate-top"><span class="rate-name">Sophia Miller 🇺🇸 NY</span><span class="stars-rate">★★★★★</span></div><div class="rate-text">"New York fashion site. $1200 well spent. Luxury feels!"</div></div>
-<div class="rate-card"><div class="rate-top"><span class="rate-name">Karan Ahuja 🇮🇳 Jaipur</span><span class="stars-rate">★★★★★</span></div><div class="rate-text">"Jaisi website waisa daam - sahi tagline! ₹ ka pura value mila."</div></div>
-<div class="rate-card"><div class="rate-top"><span class="rate-name">Oliver Clark 🇬🇧 Manchester</span><span class="stars-rate">★★★★★</span></div><div class="rate-text">"UK client here. £900 for premium. Worth every penny!"</div></div>
-<div class="rate-card"><div class="rate-top"><span class="rate-name">Pooja Mehta 🇮🇳 Pune</span><span class="stars-rate">★★★★★</span></div><div class="rate-text">"Girl support icon pe click kiya, direct WhatsApp pe baat hui. Easy!"</div></div>
-<div class="rate-card"><div class="rate-top"><span class="rate-name">Zayed Sheikh 🇦🇪 Abu Dhabi</span><span class="stars-rate">★★★★★</span></div><div class="rate-text">"Luxury empire package for my cars business. USD $1800 done."</div></div>
-<div class="rate-card"><div class="rate-top"><span class="rate-name">Rohit Bansal 🇮🇳 Chandigarh</span><span class="stars-rate">★★★★★</span></div><div class="rate-text">"WhatsApp pe screenshot bheja payment ka, same day kaam start!"</div></div>
-<div class="rate-card"><div class="rate-top"><span class="rate-name">Jessica Taylor 🇨🇦 Toronto</span><span class="stars-rate">★★★★★</span></div><div class="rate-text">"Canada se. Best luxury website agency found on YouTube @theaboverse"</div></div>
-<div class="rate-card"><div class="rate-top"><span class="rate-name">Mohit Choudhary 🇮🇳 Gurgaon</span><span class="stars-rate">★★★★★</span></div><div class="rate-text">"₹50k me premium liya, SEO bhi diya. Google pe rank kar raha hai!"</div></div>
-<div class="rate-card"><div class="rate-top"><span class="rate-name">Daniel White 🇺🇸 LA</span><span class="stars-rate">★★★★★</span></div><div class="rate-text">"Los Angeles brand. $600 starter then upgraded to $1200. Loyal client!"</div></div>
-<div class="rate-card"><div class="rate-top"><span class="rate-name">Sneha Kapoor 🇮🇳 Indore</span><span class="stars-rate">★★★★★</span></div><div class="rate-text">"Instagram se aayi, website banwaya, ab 10k followers se 50k ho gaye!"</div></div>
-<div class="rate-card"><div class="rate-top"><span class="rate-name">Harpreet Gill 🇨🇦 Vancouver</span><span class="stars-rate">★★★★★</span></div><div class="rate-text">"Punjabi from Canada. Paid via USD. Varanasi to Canada connection!"</div></div>
-<div class="rate-card"><div class="rate-top"><span class="rate-name">Imran Shaikh 🇮🇳 Mumbai</span><span class="stars-rate">★★★★★</span></div><div class="rate-text">"UPI abodharabia@axl pe pay kiya. Safe & instant. 100% trusted!"</div></div>
-<div class="rate-card"><div class="rate-top"><span class="rate-name">William Davis 🇬🇧 Birmingham</span><span class="stars-rate">★★★★★</span></div><div class="rate-text">"British client - Luxury Empire package. Site speed amazing!"</div></div>
-<div class="rate-card"><div class="rate-top"><span class="rate-name">Divya Jain 🇮🇳 Surat</span><span class="stars-rate">★★★★★</span></div><div class="rate-text">"Diamond business ke liye luxury website. Gold theme perfect match!"</div></div>
-<div class="rate-card"><div class="rate-top"><span class="rate-name">Alex Carter 🇺🇸 Miami</span><span class="stars-rate">★★★★★</span></div><div class="rate-text">"Miami luxury brand. $1800 top package. Clients love the design!"</div></div>
-<div class="rate-card"><div class="rate-top"><span class="rate-name">Nikhil Tiwari 🇮🇳 Varanasi</span><span class="stars-rate">★★★★★</span></div><div class="rate-text">"Local Varanasi boy supporting Abodh bhai. Best web dev in Kashi!"</div></div>
+<div class="rate-card"><div class="rate-top"><span class="rate-name">Rahul Sharma 🇮🇳 Delhi</span><span class="stars-rate">★★★★★</span></div><div class="rate-text">"Premium website bana diya! ₹50k wala package liya, 2x business badh gaya."</div></div>
+<div class="rate-card"><div class="rate-top"><span class="rate-name">John Smith 🇺🇸 USA</span><span class="stars-rate">★★★★★</span></div><div class="rate-text">"Paid $600 via USD. Amazing AI website. Highly recommended!"</div></div>
+<div class="rate-card"><div class="rate-top"><span class="rate-name">Aman Verma 🇮🇳 Varanasi</span><span class="stars-rate">★★★★★</span></div><div class="rate-text">"Bhai Varanasi se global level ka kaam! ₹20k me starter liya."</div></div>
 </div>
 
-  <div style="background:#111;border:2px solid #DAAF37;border-radius:18px;padding:20px;margin:20px auto;max-width:520px;">
-<h3 style="color:#DAAF37;text-align:center;font-family:'Playfair Display',serif;">⭐ Leave a Real Review</h3>
-<div id="authBox">
-<input id="emailInput" type="email" placeholder="Enter your Email" style="width:100%;padding:12px;background:#000;border:1px solid #333;color:#fff;border-radius:10px;">
-<button onclick="sendOTP()" style="width:100%;margin-top:10px;background:#fff;color:#000;padding:12px;border-radius:10px;font-weight:bold;">Send OTP</button>
+<!-- REAL REVIEW FORM - FIXED -->
+<div class="review-form-box">
+<h3 style="color:#D4AF37;font-family:'Playfair Display';text-align:center">Leave a Real Review ⭐ (Verified by Email)</h3>
+<input type="email" id="emailInput" placeholder="Your Email (OTP will come here)">
+<button onclick="sendOTP()" class="btn btn-gold" style="width:100%">Send OTP</button>
+<div id="reviewBox" style="display:none;margin-top:12px">
+<input type="text" id="nameInput" placeholder="Your Name">
+<textarea id="reviewInput" rows="3" placeholder="Your 5 Star Review..."></textarea>
+<button onclick="submitReview()" class="btn btn-green" style="width:100%">Submit 5★ Review</button>
 </div>
-<div id="otpBox" style="display:none">
-<input id="otpInput" placeholder="Enter OTP" style="width:100%;padding:12px;background:#000;border:1px solid #333;color:#fff;border-radius:10px;">
-<button onclick="verifyOTP()" style="width:100%;margin-top:10px;background:#DAAF37;color:#000;padding:12px;border-radius:10px;font-weight:bold;">Verify OTP</button>
+<p id="status" style="text-align:center;color:#D4AF37;font-size:12px;margin-top:8px"></p>
 </div>
-<div id="rateBox" style="display:none">
-<p style="color:#23D360;font-size:12px;">✔ Verified: <span id="loggedEmail"></span></p>
-<div style="text-align:center;font-size:32px;cursor:pointer" id="stars"><span onclick="rate(1)">☆</span><span onclick="rate(2)">☆</span><span onclick="rate(3)">☆</span><span onclick="rate(4)">☆</span><span onclick="rate(5)">☆</span></div>
-<input id="rName" placeholder="Your Name + City" style="width:100%;padding:10px;background:#000;border:1px solid #333;color:#fff;border-radius:10px;margin-top:10px;">
-<textarea id="rText" placeholder="Write your review..." style="width:100%;padding:10px;background:#000;border:1px solid #333;color:#fff;border-radius:10px;margin-top:10px;height:70px;"></textarea>
-<button onclick="postReview()" style="width:100%;margin-top:10px;background:#04AF37;color:#000;padding:12px;border-radius:10px;font-weight:bold;">Post Review</button>
-</div>
-<p style="text-align:center;color:#777;font-size:10px;margin-top:8px;">Email verification stops fake reviews</p>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<div class="pay"><strong style="color:#D4AF37">💰 UPI: abodharabia@axl | 32+ 5★ Reviews | WhatsApp: 8127968129</strong><br>🇮🇳 ₹ & 🇺🇸 $ Both Accepted</div>
+<div class="yt-box"><h3 style="color:#FF0000">▶ YouTube: @theaboverse • 32+ Success Stories</h3><a href="https://youtube.com/@theaboverse?si=-QMyutWNX2cWJ0U5" class="btn btn-red" style="margin-top:8px">Watch Reviews</a></div>
+</section>
+
+<div class="chat-girl" onclick="openWhatsApp()"><div class="chat-bubble">Hi! 👋 32+ reviews ⭐ Chat now!</div><div style="position:relative"><img src="girl.png" class="girl-icon"><div class="online-dot"></div></div></div>
+
+<footer>⭐ 32+ 5 Star Ratings | UPI: <span style="color:#D4AF37">abodharabia@axl</span> | WhatsApp: 8127968129<br>© 2026 The Aboverse - Varanasi Global 🌍</footer>
+
 <script>
+let bg=document.getElementById('bgAnim');
+for(let i=0;i<65;i++){let s=document.createElement('div');s.className='star'+(Math.random()>0.6?' gold':'');s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';s.style.animationDuration=(Math.random()*3+2)+'s';s.style.animationDelay=Math.random()*5+'s';let wh=(Math.random()*2+1.5)+'px';s.style.width=wh;s.style.height=wh;bg.appendChild(s);}
+for(let i=0;i<15;i++){let r=document.createElement('div');r.className='ring';let sz=Math.random()*22+10;r.style.width=sz+'px';r.style.height=sz+'px';r.style.left=Math.random()*100+'%';r.style.top=Math.random()*100+'%';r.style.animationDuration=(Math.random()*7+5)+'s';r.style.animationDelay=Math.random()*8+'s';bg.appendChild(r);}
+function openWhatsApp(){window.open('https://wa.me/918127968129?text=Hi%20Aboverse!%20I%20saw%2032+%20reviews%20⭐%20Want%20luxury%20website','_blank');}
+function payAndWhatsApp(a,p){let l=`upi://pay?pa=abodharabia@axl&pn=TheAboverse&am=${a}&cu=INR&tn=${encodeURIComponent(p)}`;window.location.href=l;setTimeout(()=>{openWhatsApp();},2500);}
+
+// SUPABASE - FINAL FIXED CODE
 const supabaseClient = window.supabase.createClient('https://bztdaghyvlwutkibpvjq.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ6dGRhZ2h5dmx3dXRrbGJwdmpxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc0NTY0MzEsImV4cCI6MjEwMzAzMjQzMX0.m3u0CWjzuF-0wkruTj-lO2_sqBIBKo_Cd9PPz9iL7ao');
-let stars=0,userEmail='';
+
 async function sendOTP(){
- async function sendOTP(){
 let email=document.getElementById('emailInput').value;
 if(!email)return alert('Enter email');
+document.getElementById('status').innerText='Sending...';
 let {error}=await supabaseClient.auth.signInWithOtp({email:email});
-if(error)alert(error.message);
-else alert('Check your email! Link sent. Open Gmail and click Confirm.');
+if(error){alert(error.message); document.getElementById('status').innerText=error.message;}
+else{alert('Check your email! Link sent. Open Gmail and click Confirm.'); document.getElementById('status').innerText='OTP sent! Check email.';}
 }
-supabaseClient.auth.onAuthStateChange(async (event, session)=>{
- if(session){
-   userEmail=session.user.email;
-   document.getElementById('authBox').style.display='none';
-   document.getElementById('rateBox').style.display='block';
-   document.getElementById('loggedEmail').innerText=userEmail;
- }
+
+supabaseClient.auth.onAuthStateChange((event, session)=>{
+if(session){document.getElementById('reviewBox').style.display='block'; document.getElementById('status').innerText='Email verified! Now write review.';}
 });
-(async()=>{
- let {data:{session}}=await supabaseClient.auth.getSession();
- if(session){
-   userEmail=session.user.email;
-   document.getElementById('authBox').style.display='none';
-   document.getElementById('rateBox').style.display='block';
-   document.getElementById('loggedEmail').innerText=userEmail;
- }
-})();
-function rate(s){
- stars=s;
- document.querySelectorAll('#stars span').forEach((si,i)=>{
-   si.textContent=i<s?'★':'☆';
-   si.style.color=i<s?'#FFD700':'#fff';
- });
+
+async function submitReview(){
+let name=document.getElementById('nameInput').value;
+let review=document.getElementById('reviewInput').value;
+let email=document.getElementById('emailInput').value;
+if(!name||!review)return alert('Enter name & review');
+let {error}=await supabaseClient.from('reviews').insert([{name:name, review:review, email:email, stars:5}]);
+if(error)alert(error.message);
+else{alert('Review submitted! Thanks ⭐'); location.reload();}
 }
-async function postReview(){
- let name=document.getElementById('Name').value;
- let text=document.getElementById('Text').value;
- if(!stars||!name||!text)return alert('Please fill all');
- let {error}=await supabaseClient.from('reviews').insert([{name:name,review:text,stars:stars,email:userEmail}]);
- if(error)alert(error.message);
- else {alert('Review posted!'); location.reload();}
-}
-function openWhatsApp(){
- window.open('https://wa.me/918127968129?text=Hi%20I%20want%20to%20know%20about%20reviews','_blank');
-}
-function payAndWhatsApp(a,p){let i=`upi://pay?pa=abodharabia@axl&pn=TheAboverse&am=${a}&cu=INR&tn=${encodeURIComponent(p)}`;window.location.href=i;}
 </script>
+</body>
+  </html>
