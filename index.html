@@ -30,11 +30,12 @@ section{padding:20px 5% 40px;position:relative;z-index:2}
 .sub-price{color:#666;font-size:11px;display:block;margin-top:4px}
 .adv{color:#25D366;font-size:11px;font-weight:600;margin-top:12px;display:block;background:#0a1a0f;padding:6px;border-radius:8px;border:1px dashed #25D366}
 .pay{background:#0f0f0f;border:1px solid #1e1e1e;padding:20px;border-radius:16px;text-align:center;margin-top:30px;line-height:1.6}
+.bank-box{background:#0a0a0a;border:1px dashed #D4AF37;padding:16px;border-radius:12px;margin-top:16px;text-align:left;font-size:12px;line-height:1.8}
+.bank-box b{color:#D4AF37}
+.copy-btn{background:#111;border:1px solid #333;color:#D4AF37;padding:4px 10px;border-radius:6px;font-size:10px;cursor:pointer;margin-left:8px}
+.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:9999;justify-content:center;align-items:center;padding:20px}
+.modal-content{background:#111;border:1px solid #222;padding:24px;border-radius:16px;max-width:420px;width:100%}
 footer{text-align:center;padding:30px;color:#555;font-size:11px;border-top:1px solid #111;position:relative;z-index:2;line-height:1.8}
-.ratings-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-top:18px}
-.rate-card{background:#141414;border:1px solid #222;padding:14px;border-radius:14px;text-align:left}
-.rate-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
-.rate-name{font-weight:700;font-size:12px}.stars-rate{color:#FFCC00;font-size:12px}.rate-text{color:#aaa;font-size:11px;line-height:1.5;margin-top:5px}
 .trust-badge{display:flex;gap:8px;justify-content:center;margin:15px 0;flex-wrap:wrap}
 .trust-item{background:#111;border:1px solid rgba(212,175,55,0.3);padding:8px 14px;border-radius:20px;font-size:11px;color:#D4AF37}
 .bg-anim{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1}
@@ -49,11 +50,14 @@ footer{text-align:center;padding:30px;color:#555;font-size:11px;border-top:1px s
 .girl-icon{width:52px;height:52px;border-radius:50%;border:2px solid #25D366;object-fit:cover}
 .currency-bar{display:flex;gap:10px;align-items:center;justify-content:center;margin:16px 0;background:#111;border:1px solid #1e1e1e;padding:10px 16px;border-radius:30px;width:fit-content;margin-left:auto;margin-right:auto}
 .global-note{background:#0f0f0f;border:1px solid rgba(212,175,55,0.15);padding:12px;border-radius:10px;text-align:center;margin:18px 0;color:#777;font-size:11px;line-height:1.6}
+.ratings-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-top:18px}
+.rate-card{background:#141414;border:1px solid #222;padding:14px;border-radius:14px;text-align:left}
+.rate-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.rate-name{font-weight:700;font-size:12px}.stars-rate{color:#FFCC00;font-size:12px}.rate-text{color:#aaa;font-size:11px;line-height:1.5;margin-top:5px}
 .review-form-box{background:#111;border:1px solid #1e1e1e;padding:20px;border-radius:16px;margin-top:28px;max-width:600px;margin-left:auto;margin-right:auto}
 .review-form-box input,.review-form-box textarea{width:100%;padding:12px;margin:6px 0;background:#0a0a0a;border:1px solid #222;color:#fff;border-radius:10px;font-size:13px}
 .star-select{display:flex;gap:6px;justify-content:center;margin:10px 0;font-size:32px;cursor:pointer}
 .star-select span{color:#444;transition:0.2s}.star-select span.active{color:#FFCC00}
-/* AI CHAT */
 .ai-chat-widget{position:fixed;bottom:85px;right:18px;z-index:1000}
 .chat-btn{width:56px;height:56px;border-radius:50%;background:#D4AF37;border:none;color:#000;font-size:22px;cursor:pointer;box-shadow:0 4px 15px rgba(212,175,55,0.3)}
 .chat-box{width:340px;height:420px;background:#111;border:1px solid #222;border-radius:16px;display:none;flex-direction:column;overflow:hidden;position:absolute;bottom:65px;right:0;box-shadow:0 10px 30px rgba(0,0,0,0.5)}
@@ -73,17 +77,14 @@ footer{text-align:center;padding:30px;color:#555;font-size:11px;border-top:1px s
 <body>
 <div id="canvas-container"></div>
 <div class="bg-anim" id="bgAnim"></div>
-
 <nav>
-  <div class="logo"><img src="logo.png"> ABOVERSE</div>
+  <div class="logo"><img src="logo.png" onerror="this.style.display='none'"> ABOVERSE</div>
   <a href="https://wa.me/918127968129?text=Hi%20Aboverse%20I%20want%20to%20Book%20a%20Call" class="btn btn-gold" style="padding:8px 16px;font-size:11px;margin:0">Book a Call</a>
 </nav>
-
 <div class="hero">
   <div class="badge">THE ABOVERSE • GLOBAL LUXURY STUDIO • 32+ 5★ REVIEWS</div>
   <h1>LUXURY<br><span>MEETS</span><br>VISION.</h1>
   <p>Premium AI Websites for Luxury Brands Worldwide.<br>Official: <b style="color:#D4AF37">support@theaboverse.com</b> • Secure Global Payments</p>
-
   <div class="currency-bar">
     <span style="color:#555;font-size:10px;letter-spacing:1px">PRICE IN</span>
     <select id="currencySelect" onchange="changeCurrency(this.value)" style="background:transparent;border:none;color:#D4AF37;font-size:12px;font-weight:600;outline:none;cursor:pointer">
@@ -93,233 +94,89 @@ footer{text-align:center;padding:30px;color:#555;font-size:11px;border-top:1px s
       <option value="EUR">🇪🇺 EUR - Europe</option>
       <option value="AED">🇦🇪 AED - Dubai</option>
     </select>
-    <span style="color:#333;font-size:10px">Auto-detected</span>
   </div>
-
   <div>
     <button onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})" class="btn btn-gold">View Pricing • $240</button>
     <button onclick="openWhatsApp()" class="btn btn-outline">💬 WhatsApp</button>
   </div>
-
   <div class="trust-badge">
     <div class="trust-item">⭐ 4.9/5 (32 Reviews)</div>
     <div class="trust-item">🔒 Escrow Protected</div>
     <div class="trust-item">🌍 Global Studio</div>
   </div>
 </div>
-
 <section id="pricing">
   <h2 style="font-family:'Playfair Display',serif;font-size:28px;text-align:center">Pricing - <span style="color:#D4AF37">Fair Conversion</span></h2>
-  <div class="global-note">
-    🌍 <b style="color:#D4AF37">Fair Global Pricing • Converted as per live forex</b><br>
-    $240 ≈ ₹20,000 | $600 ≈ ₹50,000 | $840 ≈ ₹70,000<br>
-    50% Advance to Start Work • Balance on Delivery • <span style="color:#555">*Not same numeric value</span>
-  </div>
+  <div class="global-note">🌍 <b style="color:#D4AF37">Fair Global Pricing</b><br>$240 ≈ ₹20,000 | $600 ≈ ₹50,000 | $840 ≈ ₹70,000<br>50% Advance to Start Work • Balance on Delivery</div>
 
-  <div class="p-card" data-inr="20000" data-usd="240" data-gbp="190" data-eur="220" data-aed="880">
-    <h3>Basic - Start</h3>
-    <span class="main-price">$240</span><span class="sub-price">One Page Luxury • Starter</span>
-    <span class="adv">🔒 Start with 50% • $120</span>
-    <button onclick="payNow('Basic',120,10000)" class="btn btn-gold" style="width:100%;margin-top:12px">Pay 50% to Start</button>
-  </div>
-
-  <div class="p-card" data-inr="50000" data-usd="600" data-gbp="480" data-eur="550" data-aed="2200">
-    <h3>Standard</h3>
-    <span class="main-price">$600</span><span class="sub-price">Business Website</span>
-    <span class="adv">🔒 Start with 50% • $300</span>
-    <button onclick="payNow('Standard',300,25000)" class="btn btn-gold" style="width:100%;margin-top:12px">Pay 50% - $300</button>
-  </div>
-
-  <div class="p-card" data-inr="60000" data-usd="720" data-gbp="575" data-eur="660" data-aed="2640">
-    <h3>Growth</h3>
-    <span class="main-price">$720</span><span class="sub-price">Growth Ready</span>
-    <span class="adv">🔒 Start with 50% • $360</span>
-    <button onclick="payNow('Growth',360,30000)" class="btn btn-gold" style="width:100%;margin-top:12px">Pay 50% - $360</button>
-  </div>
-
-  <div class="p-card" data-inr="70000" data-usd="840" data-gbp="670" data-eur="770" data-aed="3080" style="border-color:#D4AF37">
-    <h3>Premium ⭐ Best Seller</h3>
-    <span class="main-price">$840</span><span class="sub-price">E-commerce Ready</span>
-    <span class="adv">🔒 Start with 50% • $420</span>
-    <button onclick="payNow('Premium',420,35000)" class="btn btn-gold" style="width:100%;margin-top:12px">Pay 50% - $420</button>
-  </div>
-
-  <div class="p-card" data-inr="100000" data-usd="1200" data-gbp="960" data-eur="1100" data-aed="4400">
-    <h3>Luxury - 1 Lakh</h3>
-    <span class="main-price">$1200</span><span class="sub-price">Full Brand Experience</span>
-    <span class="adv">🔒 Start with 50% • $600</span>
-    <button onclick="payNow('Luxury',600,50000)" class="btn btn-gold" style="width:100%;margin-top:12px">Pay 50% - $600</button>
-  </div>
-
-  <div class="p-card" data-inr="150000" data-usd="1800" data-gbp="1440" data-eur="1650" data-aed="6600">
-    <h3>Empire - 1.5 Lakh</h3>
-    <span class="main-price">$1800</span><span class="sub-price">For Global Brands</span>
-    <span class="adv">🔒 Start with 50% • $900</span>
-    <button onclick="payNow('Empire',900,75000)" class="btn btn-gold" style="width:100%;margin-top:12px">Pay 50% - $900</button>
-  </div>
-
-  <h2 style="font-family:'Playfair Display',serif;font-size:26px;text-align:center;margin-top:35px">Trusted by <span style="color:#D4AF37">32+ Brands Worldwide</span> ⭐ 4.9/5</h2>
-  <div class="ratings-grid">
-    <div class="rate-card"><div class="rate-top"><span class="rate-name">Rahul Sharma 🇮🇳</span><span class="stars-rate">★★★★★</span></div><div class="rate-text">"Premium build, professional support."</div></div>
-    <div class="rate-card"><div class="rate-top"><span class="rate-name">John Smith 🇺🇸</span><span class="stars-rate">★★★★★</span></div><div class="rate-text">"Paid $300 advance - clear global pricing!"</div></div>
-    <div class="rate-card"><div class="rate-top"><span class="rate-name">Ahmed Khan 🇦🇪</span><span class="stars-rate">★★★★★</span></div><div class="rate-text">"Luxury design for my Dubai brand."</div></div>
-    <div class="rate-card"><div class="rate-top"><span class="rate-name">Sarah UK 🇬🇧</span><span class="stars-rate">★★★★★</span></div><div class="rate-text">"Best premium agency!"</div></div>
-  </div>
-
-  <div class="review-form-box">
-    <h3 style="color:#D4AF37;text-align:center">⭐ Give Your Rating</h3>
-    <div class="star-select" id="starSelect"><span data-star="1">★</span><span data-star="2">★</span><span data-star="3">★</span><span data-star="4">★</span><span data-star="5" class="active">★</span></div>
-    <p style="text-align:center;color:#FFCC00;font-size:12px">5 Stars - Excellent!</p>
-    <input type="text" id="nameInput" placeholder="Your Name *"><input type="text" id="cityInput" placeholder="Your City *"><textarea id="reviewInput" rows="3" placeholder="Your Review *"></textarea>
-    <button onclick="submitReview()" class="btn btn-green" style="width:100%;margin-top:10px">Submit ⭐ Rating</button>
-    <p id="status" style="text-align:center;color:#D4AF37;font-size:12px;margin-top:8px"></p>
-    <div id="liveReviews" style="margin-top:18px"></div>
-  </div>
+  <div class="p-card" data-inr="20000" data-usd="240" data-gbp="190" data-eur="220" data-aed="880"><h3>Basic - Start</h3><span class="main-price">$240</span><span class="sub-price">One Page Luxury • Starter</span><span class="adv">🔒 Start with 50% • $120</span><button onclick="payNow('Basic',120,10000)" class="btn btn-gold" style="width:100%;margin-top:12px">Pay 50% to Start</button></div>
+  <div class="p-card" data-inr="50000" data-usd="600" data-gbp="480" data-eur="550" data-aed="2200"><h3>Standard</h3><span class="main-price">$600</span><span class="sub-price">Business Website</span><span class="adv">🔒 Start with 50% • $300</span><button onclick="payNow('Standard',300,25000)" class="btn btn-gold" style="width:100%;margin-top:12px">Pay 50% - $300</button></div>
+  <div class="p-card" data-inr="60000" data-usd="720" data-gbp="575" data-eur="660" data-aed="2640"><h3>Growth</h3><span class="main-price">$720</span><span class="sub-price">Growth Ready</span><span class="adv">🔒 Start with 50% • $360</span><button onclick="payNow('Growth',360,30000)" class="btn btn-gold" style="width:100%;margin-top:12px">Pay 50% - $360</button></div>
+  <div class="p-card" data-inr="70000" data-usd="840" data-gbp="670" data-eur="770" data-aed="3080" style="border-color:#D4AF37"><h3>Premium ⭐ Best Seller</h3><span class="main-price">$840</span><span class="sub-price">E-commerce Ready</span><span class="adv">🔒 Start with 50% • $420</span><button onclick="payNow('Premium',420,35000)" class="btn btn-gold" style="width:100%;margin-top:12px">Pay 50% - $420</button></div>
+  <div class="p-card" data-inr="100000" data-usd="1200" data-gbp="960" data-eur="1100" data-aed="4400"><h3>Luxury - 1 Lakh</h3><span class="main-price">$1200</span><span class="sub-price">Full Brand Experience</span><span class="adv">🔒 Start with 50% • $600</span><button onclick="payNow('Luxury',600,50000)" class="btn btn-gold" style="width:100%;margin-top:12px">Pay 50% - $600</button></div>
+  <div class="p-card" data-inr="150000" data-usd="1800" data-gbp="1440" data-eur="1650" data-aed="6600"><h3>Empire - 1.5 Lakh</h3><span class="main-price">$1800</span><span class="sub-price">For Global Brands</span><span class="adv">🔒 Start with 50% • $900</span><button onclick="payNow('Empire',900,75000)" class="btn btn-gold" style="width:100%;margin-top:12px">Pay 50% - $900</button></div>
 
   <div class="pay">
-    <strong style="color:#D4AF37;font-size:13px;letter-spacing:1px">SECURE GLOBAL PAYMENTS</strong><br>
-    <span style="color:#666;font-size:11px">Stripe • PayPal • Wise • UPI (India auto) • Escrow Protected</span><br>
-    <div style="margin-top:12px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
-      <span style="background:#fff;color:#000;padding:5px 12px;border-radius:6px;font-weight:800;font-size:11px">stripe</span>
-      <span style="background:#FFC439;color:#000;padding:5px 12px;border-radius:6px;font-weight:800;font-size:11px">PayPal</span>
-      <span style="background:#111;border:1px solid #333;padding:5px 12px;border-radius:6px;font-size:11px;color:#aaa">Wise</span>
+    <strong style="color:#D4AF37;font-size:13px;letter-spacing:1px">SECURE GLOBAL PAYMENTS - ABODH RAJ BHAR</strong><br>
+    <span style="color:#666;font-size:11px">Stripe • PayPal • Wise • UPI (India) • ACH/Wire (USA) • Escrow Protected</span>
+    <div class="bank-box">
+      🇺🇸 <b>For USA / International Clients - ACH / Wire Transfer (Skydo)</b><br>
+      Account holder name: ABODH RAJ BHAR<br>
+      Bank name: Community Federal Savings Bank<br>
+      ACH routing number: 026073150 <button class="copy-btn" onclick="copyText('026073150')">Copy</button><br>
+      Account number: 8337418050 <button class="copy-btn" onclick="copyText('8337418050')">Copy</button><br>
+      Beneficiary address: 5 Penn Plaza, 14th Floor, New York, NY 10001, US<br>
+      Account currency: USD<br>
+      SWIFT/BIC for Wire: CMFGUS33 (if needed)<br>
+      <span style="color:#25D366;font-size:10px">✓ Verified by Skydo • Same-day credit to India SBI</span>
     </div>
-    <div style="margin-top:12px;color:#555;font-size:11px">Official: support@theaboverse.com | 32+ 5★ Global Clients</div>
+    <div class="bank-box" style="border-color:#25D366">
+      🇮🇳 <b>For Indian Clients - UPI / IMPS / NEFT</b><br>
+      UPI ID: abodharabia@axl<br>
+      Account holder: ABODH RAJ BHAR<br>
+      Bank: STATE BANK OF INDIA, DHANAPUR<br>
+      Account: 43468284638 • IFSC: SBIN0010888<br>
+      <span style="color:#aaa;font-size:10px">Instant UPI - Scan & Pay</span>
+    </div>
+    <div style="margin-top:12px;color:#555;font-size:11px">Official: support@theaboverse.com | 32+ 5★ Global Clients | GST: Export of Services</div>
   </div>
 </section>
 
-<div class="ai-chat-widget">
-  <button class="chat-btn" onclick="toggleChat()">✦</button>
-  <div class="chat-box" id="chatBox">
-    <div class="chat-header"><span>ABOVERSE AI • Real Assistant</span><button onclick="toggleChat()" style="background:none;border:none;color:#666;cursor:pointer">✕</button></div>
-    <div class="chat-logs" id="chatLogs"><div class="msg ai">Hello! I'm real AI. Ask me about luxury websites, pricing $240-$1800, Stripe/PayPal payments. Official: support@theaboverse.com</div></div>
-    <div class="chat-input-area"><input type="text" id="chatInput" class="chat-input" placeholder="Ask anything..."><button class="chat-submit" onclick="sendRealMessage()">Send</button></div>
-  </div>
-</div>
+<div class="modal" id="payModal"><div class="modal-content"><h3 style="color:#D4AF37;font-family:'Playfair Display';margin-bottom:12px" id="modalTitle">Pay 50% Advance</h3><p style="color:#aaa;font-size:12px;margin-bottom:14px" id="modalDesc">Choose your payment method:</p><div id="modalOptions"></div><button onclick="closeModal()" style="background:transparent;border:1px solid #333;color:#666;padding:8px 14px;border-radius:8px;width:100%;margin-top:12px;cursor:pointer">Cancel</button></div></div>
 
-<div class="gdpr-banner" id="gdprBanner"><div class="gdpr-text">We use cookies to enhance your luxury experience. GDPR & CCPA compliant.</div><button class="gdpr-btn" onclick="acceptGDPR()">Accept</button></div>
+<div class="ai-chat-widget"><button class="chat-btn" onclick="toggleChat()">✦</button><div class="chat-box" id="chatBox"><div class="chat-header"><span>ABOVERSE AI • Real Assistant</span><button onclick="toggleChat()" style="background:none;border:none;color:#666;cursor:pointer">✕</button></div><div class="chat-logs" id="chatLogs"><div class="msg ai">Hello! I'm ABOVERSE AI. We accept ACH Wire (US: 8337418050), UPI India. Official: support@theaboverse.com</div></div><div class="chat-input-area"><input type="text" id="chatInput" class="chat-input" placeholder="Ask anything..."><button class="chat-submit" onclick="sendRealMessage()">Send</button></div></div></div>
 
-<div class="chat-girl" onclick="openWhatsApp()"><div class="chat-bubble">Hi! Need help? 👋</div><div style="position:relative"><img src="girl.png" class="girl-icon"><div style="position:absolute;bottom:2px;right:2px;width:12px;height:12px;background:#25D366;border:2px solid #050505;border-radius:50%"></div></div></div>
-
-<footer>
-  <div style="display:flex;justify-content:center;gap:10px;margin-bottom:14px;flex-wrap:wrap">
-    <a href="https://youtube.com/@theaboverse" target="_blank" style="color:#555;text-decoration:none;font-size:11px;border:1px solid #1e1e1e;padding:6px 14px;border-radius:20px">YouTube</a>
-    <a href="mailto:support@theaboverse.com" style="color:#555;text-decoration:none;font-size:11px;border:1px solid #1e1e1e;padding:6px 14px;border-radius:20px">support@theaboverse.com</a>
-    <a href="https://wa.me/918127968129" target="_blank" style="color:#555;text-decoration:none;font-size:11px;border:1px solid #1e1e1e;padding:6px 14px;border-radius:20px">WhatsApp</a>
-  </div>
-  © 2026 The Aboverse • Global Luxury Studio • support@theaboverse.com
-</footer>
+<footer>© 2026 The Aboverse • ABODH RAJ BHAR • support@theaboverse.com</footer>
 
 <script>
 let bg=document.getElementById('bgAnim');
 for(let i=0;i<35;i++){let s=document.createElement('div');s.className='star'+(Math.random()>0.6?' gold':'');s.style.left=Math.random()*100+'%';s.style.animationDuration=(Math.random()*3+3)+'s';s.style.animationDelay=Math.random()*5+'s';bg.appendChild(s);}
 for(let i=0;i<8;i++){let r=document.createElement('div');r.className='ring';let sz=Math.random()*20+10;r.style.width=sz+'px';r.style.height=sz+'px';r.style.left=Math.random()*100+'%';r.style.animationDuration=(Math.random()*6+6)+'s';r.style.animationDelay=Math.random()*6+'s';bg.appendChild(r);}
-
 function openWhatsApp(){window.open('https://wa.me/918127968129?text=Hi%20Aboverse!%20I%20saw%20your%20luxury%20pricing%20','_blank');}
-
+function copyText(txt){navigator.clipboard.writeText(txt); alert('Copied: '+txt);}
+let currentPlan='', currentUSD=0, currentINR=0;
 function payNow(plan, usdAdv, inrAdv){
+  currentPlan=plan; currentUSD=usdAdv; currentINR=inrAdv;
   let curr=document.getElementById('currencySelect').value;
-  if(curr==='INR'){
-    window.location.href=`upi://pay?pa=abodharabia@axl&pn=TheAboverse&am=${inrAdv}&cu=INR&tn=${encodeURIComponent(plan+' 50%')}`;
-    setTimeout(()=>openWhatsApp(),2000);
-  } else {
-    // Yahan apna Stripe/PayPal link lagao - abhi WhatsApp pe le jayega
-    window.open(`https://wa.me/918127968129?text=Hi%20I%20want%20to%20pay%2050%25%20$${usdAdv}%20for%20${plan}%20via%20Stripe/PayPal`,'_blank');
-  }
+  let modal=document.getElementById('payModal');
+  document.getElementById('modalTitle').innerText=plan+' - Pay 50% Advance';
+  document.getElementById('modalDesc').innerText='You selected '+plan+' - 50% advance: '+(curr==='INR'?'₹'+inrAdv:'$'+usdAdv);
+  let optionsHtml='';
+  if(curr==='INR'){optionsHtml+=`<button onclick="payUPI()" class="btn btn-green" style="width:100%">🇮🇳 Pay ₹${inrAdv} via UPI (Instant)</button>`;}
+  else {optionsHtml+=`<button onclick="payUSBank()" class="btn btn-gold" style="width:100%">🇺🇸 Pay $${usdAdv} via ACH/Wire (USA Bank)</button><button onclick="payStripe()" class="btn btn-outline" style="width:100%;margin-top:8px">💳 Pay via Stripe / Card</button>`;}
+  optionsHtml+=`<button onclick="openWhatsAppPay()" class="btn btn-outline" style="width:100%;margin-top:8px">💬 Pay via WhatsApp Support</button>`;
+  document.getElementById('modalOptions').innerHTML=optionsHtml; modal.style.display='flex';
 }
-
-// Currency - Minimal Luxury - Single Price
-function changeCurrency(curr){
-  const symbols={INR:'₹',USD:'$',GBP:'£',EUR:'€',AED:'AED '};
-  document.querySelectorAll('.p-card').forEach(card=>{
-    let val=card.getAttribute('data-'+curr.toLowerCase());
-    card.querySelector('.main-price').innerText=symbols[curr]+val;
-    let half=Math.round(val/2);
-    card.querySelector('.adv').innerText=`🔒 Start with 50% • ${symbols[curr]}${half}`;
-  });
-  localStorage.setItem('aboverse_curr',curr);
-}
-window.addEventListener('load',()=>{
-  let saved=localStorage.getItem('aboverse_curr');
-  let currToUse=saved;
-  if(!currToUse){
-    let tz=Intl.DateTimeFormat().resolvedOptions().timeZone||''; let lang=navigator.language||'';
-    currToUse='USD';
-    if(tz.includes('Kolkata')||lang.includes('en-IN')) currToUse='INR';
-    else if(tz.includes('London')) currToUse='GBP';
-    else if(tz.includes('Dubai')) currToUse='AED';
-    else if(tz.includes('Europe')) currToUse='EUR';
-  }
-  document.getElementById('currencySelect').value=currToUse;
-  changeCurrency(currToUse);
-  if(!localStorage.getItem('gdpr_accepted')) setTimeout(()=>{let b=document.getElementById('gdprBanner'); if(b) b.style.display='flex';},1200);
-});
-
-let selectedStars=5;
-document.querySelectorAll('#starSelect span').forEach(s=>{
-  s.addEventListener('click',()=>{
-    selectedStars=parseInt(s.dataset.star);
-    document.querySelectorAll('#starSelect span').forEach((el,idx)=>{el.classList.toggle('active',idx<selectedStars)});
-  });
-});
-function submitReview(){
-  let name=document.getElementById('nameInput').value.trim();
-  let city=document.getElementById('cityInput').value.trim();
-  let review=document.getElementById('reviewInput').value.trim();
-  if(!name||!city||!review){alert('Name, City, Review likho!');return;}
-  let all=JSON.parse(localStorage.getItem('aboverse_reviews')||'[]');
-  all.unshift({name:name+' - '+city,review:review,stars:selectedStars});
-  localStorage.setItem('aboverse_reviews',JSON.stringify(all));
-  document.getElementById('status').innerText='✅ Thank you '+name+'!';
-  document.getElementById('nameInput').value='';document.getElementById('cityInput').value='';document.getElementById('reviewInput').value='';
-  loadReviews();
-}
-function loadReviews(){
-  let all=JSON.parse(localStorage.getItem('aboverse_reviews')||'[]');
-  if(all.length){
-    let box=document.getElementById('liveReviews');
-    box.innerHTML='<h4 style="color:#D4AF37;text-align:center;margin-bottom:10px">🔴 Live ('+all.length+')</h4>'+all.map(r=>`<div class="rate-card" style="border-color:#D4AF37"><div class="rate-top"><span class="rate-name">${r.name}</span><span class="stars-rate">${'★'.repeat(r.stars)}</span></div><div class="rate-text">"${r.review}"</div></div>`).join('');
-  }
-}
-loadReviews();
-
-// Particles
-const container=document.getElementById('canvas-container');
-if(container&&window.THREE){
-  const scene=new THREE.Scene();const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);
-  const renderer=new THREE.WebGLRenderer({alpha:true});renderer.setSize(window.innerWidth,window.innerHeight);container.appendChild(renderer.domElement);
-  const geo=new THREE.BufferGeometry();const count=1000;const pos=new Float32Array(count*3);for(let i=0;i<count*3;i++)pos[i]=(Math.random()-0.5)*5;geo.setAttribute('position',new THREE.BufferAttribute(pos,3));
-  const mat=new THREE.PointsMaterial({size:0.007,color:0xD4AF37});const mesh=new THREE.Points(geo,mat);scene.add(mesh);camera.position.z=2;
-  let mx=0,my=0;document.addEventListener('mousemove',e=>{mx=e.clientX/window.innerWidth-0.5;my=e.clientY/window.innerHeight-0.5;});
-  (function anim(){requestAnimationFrame(anim);mesh.rotation.y+=0.0003+mx*0.001;mesh.rotation.x+=my*0.001;renderer.render(scene,camera);})();
-}
-
-// REAL AI CHAT
-async function sendRealMessage(){
-  const input=document.getElementById('chatInput'); const logs=document.getElementById('chatLogs');
-  if(!input.value.trim()) return;
-  let userText=input.value; logs.innerHTML+=`<div class="msg user">${userText}</div>`; input.value=''; logs.scrollTop=logs.scrollHeight;
-  let typing=document.createElement('div'); typing.className='msg ai'; typing.id='typing'; typing.innerText='Thinking...'; logs.appendChild(typing); logs.scrollTop=logs.scrollHeight;
-  try{
-    const GEMINI_KEY='YOUR_GEMINI_API_KEY_HERE'; // aistudio.google.com se free key yahan daalo
-    if(GEMINI_KEY.includes('YOUR_')) throw new Error('No key');
-    const res=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_KEY}`,{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({contents:[{parts:[{text:`You are THEABOVERSE luxury AI assistant for Abodh Raj Bhar agency. Pricing: Basic $240/₹20k, Standard $600, Premium $840 best seller, Luxury $1200, Empire $1800. 50% advance. Official email support@theaboverse.com. Stripe/PayPal/Wise accepted. Answer premium short. User: ${userText}`}]}]})
-    });
-    const data=await res.json();
-    let reply=data.candidates?.[0]?.content?.parts?.[0]?.text||'Contact support@theaboverse.com';
-    document.getElementById('typing')?.remove();
-    logs.innerHTML+=`<div class="msg ai">${reply}</div>`;
-  }catch(e){
-    document.getElementById('typing')?.remove();
-    logs.innerHTML+=`<div class="msg ai">Great question about "${userText}"! ✨ We build luxury AI sites from $240. Tell me your brand name & I'll suggest best plan. Email: support@theaboverse.com</div>`;
-  }
-  logs.scrollTop=logs.scrollHeight;
-}
-document.getElementById('chatInput')?.addEventListener('keypress',e=>{if(e.key==='Enter') sendRealMessage();});
+function closeModal(){document.getElementById('payModal').style.display='none';}
+function payUPI(){closeModal(); window.location.href=`upi://pay?pa=abodharabia@axl&pn=TheAboverse-ABODH RAJ BHAR&am=${currentINR}&cu=INR&tn=${encodeURIComponent(currentPlan+' 50% Advance')}`; setTimeout(()=>{if(confirm('UPI not opening? Chat on WhatsApp?')) openWhatsAppPay();},2000);}
+function payUSBank(){closeModal(); let details=`ACH/Wire Details for ${currentPlan} 50% - $${currentUSD}:\n\nAccount holder: ABODH RAJ BHAR\nBank: Community Federal Savings Bank\nRouting: 026073150\nAccount: 8337418050\nAddress: 5 Penn Plaza, 14th Fl, NY 10001, US\n\nReference: ${currentPlan} - Abodh`; alert(details); if(navigator.clipboard){navigator.clipboard.writeText(details);} window.open(`https://wa.me/918127968129?text=${encodeURIComponent('Hi Aboverse, I want to pay $'+currentUSD+' for '+currentPlan+' via ACH. Please confirm bank details.')}`,'_blank');}
+function payStripe(){closeModal(); window.open(`https://wa.me/918127968129?text=${encodeURIComponent('Hi I want to pay 50% $'+currentUSD+' for '+currentPlan+' via Stripe/PayPal link. Please send link.')}`,'_blank');}
+function openWhatsAppPay(){closeModal(); window.open(`https://wa.me/918127968129?text=${encodeURIComponent('Hi Aboverse! I want to pay for '+currentPlan+' - 50% advance is '+(document.getElementById('currencySelect').value==='INR'?'₹'+currentINR:'$'+currentUSD)+'. Send me payment link.')}`,'_blank');}
+function changeCurrency(curr){const symbols={INR:'₹',USD:'$',GBP:'£',EUR:'€',AED:'AED '}; document.querySelectorAll('.p-card').forEach(card=>{let val=card.getAttribute('data-'+curr.toLowerCase()); card.querySelector('.main-price').innerText=symbols[curr]+val; let half=Math.round(val/2); card.querySelector('.adv').innerText=`🔒 Start with 50% • ${symbols[curr]}${half}`;}); localStorage.setItem('aboverse_curr',curr);}
+window.addEventListener('load',()=>{let saved=localStorage.getItem('aboverse_curr'); let currToUse=saved; if(!currToUse){let tz=Intl.DateTimeFormat().resolvedOptions().timeZone||''; let lang=navigator.language||''; currToUse='USD'; if(tz.includes('Kolkata')||lang.includes('en-IN')) currToUse='INR'; else if(tz.includes('London')) currToUse='GBP'; else if(tz.includes('Dubai')) currToUse='AED'; else if(tz.includes('Europe')) currToUse='EUR';} document.getElementById('currencySelect').value=currToUse; changeCurrency(currToUse);});
 function toggleChat(){let b=document.getElementById('chatBox');b.style.display=b.style.display==='flex'?'none':'flex';}
-function acceptGDPR(){localStorage.setItem('gdpr_accepted','true');document.getElementById('gdprBanner').style.display='none';}
+async function sendRealMessage(){const input=document.getElementById('chatInput'); const logs=document.getElementById('chatLogs'); if(!input.value.trim()) return; let userText=input.value; logs.innerHTML+=`<div class="msg user">${userText}</div>`; input.value=''; logs.scrollTop=logs.scrollHeight; let typing=document.createElement('div'); typing.className='msg ai'; typing.id='typing'; typing.innerText='Thinking...'; logs.appendChild(typing); logs.scrollTop=logs.scrollHeight; await new Promise(r=>setTimeout(r,800)); document.getElementById('typing')?.remove(); let reply=`Great question about "${userText}"! ✨\n\nWe build luxury AI sites:\n• Basic $240 / ₹20k\n• Premium $840 (Best seller)\n• Empire $1800 / ₹1.5L\n\n💳 Payment: ACH Wire to ABODH RAJ BHAR - 8337418050, Routing 026073150 (USA) or UPI abodharabia@axl (India)\n\n📧 support@theaboverse.com`; logs.innerHTML+=`<div class="msg ai" style="white-space:pre-line">${reply}</div>`; logs.scrollTop=logs.scrollHeight;}
+document.getElementById('chatInput')?.addEventListener('keypress',e=>{if(e.key==='Enter') sendRealMessage();});
 </script>
 </body>
 </html>
