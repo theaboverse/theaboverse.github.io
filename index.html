@@ -1,541 +1,1140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>THE ABOVERSE | Premium AI & Digital Services</title>
+  <title>TheAboverse Global — AI, 3D & Digital Solutions</title>
 
-<meta name="description" content="THE ABOVERSE — Premium AI websites, digital experiences and data solutions.">
-<meta name="theme-color" content="#050505">
+  <meta name="description"
+    content="TheAboverse Global provides premium AI, 3D websites, web development, automation and digital solutions worldwide.">
 
-<!-- External Scripts: Three.js for Particle Field & Official Cashfree Web SDK V3 -->
-<script src="https://cloudflare.com"></script>
-<script src="https://cashfree.com"></script>
+  <meta name="theme-color" content="#070b16">
 
-<style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+  <script src="https://sdk.cashfree.com/js/v3/cashfree.js"></script>
 
-html{
-  scroll-behavior:smooth;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-body{
-  background:#050505;
-  color:#fff;
-  font-family:Arial,Helvetica,sans-serif;
-  overflow-x:hidden;
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-#canvas-container{
-  position:fixed;
-  inset:0;
-  z-index:0;
-  pointer-events:none;
-}
+    body {
+      font-family: Inter, Arial, sans-serif;
+      background:
+        radial-gradient(circle at 20% 10%, #18234d 0, transparent 35%),
+        radial-gradient(circle at 90% 20%, #32195c 0, transparent 30%),
+        #05070d;
+      color: #fff;
+      overflow-x: hidden;
+    }
 
-nav{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  padding:10px 5%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  background:rgba(5,5,5,.90);
-  backdrop-filter:blur(10px);
-  z-index:100;
-  border-bottom:1px solid rgba(212,175,55,.3);
-}
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-.logo{
-  display:flex;
-  align-items:center;
-  gap:9px;
-  font-weight:800;
-  font-size:17px;
-}
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 999;
+      backdrop-filter: blur(18px);
+      background: rgba(5,7,13,.72);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
 
-.logo img{
-  width:45px;
-  height:45px;
-  object-fit:contain;
-  border-radius:10px;
-  border:1px solid #D4AF37;
-}
+    nav {
+      max-width: 1250px;
+      margin: auto;
+      min-height: 75px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 22px;
+    }
 
-nav a{
-  color:#ff3030;
-  text-decoration:none;
-  font-weight:bold;
-  font-size:12px;
-}
+    .logo {
+      font-size: 23px;
+      font-weight: 900;
+      letter-spacing: -1px;
+    }
 
-.hero{
-  min-height:90vh;
-  padding:110px 6% 45px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  position:relative;
-  z-index:2;
-}
+    .logo span {
+      background: linear-gradient(90deg,#72e7ff,#b987ff,#ff75c3);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
 
-.badge{
-  color:#D4AF37;
-  border:1px solid #D4AF37;
-  padding:7px 14px;
-  border-radius:20px;
-  font-size:10px;
-  letter-spacing:1.5px;
-  margin-bottom:18px;
-}
+    .navlinks {
+      display: flex;
+      gap: 25px;
+      align-items: center;
+      font-size: 14px;
+    }
 
-.hero h1{
-  font-size:clamp(40px,9vw,75px);
-  line-height:.9;
-  margin-bottom:20px;
-  text-transform:uppercase;
-}
+    .navlinks a:hover {
+      color: #78e7ff;
+    }
 
-.gold{
-  color:#D4AF37;
-}
+    .country {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.15);
+      color: white;
+      padding: 10px 12px;
+      border-radius: 12px;
+    }
 
-.hero p{
-  max-width:700px;
-  color:#aaa;
-  font-size:13px;
-  line-height:1.8;
-  margin-bottom:20px;
-}
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 130px 20px 70px;
+      position: relative;
+    }
 
-.flag-row,
-.trust-row{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:7px;
-}
+    .hero-inner {
+      max-width: 1250px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 40px;
+      align-items: center;
+    }
 
-.flag-row{
-  margin:15px 0;
-}
+    .badge {
+      display: inline-block;
+      padding: 9px 14px;
+      border: 1px solid rgba(120,231,255,.25);
+      border-radius: 100px;
+      background: rgba(120,231,255,.07);
+      color: #8deaff;
+      margin-bottom: 20px;
+      font-size: 13px;
+    }
 
-.flag-row span,
-.trust{
-  background:#111;
-  border:1px solid #333;
-  padding:7px 11px;
-  border-radius:20px;
-  font-size:10px;
-}
+    h1 {
+      font-size: clamp(48px,7vw,92px);
+      line-height: .95;
+      letter-spacing: -5px;
+      margin-bottom: 25px;
+    }
 
-.trust{
-  border-color:#D4AF37;
-  color:#D4AF37;
-}
+    .gradient {
+      background: linear-gradient(
+        100deg,
+        #ffffff,
+        #73eaff,
+        #b98aff,
+        #ff76c6
+      );
+      -webkit-background-clip: text;
+      color: transparent;
+    }
 
-.btn{
-  display:inline-block;
-  padding:13px 24px;
-  margin:5px;
-  border:0;
-  border-radius:30px;
-  font-weight:bold;
-  font-size:13px;
-  cursor:pointer;
-  text-decoration:none;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
+    .hero p {
+      max-width: 650px;
+      color: #aeb8cf;
+      font-size: 18px;
+      line-height: 1.7;
+      margin-bottom: 30px;
+    }
 
-.btn:hover{
-  transform: scale(1.04);
-  box-shadow: 0 4px 15px rgba(212,175,55,0.2);
-}
+    .buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
 
-.gold-btn{
-  background:#FFCC00;
-  color:#000;
-}
+    .btn {
+      border: 0;
+      cursor: pointer;
+      padding: 15px 22px;
+      border-radius: 14px;
+      font-weight: 800;
+      color: #071019;
+      background: linear-gradient(90deg,#71e9ff,#b98cff);
+      box-shadow: 0 10px 40px rgba(105,214,255,.2);
+    }
 
-.green-btn{
-  background:#25D366;
-  color:#fff;
-}
+    .btn.secondary {
+      color: white;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.14);
+      box-shadow: none;
+    }
 
-.red-btn{
-  background:#f00000;
-  color:#fff;
-}
+    .girl-card {
+      position: relative;
+      min-height: 520px;
+      display: grid;
+      place-items: center;
+    }
 
-section{
-  position:relative;
-  z-index:2;
-  padding:60px 5%;
-}
+    .girl-glow {
+      position: absolute;
+      width: 380px;
+      height: 380px;
+      border-radius: 50%;
+      background: radial-gradient(
+        circle,
+        rgba(119,224,255,.35),
+        rgba(163,108,255,.15),
+        transparent 70%
+      );
+      filter: blur(10px);
+    }
 
-.title{
-  text-align:center;
-  font-size:30px;
-  margin-bottom:28px;
-}
+    .girl {
+      position: relative;
+      z-index: 2;
+      max-width: 100%;
+      max-height: 560px;
+      object-fit: contain;
+      filter: drop-shadow(0 30px 50px rgba(0,0,0,.6));
+      animation: float 5s ease-in-out infinite;
+    }
 
-.note{
-  max-width:900px;
-  margin:0 auto 25px;
-  padding:15px;
-  border:1px solid #D4AF37;
-  background:#111;
-  border-radius:12px;
-  text-align:center;
-  color:#D4AF37;
-  font-size:11px;
-  line-height:1.7;
-}
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
 
-.grid{
-  max-width:1100px;
-  margin:auto;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:15px;
-}
+    section {
+      max-width: 1250px;
+      margin: auto;
+      padding: 90px 20px;
+    }
 
-.card{
-  background:rgba(18,18,18,.94);
-  border:1px solid #292929;
-  padding:22px;
-  border-radius:18px;
-  text-align:center;
-  transition: border 0.3s;
-}
+    .section-title {
+      font-size: 42px;
+      margin-bottom: 12px;
+    }
 
-.card:hover{
-  border-color: #D4AF37;
-}
+    .section-subtitle {
+      color: #94a1ba;
+      margin-bottom: 35px;
+    }
 
-.card h3{
-  color:#D4AF37;
-  font-size:20px;
-  margin-bottom:8px;
-}
+    .services {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 18px;
+    }
 
-.price{
-  font-size:28px;
-  font-weight:bold;
-}
+    .service {
+      padding: 28px;
+      min-height: 200px;
+      border-radius: 24px;
+      background: linear-gradient(
+        145deg,
+        rgba(255,255,255,.09),
+        rgba(255,255,255,.025)
+      );
+      border: 1px solid rgba(255,255,255,.1);
+      transition: .3s;
+    }
 
-.advance{
-  display:block;
-  margin:10px 0;
-  padding:7px;
-  background:#0a1a0f;
-  border:1px dashed #25D366;
-  border-radius:8px;
-  color:#25D366;
-  font-size:11px;
-}
+    .service:hover {
+      transform: translateY(-7px);
+      border-color: rgba(115,230,255,.45);
+    }
 
-.payment-box{
-  max-width:650px;
-  margin: 35px auto auto;
-  background:#111;
-  border:1px dashed #D4AF37;
-  padding:22px;
-  border-radius:17px;
-  display: none;
-}
+    .service h3 {
+      margin-bottom: 12px;
+    }
 
-.payment-box label{
-  display:block;
-  color:#aaa;
-  font-size:12px;
-  margin-top:10px;
-}
+    .service p {
+      color: #9da9c0;
+      line-height: 1.6;
+    }
 
-.payment-box input{
-  width:100%;
-  padding:12px;
-  margin-top:6px;
-  background:#050505;
-  border:1px solid #333;
-  color:#fff;
-  border-radius:9px;
-  outline:none;
-}
+    .pricing {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 18px;
+    }
 
-.notice{
-  margin-top:12px;
-  padding:12px;
-  background:#0d0d0d;
-  border:1px solid #333;
-  border-radius:10px;
-  color:#aaa;
-  font-size:11px;
-  line-height:1.6;
-}
+    .price {
+      border-radius: 24px;
+      padding: 27px;
+      background: rgba(255,255,255,.055);
+      border: 1px solid rgba(255,255,255,.1);
+    }
 
-/* CHAT INTEGRATION GRAPHICS */
-.chat{
-  position:fixed;
-  right:18px;
-  bottom:25px;
-  z-index:1000;
-}
+    .price.featured {
+      border-color: #8e7cff;
+      box-shadow: 0 0 50px rgba(126,105,255,.12);
+    }
 
-.chat-button{
-  width:58px;
-  height:58px;
-  border-radius:50%;
-  border:0;
-  background:#D4AF37;
-  font-size:24px;
-  cursor:pointer;
-  box-shadow: 0 4px 15px rgba(212,175,55,0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+    .price h3 {
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
 
-.chat-box{
-  display:none;
-  position:absolute;
-  right:0;
-  bottom:68px;
-  width:340px;
-  height:440px;
-  background:#111;
-  border:1px solid #D4AF37;
-  border-radius:14px;
-  overflow:hidden;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.8);
-}
+    .amount {
+      font-size: 34px;
+      font-weight: 900;
+      margin: 12px 0;
+    }
 
-.chat-head{
-  padding:12px 15px;
-  background:#191919;
-  color:#D4AF37;
-  font-weight:bold;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  border-bottom: 1px solid #222;
-}
+    .deposit {
+      color: #7ceaff;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
 
-/* Care Operator Photo Styling */
-.chat-avatar{
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  border: 1px solid #D4AF37;
-  background: #222;
-  object-fit: cover;
-}
+    .price ul {
+      list-style: none;
+      color: #aeb8ca;
+      line-height: 2;
+      margin-bottom: 20px;
+    }
 
-.chat-title-text {
-  flex: 1;
-  font-size: 13px;
-}
+    .payment-box {
+      max-width: 850px;
+      margin: auto;
+      padding: 35px;
+      border-radius: 28px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+    }
 
-.chat-close-btn {
-  cursor: pointer;
-  color: #aaa;
-  font-size: 16px;
-}
+    .payment-box input,
+    .payment-box select,
+    .payment-box textarea {
+      width: 100%;
+      margin: 8px 0 15px;
+      padding: 14px;
+      border-radius: 12px;
+      background: #0d1220;
+      color: white;
+      border: 1px solid rgba(255,255,255,.13);
+    }
 
-.chat-close-btn:hover {
-  color: #fff;
-}
+    .payment-info {
+      margin-top: 20px;
+      padding: 18px;
+      border-radius: 16px;
+      background: rgba(118,227,255,.06);
+      border: 1px solid rgba(118,227,255,.12);
+      color: #b9c5da;
+      line-height: 1.7;
+    }
 
-.chat-messages{
-  height:320px;
-  padding:12px;
-  overflow-y:auto;
-  font-size:12px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  background: #0b0b0b;
-}
+    .legal {
+      max-width: 1000px;
+      margin: auto;
+      color: #9ba7bd;
+      line-height: 1.8;
+    }
 
-.message{
-  padding:10px 12px;
-  border-radius:12px;
-  max-width:85%;
-  word-wrap: break-word;
-  line-height: 1.5;
-}
+    footer {
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding: 35px 20px;
+      text-align: center;
+      color: #77839a;
+    }
 
-.ai{
-  background:#1c1c1e;
-  color: #eaeaea;
-  align-self: flex-start;
-  border-bottom-left-radius: 2px;
-}
+    .toast {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      max-width: 360px;
+      padding: 15px 18px;
+      border-radius: 14px;
+      background: #111827;
+      border: 1px solid rgba(255,255,255,.15);
+      z-index: 5000;
+      display: none;
+    }
 
-.user{
-  background:#D4AF37;
-  color:#000;
-  font-weight: 500;
-  align-self: flex-end;
-  border-bottom-right-radius: 2px;
-}
+    @media(max-width:900px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
 
-.chat-input{
-  display:flex;
-  border-top:1px solid #222;
-  background: #111;
-}
+      .hero p {
+        margin-left: auto;
+        margin-right: auto;
+      }
 
-.chat-input input{
-  flex:1;
-  background:transparent;
-  color:#fff;
-  border:0;
-  padding:14px;
-  outline: none;
-  font-size: 12px;
-}
+      .buttons {
+        justify-content: center;
+      }
 
-.chat-input button{
-  background:#D4AF37;
-  border:0;
-  padding:0 18px;
-  font-weight:bold;
-  cursor: pointer;
-  color: #000;
-  font-size: 12px;
-  transition: background 0.2s;
-}
+      .girl-card {
+        min-height: 350px;
+      }
 
-.chat-input button:hover {
-  background: #ffcc00;
-}
+      .girl {
+        max-height: 400px;
+      }
 
-footer{
-  position:relative;
-  z-index:2;
-  text-align:center;
-  padding:30px;
-  border-top:1px solid #222;
-  color:#666;
-  font-size:10px;
-}
+      .services,
+      .pricing {
+        grid-template-columns: 1fr;
+      }
 
-@media(max-width:600px){
-  .hero{
-    min-height:80vh;
-  }
-  .chat-box{
-    width:calc(100vw - 30px);
-    right:-5px;
-  }
-}
-</style>
+      .navlinks a {
+        display: none;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<div id="canvas-container"></div>
+<header>
+  <nav>
+    <div class="logo">The<span>Aboverse</span></div>
 
-<nav>
-<div class="logo">
-  <img src="logo.png" alt="The Aboverse">
-  ABOVERSE
-</div>
-<a href="https://youtube.com" target="_blank" rel="noopener">▶ YouTube</a>
-</nav>
+    <div class="navlinks">
+      <a href="#services">Services</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#payment">Payment</a>
+      <a href="#legal">Legal</a>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="badge">@THEABOVERSE • ABODH RAJ BHAR</div>
-  <h1>LUXURY<br><span class="gold">MEETS</span><br>VISION.</h1>
-  <p>Premium AI websites, modern digital experiences and enterprise data solutions built for scale.</p>
+      <select id="countrySelect" class="country">
+        <option value="IN">🇮🇳 India</option>
+        <option value="US">🇺🇸 USA</option>
+        <option value="GB">🇬🇧 UK</option>
+        <option value="AE">🇦🇪 UAE</option>
+        <option value="SA">🇸🇦 Saudi Arabia</option>
+        <option value="KW">🇰🇼 Kuwait</option>
+        <option value="DE">🇩🇪 Germany</option>
+        <option value="FR">🇫🇷 France</option>
+        <option value="JP">🇯🇵 Japan</option>
+        <option value="SG">🇸🇬 Singapore</option>
+      </select>
+    </div>
+  </nav>
+</header>
 
-  <div class="flag-row">
-    <span>🇮🇳 INR ₹</span>
-    <span>🇺🇸 USD $</span>
-    <span>🇬🇧 GBP £</span>
-    <span>🇪🇺 EUR €</span>
-    <span>🇦🇪 AED</span>
-    <span>🇨🇦 CAD</span>
-    <span>🇦🇺 AUD</span>
-    <span>🇯🇵 JPY</span>
+<main>
+
+<section class="hero">
+  <div class="hero-inner">
+
+    <div>
+      <div class="badge">GLOBAL DIGITAL STUDIO • AI • 3D • WEB</div>
+
+      <h1>
+        Build Beyond<br>
+        <span class="gradient">Imagination.</span>
+      </h1>
+
+      <p>
+        Premium AI-powered websites, immersive 3D experiences,
+        automation and digital products for clients worldwide.
+      </p>
+
+      <div class="buttons">
+        <a href="#pricing" class="btn">Explore Plans</a>
+        <a href="#payment" class="btn secondary">Start a Project</a>
+      </div>
+    </div>
+
+    <div class="girl-card">
+      <div class="girl-glow"></div>
+
+      <!-- Your girl PNG -->
+      <img
+        src="girl.png"
+        alt="TheAboverse AI Assistant"
+        class="girl"
+        onerror="this.style.display='none';"
+      >
+    </div>
+
   </div>
+</section>
 
-  <div>
-    <a href="#pricing" class="btn gold-btn">View Packages</a>
-    <button class="btn green-btn" onclick="openWhatsApp()">💬 WhatsApp</button>
-    <a href="https://youtube.com" target="_blank" rel="noopener" class="btn red-btn">▶ YouTube</a>
+
+<section id="services">
+  <h2 class="section-title">Global Digital Services</h2>
+  <p class="section-subtitle">
+    From essential websites to enterprise-level digital experiences.
+  </p>
+
+  <div class="services">
+
+    <div class="service">
+      <h3>🌐 Premium Website</h3>
+      <p>
+        Modern responsive website with professional UI,
+        SEO foundation and deployment.
+      </p>
+    </div>
+
+    <div class="service">
+      <h3>🤖 AI Website</h3>
+      <p>
+        AI-powered interface, automation, intelligent workflows
+        and smart customer experiences.
+      </p>
+    </div>
+
+    <div class="service">
+      <h3>🌌 3D Experience</h3>
+      <p>
+        Immersive 3D interfaces, animations, interactive scenes
+        and premium visual effects.
+      </p>
+    </div>
+
+    <div class="service">
+      <h3>📊 Business Automation</h3>
+      <p>
+        Lead management, forms, dashboards, notifications
+        and business process automation.
+      </p>
+    </div>
+
+    <div class="service">
+      <h3>🔐 Secure Backend</h3>
+      <p>
+        Secure APIs, payment integration, environment secrets
+        and production-ready architecture.
+      </p>
+    </div>
+
+    <div class="service">
+      <h3>🚀 Global Deployment</h3>
+      <p>
+        Cloud deployment, domain setup, performance optimisation
+        and production monitoring.
+      </p>
+    </div>
+
   </div>
+</section>
 
-  <div class="trust-row" style="margin-top: 20px;">
-    <div class="trust">🔒 Cashfree Secure Layer</div>
-    <div class="trust">🌍 Global Architecture</div>
-    <div class="trust">💳 International Wire / UPI / Cards</div>
-  </div>
-</div>
 
-<!-- PRICING -->
 <section id="pricing">
-  <h2 class="title">Global <span class="gold">Pricing</span></h2>
+  <h2 class="section-title">Choose Your Level</h2>
+  <p class="section-subtitle">
+    Every project requires a 50% advance payment before development begins.
+  </p>
 
-  <div class="note">
-    50% project advance deployment policy applies. 
-    International wire instructions (USD/ACH/SEPA) are generated dynamically based on client geo-location context.
+  <div class="pricing">
+
+    <div class="price">
+      <h3>Starter</h3>
+      <div class="amount" data-inr="20000">₹20,000</div>
+      <div class="deposit">50% Advance: ₹10,000</div>
+      <ul>
+        <li>✓ Professional website</li>
+        <li>✓ Responsive design</li>
+        <li>✓ Basic SEO</li>
+        <li>✓ Deployment</li>
+      </ul>
+      <button class="btn" onclick="selectPlan(20000)">
+        Select Plan
+      </button>
+    </div>
+
+    <div class="price">
+      <h3>Professional</h3>
+      <div class="amount" data-inr="30000">₹30,000</div>
+      <div class="deposit">50% Advance: ₹15,000</div>
+      <ul>
+        <li>✓ Premium UI</li>
+        <li>✓ Advanced animations</li>
+        <li>✓ SEO setup</li>
+        <li>✓ Business forms</li>
+      </ul>
+      <button class="btn" onclick="selectPlan(30000)">
+        Select Plan
+      </button>
+    </div>
+
+    <div class="price featured">
+      <h3>AI Pro</h3>
+      <div class="amount" data-inr="70000">₹70,000</div>
+      <div class="deposit">50% Advance: ₹35,000</div>
+      <ul>
+        <li>✓ AI integration</li>
+        <li>✓ Premium animations</li>
+        <li>✓ Backend API</li>
+        <li>✓ Payment integration</li>
+      </ul>
+      <button class="btn" onclick="selectPlan(70000)">
+        Select Plan
+      </button>
+    </div>
+
+    <div class="price">
+      <h3>Business</h3>
+      <div class="amount" data-inr="150000">₹1,50,000</div>
+      <div class="deposit">50% Advance: ₹75,000</div>
+      <ul>
+        <li>✓ Advanced web application</li>
+        <li>✓ AI automation</li>
+        <li>✓ Database</li>
+        <li>✓ Production deployment</li>
+      </ul>
+      <button class="btn" onclick="selectPlan(150000)">
+        Select Plan
+      </button>
+    </div>
+
+    <div class="price">
+      <h3>Enterprise</h3>
+      <div class="amount" data-inr="300000">₹3,00,000</div>
+      <div class="deposit">50% Advance: ₹1,50,000</div>
+      <ul>
+        <li>✓ Enterprise architecture</li>
+        <li>✓ AI systems</li>
+        <li>✓ Advanced security</li>
+        <li>✓ Custom integrations</li>
+      </ul>
+      <button class="btn" onclick="selectPlan(300000)">
+        Select Plan
+      </button>
+    </div>
+
+    <div class="price">
+      <h3>Ultimate</h3>
+      <div class="amount" data-inr="500000">₹5,00,000</div>
+      <div class="deposit">50% Advance: ₹2,50,000</div>
+      <ul>
+        <li>✓ Complete custom solution</li>
+        <li>✓ AI + 3D ecosystem</li>
+        <li>✓ Enterprise backend</li>
+        <li>✓ Premium support</li>
+      </ul>
+      <button class="btn" onclick="selectPlan(500000)">
+        Select Plan
+      </button>
+    </div>
+
+  </div>
+</section>
+
+
+<section id="payment">
+
+  <h2 class="section-title">Start Your Project</h2>
+
+  <p class="section-subtitle">
+    Select a plan and pay the required 50% advance.
+  </p>
+
+  <div class="payment-box">
+
+    <label>Name</label>
+    <input id="customerName" placeholder="Your full name">
+
+    <label>Email</label>
+    <input id="customerEmail" type="email" placeholder="you@example.com">
+
+    <label>Phone</label>
+    <input id="customerPhone" placeholder="Phone number">
+
+    <label>Selected Plan</label>
+    <select id="plan">
+      <option value="20000">₹20,000 — Advance ₹10,000</option>
+      <option value="30000">₹30,000 — Advance ₹15,000</option>
+      <option value="70000">₹70,000 — Advance ₹35,000</option>
+      <option value="150000">₹1,50,000 — Advance ₹75,000</option>
+      <option value="300000">₹3,00,000 — Advance ₹1,50,000</option>
+      <option value="500000">₹5,00,000 — Advance ₹2,50,000</option>
+    </select>
+
+    <label>Project Details</label>
+    <textarea
+      id="projectDetails"
+      rows="5"
+      placeholder="Tell us about your project..."
+    ></textarea>
+
+    <div class="payment-info" id="paymentInfo">
+      🇮🇳 India payment: Cashfree / UPI
+    </div>
+
+    <br>
+
+    <button class="btn" onclick="payAdvance()">
+      Pay 50% Advance
+    </button>
+
   </div>
 
-  <div class="grid">
-    <div class="card">
-      <h3>Basic</h3>
-      <div class="price">₹20,000</div>
-      <span class="advance">50% Advance: ₹10,000</span>
-      <button class="btn gold-btn" onclick="selectPackage('Basic', 10000)">Pay Advance</button>
-    </div>
+</section>
 
-    <div class="card">
-      <h3>Standard</h3>
-      <div class="price">₹50,000</div>
-      <span class="advance">50% Advance: ₹25,000</span>
-      <button class="btn gold-btn" onclick="selectPackage('Standard', 25000)">Pay Advance</button>
-    </div>
 
-    <div class="card">
-      <h3>Growth</h3>
-      <div class="price">₹60,000</div>
-      <span class="advance">50% Advance: ₹30,000</span>
-      <button class="btn gold-btn" onclick="selectPackage('Growth', 30000)">Pay Advance</button>
-    </div>
+<section id="legal">
 
-    <div class="card">
-      <h3>Premium ⭐</h3>
-      <div class="price">₹70,000</div>
-      <span class="advance">50% Advance: ₹35,000</span>
-      <button class="btn gold-btn" onclick="selectPackage('Premium', 35000)">Pay Advance</button>
-    </div>
+  <h2 class="section-title">Global Terms & Policies</h2>
 
-    <div class="card">
-      <h3>Luxury</h3>
-      <div class="price">₹1,00,000</div>
-      <span class="advance">50% Advance: ₹50,000</span>
-      <button class="btn gold-btn" onclick="selectPackage('Luxury', 50000)">Pay Advance</button>
-    </div>
+  <div class="legal">
 
-    <div class="card">
-      <h3>Empire</h3>
-      <div class="price">₹1,50,000</div>
-      <span class="advance">50% Advance: ₹75,000</span>
-      <button class="btn gold-btn" onclick="selectPackage('Empire', 75000)">Pay Advance</button>
-    </div>
+    <h3>1. Project Advance</h3>
+    <p>
+      A 50% advance payment is required before project development begins.
+      The remaining 50% becomes payable according to the agreed project
+      milestone or before final delivery.
+    </p>
+
+    <br>
+
+    <h3>2. Project Scope</h3>
+    <p>
+      Development work is based on the agreed project scope.
+      Additional features or changes outside the agreed scope may require
+      additional charges.
+    </p>
+
+    <br>
+
+    <h3>3. Delivery</h3>
+    <p>
+      Estimated delivery timelines depend on project complexity,
+      client feedback, third-party services and technical requirements.
+    </p>
+
+    <br>
+
+    <h3>4. Payment</h3>
+    <p>
+      Payments must be made through the payment methods officially
+      provided by TheAboverse. Customers should retain their payment
+      confirmation and invoice.
+    </p>
+
+    <br>
+
+    <h3>5. Refunds & Cancellation</h3>
+    <p>
+      Refund eligibility depends on the project stage, work already
+      completed and the final project agreement. Specific refund terms
+      should be included in the client invoice or service agreement.
+    </p>
+
+    <br>
+
+    <h3>6. Intellectual Property</h3>
+    <p>
+      Ownership and licensing of source code, designs, assets and
+      third-party components will be governed by the agreed project
+      contract.
+    </p>
+
+    <br>
+
+    <h3>7. Privacy</h3>
+    <p>
+      Customer information submitted through this website is intended
+      for project communication, billing and service delivery.
+    </p>
+
+    <br>
+
+    <h3>8. Third-Party Services</h3>
+    <p>
+      The website may use third-party services including payment
+      providers, hosting providers, analytics and external APIs.
+      Their respective terms may also apply.
+    </p>
+
+    <br>
+
+    <h3>9. Taxes</h3>
+    <p>
+      Applicable taxes, GST, VAT, sales taxes or other statutory charges,
+      where required, may be added to the project invoice.
+    </p>
+
+    <br>
+
+    <h3>10. International Customers</h3>
+    <p>
+      International customers are responsible for complying with the
+      laws and payment/banking requirements applicable in their country.
+    </p>
+
+    <br>
+
+    <h3>11. Final Agreement</h3>
+    <p>
+      A project quotation, invoice or service agreement may contain
+      additional terms specific to the customer's project.
+    </p>
+
   </div>
 
-  <!-- Cashfree Checkout Summary Layer -->
-  <div id="payment-gateway" class="payment-box">
+</section>
+
+</main>
+
+
+<footer>
+  © 2026 TheAboverse Global • AI • 3D • Web • Digital Solutions
+</footer>
+
+<div class="toast" id="toast"></div>
+
+
+<script>
+
+  const API_URL = "https://YOUR-RENDER-SERVICE.onrender.com";
+
+  const countries = {
+
+    IN: {
+      currency: "INR",
+      symbol: "₹",
+      locale: "en-IN",
+      payment: "🇮🇳 India: Cashfree / UPI / Cards"
+    },
+
+    US: {
+      currency: "USD",
+      symbol: "$",
+      locale: "en-US",
+      payment: "🇺🇸 USA: ACH / International payment"
+    },
+
+    GB: {
+      currency: "GBP",
+      symbol: "£",
+      locale: "en-GB",
+      payment: "🇬🇧 UK: International payment"
+    },
+
+    AE: {
+      currency: "AED",
+      symbol: "د.إ",
+      locale: "en-AE",
+      payment: "🇦🇪 UAE: International payment"
+    },
+
+    SA: {
+      currency: "SAR",
+      symbol: "﷼",
+      locale: "en-SA",
+      payment: "🇸🇦 Saudi Arabia: International payment"
+    },
+
+    KW: {
+      currency: "KWD",
+      symbol: "د.ك",
+      locale: "en-KW",
+      payment: "🇰🇼 Kuwait: International payment"
+    },
+
+    DE: {
+      currency: "EUR",
+      symbol: "€",
+      locale: "de-DE",
+      payment: "🇩🇪 Germany: International payment"
+    },
+
+    FR: {
+      currency: "EUR",
+      symbol: "€",
+      locale: "fr-FR",
+      payment: "🇫🇷 France: International payment"
+    },
+
+    JP: {
+      currency: "JPY",
+      symbol: "¥",
+      locale: "ja-JP",
+      payment: "🇯🇵 Japan: International payment"
+    },
+
+    SG: {
+      currency: "SGD",
+      symbol: "S$",
+      locale: "en-SG",
+      payment: "🇸🇬 Singapore: International payment"
+    }
+
+  };
+
+
+  /*
+    DISPLAY FX ONLY
+
+    Actual payment amount should be confirmed
+    in the final invoice/payment gateway.
+
+    These are example display rates.
+  */
+
+  const FX = {
+    INR: 1,
+    USD: 0.0119,
+    GBP: 0.0091,
+    AED: 0.0437,
+    SAR: 0.0446,
+    KWD: 0.00365,
+    EUR: 0.0101,
+    JPY: 1.76,
+    SGD: 0.0153
+  };
+
+
+  function formatMoney(inr, country) {
+
+    const data = countries[country];
+
+    const converted = inr * FX[data.currency];
+
+    return new Intl.NumberFormat(
+      data.locale,
+      {
+        style: "currency",
+        currency: data.currency,
+        maximumFractionDigits:
+          data.currency === "JPY" ? 0 : 2
+      }
+    ).format(converted);
+
+  }
+
+
+  function updateCountry() {
+
+    const country =
+      document.getElementById("countrySelect").value;
+
+    const data = countries[country];
+
+    document.getElementById("paymentInfo").innerHTML =
+      data.payment +
+      "<br><small>Prices shown in local currency are indicative. Final payment amount is confirmed on the invoice/payment page.</small>";
+
+    document.querySelectorAll(".amount").forEach(el => {
+
+      const inr = Number(el.dataset.inr);
+
+      el.innerText =
+        formatMoney(inr, country);
+
+    });
+
+  }
+
+
+  document
+    .getElementById("countrySelect")
+    .addEventListener("change", updateCountry);
+
+
+  function selectPlan(amount) {
+
+    document.getElementById("plan").value =
+      amount;
+
+    document
+      .getElementById("payment")
+      .scrollIntoView({
+        behavior: "smooth"
+      });
+
+  }
+
+
+  function toast(message) {
+
+    const t =
+      document.getElementById("toast");
+
+    t.innerText = message;
+    t.style.display = "block";
+
+    setTimeout(() => {
+      t.style.display = "none";
+    }, 4500);
+
+  }
+
+
+  async function payAdvance() {
+
+    const name =
+      document.getElementById("customerName").value.trim();
+
+    const email =
+      document.getElementById("customerEmail").value.trim();
+
+    const phone =
+      document.getElementById("customerPhone").value.trim();
+
+    const plan =
+      Number(document.getElementById("plan").value);
+
+    const details =
+      document.getElementById("projectDetails").value.trim();
+
+    const country =
+      document.getElementById("countrySelect").value;
+
+
+    if (!name || !email || !phone) {
+
+      toast("Please enter your name, email and phone.");
+
+      return;
+
+    }
+
+
+    const advance =
+      plan / 2;
+
+
+    /*
+      INDIA
+
+      Cashfree checkout is created by backend.
+    */
+
+    if (country === "IN") {
+
+      try {
+
+        toast("Creating secure Cashfree payment...");
+
+        const response =
+          await fetch(
+            API_URL + "/api/create-order",
+            {
+              method: "POST",
+
+              headers: {
+                "Content-Type":
+                  "application/json"
+              },
+
+              body: JSON.stringify({
+
+                name,
+                email,
+                phone,
+
+                planAmount: plan,
+                advanceAmount: advance,
+
+                projectDetails
+
+              })
+
+            }
+          );
+
+
+        const data =
+          await response.json();
+
+
+        if (!response.ok) {
+
+          throw new Error(
+            data.error ||
+            "Payment order could not be created."
+          );
+
+        }
+
+
+        const cashfree =
+          Cashfree({
+            mode: "production"
+          });
+
+
+        cashfree.checkout({
+
+          paymentSessionId:
+            data.payment_session_id,
+
+          redirectTarget: "_self"
+
+        });
+
+
+      } catch (error) {
+
+        toast(error.message);
+
+      }
+
+      return;
+
+    }
+
+
+    /*
+      INTERNATIONAL
+
+      ACH/manual bank transfer instructions.
+    */
+
+    const data =
+      countries[country];
+
+
+    toast(
+      "International payment selected. Please use the bank/payment instructions provided in your invoice."
+    );
+
+
+    alert(
+      `${data.payment}\n\n` +
+      `Project value: ${formatMoney(plan,country)}\n` +
+      `50% advance: ${formatMoney(advance,country)}\n\n` +
+      `A payment invoice with the applicable payment instructions will be provided.`
+    );
+
+  }
+
+
+  /*
+    Try to detect user's country from browser locale.
+    User can always change it manually.
+  */
+
+  function detectCountry() {
+
+    const locale =
+      Intl.DateTimeFormat()
+        .resolvedOptions()
+        .locale
+        .toUpperCase();
+
+    const possible =
+      Object.keys(countries)
+        .find(code =>
+          locale.includes("-" + code)
+        );
+
+    if (possible) {
+
+      document.getElementById(
+        "countrySelect"
+      ).value = possible;
+
+    }
+
+    updateCountry();
+
+  }
+
+
+  detectCountry();
+
+</script>
+
+</body>
+</html>
