@@ -3,16 +3,42 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="theme-color" content="#07111f">
-<meta name="description" content="Premium global digital services with secure advance payment and country-aware pricing.">
 
-<title>THEABOVERSE — Premium Digital Services</title>
+<title>THE ABOVERSE | ABODH RAJ BHAR — Global AI & Digital Studio</title>
+
+<meta name="description"
+content="THE ABOVERSE by ABODH RAJ BHAR — premium AI websites, digital experiences and global technology services.">
+
+<meta name="theme-color" content="#07070a">
+
+<!-- Three.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+<!-- Official Cashfree Web SDK V3 -->
+<script src="https://sdk.cashfree.com/js/v3/cashfree.js"></script>
 
 <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap');
+
+:root{
+  --bg:#050509;
+  --panel:#0d0d14;
+  --panel2:#11111a;
+  --gold:#d4af37;
+  --gold2:#f5d76e;
+  --blue:#6d8cff;
+  --cyan:#36d9ff;
+  --green:#25d366;
+  --text:#f5f5f7;
+  --muted:#92929e;
+  --border:rgba(255,255,255,.09);
+}
+
 *{
-  box-sizing:border-box;
   margin:0;
   padding:0;
+  box-sizing:border-box;
 }
 
 html{
@@ -20,1116 +46,1842 @@ html{
 }
 
 body{
+  background:var(--bg);
+  color:var(--text);
   font-family:Inter,Arial,sans-serif;
-  color:#eef6ff;
-  background:
-    radial-gradient(circle at 15% 10%,rgba(0,220,255,.16),transparent 28%),
-    radial-gradient(circle at 85% 20%,rgba(130,70,255,.18),transparent 30%),
-    linear-gradient(135deg,#030712,#071525 50%,#030712);
-  min-height:100vh;
   overflow-x:hidden;
 }
 
-body:before{
-  content:"";
+/* =========================
+   3D BACKGROUND
+========================= */
+
+#canvas-container{
   position:fixed;
   inset:0;
+  z-index:0;
   pointer-events:none;
-  background-image:
-    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
-  background-size:55px 55px;
-  mask-image:linear-gradient(to bottom,black,transparent);
+  opacity:.75;
 }
 
-a{
-  color:inherit;
-  text-decoration:none;
+.bg-glow{
+  position:fixed;
+  width:500px;
+  height:500px;
+  border-radius:50%;
+  background:radial-gradient(
+    circle,
+    rgba(212,175,55,.10),
+    rgba(70,80,255,.04),
+    transparent 70%
+  );
+  top:20%;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:0;
+  pointer-events:none;
 }
 
-button,
-select,
-input,
-textarea{
-  font:inherit;
-}
+/* =========================
+   NAV
+========================= */
 
-.container{
-  width:min(1180px,92%);
-  margin:auto;
-}
-
-header{
-  position:sticky;
+nav{
+  position:fixed;
   top:0;
-  z-index:1000;
-  backdrop-filter:blur(18px);
-  background:rgba(3,7,18,.72);
-  border-bottom:1px solid rgba(255,255,255,.08);
-}
-
-.nav{
-  min-height:72px;
+  left:0;
+  width:100%;
+  padding:12px 5%;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:20px;
-}
+  z-index:1000;
 
-.logo-area{
-  display:flex;
-  align-items:center;
-  gap:11px;
-  font-weight:900;
-  letter-spacing:1px;
+  background:rgba(5,5,9,.78);
+  backdrop-filter:blur(18px);
+
+  border-bottom:1px solid rgba(212,175,55,.16);
 }
 
 .logo{
-  width:45px;
-  height:45px;
-  object-fit:contain;
-  border-radius:14px;
-  background:rgba(255,255,255,.06);
-}
-
-.logo-fallback{
-  width:45px;
-  height:45px;
-  display:none;
-  place-items:center;
-  border-radius:14px;
-  background:linear-gradient(135deg,#00d9ff,#7657ff);
-  font-weight:900;
-}
-
-.nav-links{
   display:flex;
   align-items:center;
-  gap:22px;
-  color:#b8c9dd;
-  font-size:14px;
+  gap:10px;
+
+  font-family:"Playfair Display",serif;
+  font-weight:800;
+  font-size:18px;
+  letter-spacing:1.5px;
 }
 
-.nav-links a:hover{
-  color:#fff;
+.logo img{
+  width:42px;
+  height:42px;
+  object-fit:contain;
+  border-radius:50%;
+  border:1px solid var(--gold);
+  background:#090909;
 }
 
-.country-box{
+.nav-actions{
   display:flex;
   align-items:center;
   gap:8px;
 }
 
-.country-box select{
-  color:white;
-  background:#0b1829;
-  border:1px solid rgba(255,255,255,.16);
-  border-radius:12px;
-  padding:9px 11px;
-  outline:none;
+.nav-link{
+  color:#fff;
+  text-decoration:none;
+  font-size:11px;
+  font-weight:600;
+  padding:8px 13px;
+  border:1px solid var(--border);
+  border-radius:20px;
 }
 
-.country-box option{
-  background:#0b1829;
+.nav-link:hover{
+  border-color:var(--gold);
+  color:var(--gold);
 }
+
+/* =========================
+   HERO
+========================= */
 
 .hero{
-  min-height:720px;
-  display:grid;
-  grid-template-columns:1.15fr .85fr;
-  align-items:center;
-  gap:35px;
-  padding:80px 0;
-  position:relative;
-}
+  min-height:100vh;
+  padding:125px 6% 70px;
 
-.hero-copy{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+
+  text-align:center;
+
   position:relative;
-  z-index:3;
+  z-index:2;
 }
 
 .badge{
-  display:inline-flex;
-  padding:9px 15px;
-  border:1px solid rgba(0,220,255,.28);
-  border-radius:999px;
-  color:#7eeaff;
-  background:rgba(0,220,255,.07);
-  font-size:13px;
-  margin-bottom:22px;
+  padding:8px 16px;
+  border:1px solid rgba(212,175,55,.4);
+  border-radius:30px;
+
+  color:var(--gold2);
+
+  font-size:10px;
+  letter-spacing:2px;
+
+  margin-bottom:20px;
+
+  background:rgba(212,175,55,.04);
 }
 
-h1{
-  font-size:clamp(42px,6vw,76px);
-  line-height:.98;
-  letter-spacing:-3px;
+.hero h1{
+  font-family:"Playfair Display",serif;
+
+  font-size:clamp(48px,10vw,92px);
+
+  line-height:.88;
+
+  text-transform:uppercase;
+
+  margin-bottom:22px;
+
+  letter-spacing:-2px;
+}
+
+.gold{
+  color:var(--gold);
 }
 
 .gradient-text{
-  background:linear-gradient(90deg,#fff,#69eaff,#9e82ff);
+  background:linear-gradient(
+    90deg,
+    var(--gold),
+    #fff,
+    var(--blue)
+  );
+
   -webkit-background-clip:text;
+  background-clip:text;
   color:transparent;
 }
 
 .hero p{
-  color:#a9b9ca;
-  max-width:650px;
+  max-width:720px;
+
+  color:var(--muted);
+
+  font-size:14px;
+
   line-height:1.8;
-  margin:25px 0;
-  font-size:17px;
+
+  margin-bottom:25px;
 }
 
-.cta-row{
+.hero-buttons{
   display:flex;
   flex-wrap:wrap;
-  gap:13px;
+  justify-content:center;
 }
 
 .btn{
-  border:0;
-  cursor:pointer;
-  padding:14px 20px;
-  border-radius:14px;
-  font-weight:800;
-  transition:.25s;
-}
-
-.btn-primary{
-  color:#03101c;
-  background:linear-gradient(135deg,#66efff,#8b79ff);
-  box-shadow:0 10px 35px rgba(72,211,255,.18);
-}
-
-.btn-primary:hover{
-  transform:translateY(-3px);
-  box-shadow:0 15px 45px rgba(72,211,255,.28);
-}
-
-.btn-secondary{
-  color:#fff;
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.13);
-}
-
-.btn-secondary:hover{
-  background:rgba(255,255,255,.11);
-}
-
-.hero-visual{
-  position:relative;
-  min-height:480px;
-  display:grid;
-  place-items:center;
-}
-
-.orb{
-  width:330px;
-  height:330px;
-  border-radius:50%;
-  position:relative;
-  display:grid;
-  place-items:center;
-  background:
-    radial-gradient(circle at 35% 30%,rgba(255,255,255,.13),transparent 20%),
-    radial-gradient(circle,#102941,#06101e 65%);
-  box-shadow:
-    inset 0 0 50px rgba(0,225,255,.15),
-    0 0 100px rgba(70,100,255,.14);
-  border:1px solid rgba(255,255,255,.1);
-}
-
-.girl{
-  width:150px;
-  height:150px;
-  object-fit:contain;
-  border-radius:50%;
-  z-index:5;
-  filter:drop-shadow(0 15px 30px rgba(0,0,0,.45));
-}
-
-.girl-fallback{
-  width:150px;
-  height:150px;
-  display:none;
+  display:inline-flex;
   align-items:center;
   justify-content:center;
-  text-align:center;
-  border-radius:50%;
-  background:linear-gradient(145deg,#182d46,#09111e);
-  border:1px solid rgba(255,255,255,.1);
-  color:#9fb1c4;
+
+  padding:13px 23px;
+
+  border-radius:30px;
+
   font-size:12px;
-  padding:20px;
-  z-index:5;
+  font-weight:700;
+
+  text-decoration:none;
+
+  border:0;
+
+  cursor:pointer;
+
+  transition:.25s;
+
+  margin:5px;
 }
 
-.ring{
-  position:absolute;
-  border:1px solid rgba(96,231,255,.55);
-  border-radius:50%;
-  animation:spin 9s linear infinite;
+.btn:hover{
+  transform:translateY(-2px);
 }
 
-.ring.one{
-  width:390px;
-  height:150px;
-  transform:rotate(24deg);
+.btn-gold{
+  background:linear-gradient(
+    135deg,
+    var(--gold),
+    var(--gold2)
+  );
+
+  color:#050505;
+
+  box-shadow:0 8px 30px rgba(212,175,55,.15);
 }
 
-.ring.two{
-  width:420px;
-  height:175px;
-  transform:rotate(-35deg);
-  border-color:rgba(153,113,255,.5);
-  animation-duration:13s;
-  animation-direction:reverse;
-}
-
-.ring:after{
-  content:"";
-  width:8px;
-  height:8px;
-  position:absolute;
-  top:-4px;
-  left:50%;
-  border-radius:50%;
-  background:#77efff;
-  box-shadow:0 0 20px #77efff;
-}
-
-@keyframes spin{
-  to{transform:rotate(384deg)}
-}
-
-.stars{
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-}
-
-.star{
-  position:absolute;
+.btn-outline{
   color:#fff;
-  font-size:18px;
-  opacity:.7;
-  animation:fall linear infinite;
+
+  background:rgba(255,255,255,.03);
+
+  border:1px solid var(--border);
 }
 
-.star:nth-child(1){left:12%;animation-duration:7s}
-.star:nth-child(2){left:28%;animation-duration:9s;animation-delay:2s}
-.star:nth-child(3){left:54%;animation-duration:6s;animation-delay:1s}
-.star:nth-child(4){left:77%;animation-duration:8s;animation-delay:3s}
-.star:nth-child(5){left:91%;animation-duration:10s}
-
-@keyframes fall{
-  0%{top:-10%;opacity:0;transform:rotate(0)}
-  15%{opacity:.8}
-  100%{top:110%;opacity:0;transform:rotate(180deg)}
+.btn-outline:hover{
+  border-color:var(--gold);
+  color:var(--gold);
 }
 
-.section{
-  padding:90px 0;
+.btn-green{
+  background:var(--green);
+  color:#fff;
+}
+
+.trust-row{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+
+  gap:8px;
+
+  margin-top:22px;
+}
+
+.trust{
+  padding:8px 13px;
+
+  border:1px solid rgba(212,175,55,.25);
+
+  border-radius:30px;
+
+  background:rgba(255,255,255,.025);
+
+  color:#cfcfd5;
+
+  font-size:10px;
+}
+
+/* =========================
+   COUNTRY
+========================= */
+
+.country-panel{
+  width:min(700px,92%);
+
+  margin:10px auto 30px;
+
+  background:rgba(13,13,20,.8);
+
+  border:1px solid var(--border);
+
+  border-radius:20px;
+
+  padding:18px;
+
+  position:relative;
+
+  z-index:2;
+}
+
+.country-row{
+  display:flex;
+  gap:10px;
+
+  flex-wrap:wrap;
+
+  justify-content:center;
+}
+
+.country-row label{
+  color:#777;
+  font-size:10px;
+  display:flex;
+  align-items:center;
+}
+
+.country-select{
+  background:#08080d;
+  color:var(--gold2);
+
+  border:1px solid rgba(212,175,55,.3);
+
+  padding:10px 14px;
+
+  border-radius:12px;
+
+  outline:none;
+
+  font-size:12px;
+
+  min-width:220px;
+}
+
+.country-info{
+  margin-top:12px;
+
+  color:#888;
+
+  font-size:10px;
+
+  line-height:1.6;
+
+  text-align:center;
+}
+
+/* =========================
+   SECTION
+========================= */
+
+section{
+  position:relative;
+  z-index:2;
+
+  padding:75px 5%;
 }
 
 .section-title{
   text-align:center;
-  margin-bottom:45px;
+
+  font-family:"Playfair Display",serif;
+
+  font-size:34px;
+
+  margin-bottom:10px;
 }
 
-.section-title h2{
-  font-size:clamp(30px,4vw,48px);
-  margin-bottom:12px;
+.section-subtitle{
+  text-align:center;
+
+  color:#777;
+
+  max-width:700px;
+
+  margin:0 auto 35px;
+
+  font-size:12px;
+
+  line-height:1.7;
 }
 
-.section-title p{
-  color:#8fa3b8;
-}
+/* =========================
+   PRICING
+========================= */
 
-.info-bar{
-  padding:18px;
-  border:1px solid rgba(255,255,255,.09);
-  background:rgba(255,255,255,.045);
-  border-radius:18px;
-  color:#a9bfd2;
-  line-height:1.6;
-}
+.pricing-grid{
+  max-width:1150px;
 
-.info-bar strong{
-  color:white;
-}
+  margin:auto;
 
-.packages{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:16px;
+
+  grid-template-columns:
+    repeat(auto-fit,minmax(230px,1fr));
+
+  gap:15px;
 }
 
-.card{
-  position:relative;
-  overflow:hidden;
-  padding:23px;
-  border:1px solid rgba(255,255,255,.1);
-  background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.025));
-  backdrop-filter:blur(18px);
-  border-radius:22px;
-  box-shadow:0 20px 60px rgba(0,0,0,.18);
+.price-card{
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.045),
+      rgba(255,255,255,.015)
+    );
+
+  border:1px solid var(--border);
+
+  border-radius:20px;
+
+  padding:22px;
+
+  text-align:center;
+
   transition:.3s;
+
+  position:relative;
+
+  overflow:hidden;
 }
 
-.card:hover{
-  transform:translateY(-7px);
-  border-color:rgba(104,228,255,.35);
+.price-card::before{
+  content:"";
+
+  position:absolute;
+
+  width:120px;
+  height:120px;
+
+  background:radial-gradient(
+    circle,
+    rgba(212,175,55,.13),
+    transparent 70%
+  );
+
+  top:-50px;
+  right:-50px;
 }
 
-.card small{
-  color:#8ca0b6;
+.price-card:hover{
+  transform:translateY(-5px);
+
+  border-color:rgba(212,175,55,.5);
+
+  box-shadow:
+    0 20px 50px rgba(0,0,0,.35);
 }
 
-.price{
-  font-size:27px;
-  font-weight:900;
-  margin:12px 0 5px;
+.price-card.featured{
+  border-color:var(--gold);
+
+  box-shadow:
+    0 0 35px rgba(212,175,55,.08);
 }
 
-.advance{
-  color:#72edff;
-  font-size:14px;
-  margin-bottom:18px;
+.plan-name{
+  font-family:"Playfair Display",serif;
+
+  font-size:19px;
+
+  margin-bottom:7px;
 }
 
-.payment{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:25px;
-  align-items:start;
+.plan-level{
+  color:#777;
+
+  font-size:10px;
+
+  min-height:30px;
 }
 
-.form-card{
-  padding:28px;
+.plan-price{
+  margin-top:14px;
+
+  color:var(--gold2);
+
+  font-size:29px;
+
+  font-weight:800;
 }
 
-label{
+.plan-advance{
   display:block;
-  margin:14px 0 7px;
-  color:#b6c7d9;
-  font-size:14px;
+
+  margin:12px 0;
+
+  padding:8px;
+
+  color:var(--green);
+
+  background:rgba(37,211,102,.05);
+
+  border:1px dashed rgba(37,211,102,.5);
+
+  border-radius:9px;
+
+  font-size:10px;
 }
 
-input,
-textarea,
-#plan{
+.plan-btn{
   width:100%;
-  color:white;
-  background:#081524;
-  border:1px solid rgba(255,255,255,.13);
-  border-radius:12px;
-  padding:13px;
-  outline:none;
 }
 
-textarea{
-  min-height:120px;
-  resize:vertical;
+/* =========================
+   PAYMENT
+========================= */
+
+.payment-box{
+  max-width:800px;
+
+  margin:40px auto 0;
+
+  background:#0b0b11;
+
+  border:1px solid rgba(212,175,55,.25);
+
+  border-radius:20px;
+
+  padding:25px;
+
+  text-align:center;
 }
 
-input:focus,
-textarea:focus,
-select:focus{
-  border-color:#5ee8ff;
+.payment-title{
+  color:var(--gold2);
+
+  font-size:13px;
+
+  font-weight:800;
+
+  letter-spacing:1px;
 }
 
-.payment-note{
-  padding:18px;
-  border-radius:16px;
-  background:rgba(0,220,255,.06);
-  border:1px solid rgba(0,220,255,.15);
-  color:#9db2c7;
+.payment-text{
+  color:#777;
+
+  font-size:10px;
+
   line-height:1.7;
-  margin-top:18px;
+
+  margin-top:10px;
 }
 
-.rating{
-  text-align:center;
+.payment-methods{
+  display:flex;
+
+  flex-wrap:wrap;
+
+  justify-content:center;
+
+  gap:8px;
+
+  margin-top:15px;
 }
 
-.stars-rating{
-  font-size:30px;
-  letter-spacing:5px;
-  margin:15px 0;
+.payment-method{
+  padding:8px 12px;
+
+  border-radius:20px;
+
+  border:1px solid var(--border);
+
+  font-size:10px;
+
+  color:#bbb;
 }
 
-.stars-rating button{
-  background:none;
-  border:0;
-  color:#617387;
-  cursor:pointer;
-  font-size:30px;
-}
+/* =========================
+   REVIEWS
+========================= */
 
-.stars-rating button.active,
-.stars-rating button:hover{
-  color:#ffd76a;
-}
+.reviews{
+  max-width:1100px;
 
-.review-box{
-  max-width:620px;
-  margin:25px auto 0;
-}
+  margin:auto;
 
-.youtube{
-  text-align:center;
-}
-
-.youtube-box{
-  padding:35px;
-  border-radius:24px;
-  border:1px solid rgba(255,255,255,.1);
-  background:rgba(255,255,255,.045);
-}
-
-.youtube-box h3{
-  font-size:28px;
-  margin-bottom:10px;
-}
-
-.legal{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:16px;
+
+  grid-template-columns:
+    repeat(auto-fit,minmax(250px,1fr));
+
+  gap:12px;
 }
 
-.legal article{
-  padding:24px;
-  border-radius:18px;
-  background:rgba(255,255,255,.04);
-  border:1px solid rgba(255,255,255,.08);
+.review{
+  background:#0d0d14;
+
+  border:1px solid var(--border);
+
+  border-radius:16px;
+
+  padding:18px;
 }
 
-.legal h3{
-  margin-bottom:10px;
-}
+.review-stars{
+  color:#ffcc00;
 
-.legal p{
-  color:#91a5b9;
-  line-height:1.7;
   font-size:14px;
+
+  margin-bottom:8px;
 }
+
+.review-name{
+  font-weight:700;
+
+  font-size:12px;
+}
+
+.review-country{
+  color:#666;
+
+  font-size:10px;
+}
+
+.review-text{
+  color:#999;
+
+  font-size:11px;
+
+  line-height:1.6;
+
+  margin-top:9px;
+}
+
+.review-note{
+  text-align:center;
+
+  color:#666;
+
+  font-size:10px;
+
+  margin-top:20px;
+}
+
+/* =========================
+   POLICIES
+========================= */
+
+.policy-grid{
+  max-width:1100px;
+
+  margin:auto;
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(auto-fit,minmax(240px,1fr));
+
+  gap:12px;
+}
+
+.policy{
+  background:#0d0d14;
+
+  border:1px solid var(--border);
+
+  border-radius:15px;
+
+  padding:18px;
+}
+
+.policy h3{
+  color:var(--gold);
+
+  font-size:13px;
+
+  margin-bottom:8px;
+}
+
+.policy p{
+  color:#777;
+
+  font-size:10px;
+
+  line-height:1.7;
+}
+
+/* =========================
+   AI GIRL
+========================= */
+
+.ai-assistant{
+  position:fixed;
+
+  right:18px;
+  bottom:20px;
+
+  z-index:5000;
+
+  display:flex;
+
+  flex-direction:column;
+
+  align-items:flex-end;
+}
+
+.ai-bubble{
+  background:#fff;
+
+  color:#111;
+
+  padding:8px 12px;
+
+  border-radius:
+    14px 14px 3px 14px;
+
+  font-size:10px;
+
+  font-weight:600;
+
+  margin-bottom:7px;
+
+  box-shadow:0 5px 20px rgba(0,0,0,.3);
+
+  display:none;
+}
+
+.ai-girl{
+  width:58px;
+  height:58px;
+
+  border-radius:50%;
+
+  object-fit:cover;
+
+  border:2px solid var(--gold);
+
+  background:#111;
+
+  cursor:pointer;
+
+  box-shadow:
+    0 0 25px rgba(212,175,55,.2);
+}
+
+.ai-girl:hover{
+  transform:scale(1.05);
+}
+
+/* =========================
+   CHAT
+========================= */
+
+.chat-window{
+  display:none;
+
+  position:absolute;
+
+  right:0;
+  bottom:70px;
+
+  width:330px;
+  height:430px;
+
+  background:#0d0d14;
+
+  border:1px solid rgba(212,175,55,.35);
+
+  border-radius:18px;
+
+  overflow:hidden;
+
+  box-shadow:0 20px 70px rgba(0,0,0,.6);
+}
+
+.chat-head{
+  padding:13px;
+
+  background:#11111a;
+
+  color:var(--gold2);
+
+  font-weight:700;
+
+  font-size:12px;
+
+  display:flex;
+
+  justify-content:space-between;
+}
+
+.chat-messages{
+  height:350px;
+
+  padding:13px;
+
+  overflow-y:auto;
+}
+
+.chat-msg{
+  padding:9px 11px;
+
+  margin-bottom:8px;
+
+  border-radius:10px;
+
+  font-size:11px;
+
+  line-height:1.5;
+
+  max-width:88%;
+}
+
+.chat-ai{
+  background:#181820;
+
+  color:#ddd;
+}
+
+.chat-user{
+  background:var(--gold);
+
+  color:#000;
+
+  margin-left:auto;
+}
+
+.chat-input{
+  display:flex;
+
+  border-top:1px solid var(--border);
+}
+
+.chat-input input{
+  flex:1;
+
+  padding:12px;
+
+  background:#08080d;
+
+  border:0;
+
+  outline:none;
+
+  color:#fff;
+
+  font-size:11px;
+}
+
+.chat-input button{
+  background:var(--gold);
+
+  border:0;
+
+  padding:0 15px;
+
+  cursor:pointer;
+
+  font-weight:700;
+}
+
+/* =========================
+   COOKIE
+========================= */
+
+.cookie{
+  display:none;
+
+  position:fixed;
+
+  bottom:0;
+  left:0;
+
+  width:100%;
+
+  z-index:9000;
+
+  background:#0b0b10;
+
+  border-top:1px solid var(--border);
+
+  padding:14px 5%;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:15px;
+}
+
+.cookie-text{
+  color:#777;
+
+  font-size:10px;
+
+  line-height:1.5;
+}
+
+.cookie button{
+  border:0;
+
+  background:var(--gold);
+
+  color:#000;
+
+  padding:8px 15px;
+
+  border-radius:7px;
+
+  font-weight:700;
+
+  cursor:pointer;
+}
+
+/* =========================
+   FOOTER
+========================= */
 
 footer{
-  border-top:1px solid rgba(255,255,255,.08);
-  padding:35px 0;
-  color:#788da3;
+  position:relative;
+
+  z-index:2;
+
+  border-top:1px solid var(--border);
+
+  padding:35px 5%;
+
   text-align:center;
-  font-size:13px;
+
+  color:#555;
+
+  font-size:10px;
+
+  line-height:2;
 }
 
-.toast{
-  display:none;
-  position:fixed;
-  right:18px;
-  bottom:18px;
-  max-width:380px;
-  z-index:5000;
-  padding:16px 18px;
-  border-radius:14px;
-  background:#102236;
-  border:1px solid rgba(112,231,255,.3);
-  box-shadow:0 15px 50px rgba(0,0,0,.35);
+footer a{
+  color:#888;
+
+  text-decoration:none;
+
+  margin:0 5px;
 }
 
-@media(max-width:950px){
-  .hero{
-    grid-template-columns:1fr;
-    text-align:center;
+footer a:hover{
+  color:var(--gold);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:600px){
+
+  nav{
+    padding:9px 4%;
   }
 
-  .hero p{
-    margin-left:auto;
-    margin-right:auto;
+  .logo{
+    font-size:14px;
   }
 
-  .cta-row{
-    justify-content:center;
+  .logo img{
+    width:35px;
+    height:35px;
   }
 
-  .packages{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .payment{
-    grid-template-columns:1fr;
-  }
-
-  .nav-links{
+  .nav-link{
     display:none;
   }
-}
-
-@media(max-width:580px){
-  h1{
-    letter-spacing:-2px;
-  }
 
   .hero{
-    padding-top:55px;
+    padding-top:105px;
   }
 
-  .orb{
-    width:250px;
-    height:250px;
+  .hero h1{
+    font-size:47px;
   }
 
-  .girl,
-  .girl-fallback{
-    width:115px;
-    height:115px;
+  .chat-window{
+    width:calc(100vw - 30px);
+    right:-5px;
   }
 
-  .ring.one{
-    width:290px;
-    height:120px;
+  .ai-girl{
+    width:53px;
+    height:53px;
   }
 
-  .ring.two{
-    width:310px;
-    height:135px;
+  .cookie{
+    flex-direction:column;
+    align-items:stretch;
   }
 
-  .packages{
-    grid-template-columns:1fr;
-  }
-
-  .legal{
-    grid-template-columns:1fr;
-  }
-
-  .nav{
-    min-height:65px;
-  }
-
-  .logo-area span{
-    font-size:13px;
-  }
-
-  .country-box select{
-    max-width:120px;
-  }
 }
+
 </style>
 </head>
 
 <body>
 
-<header>
-  <div class="container nav">
+<div id="canvas-container"></div>
+<div class="bg-glow"></div>
 
-    <a class="logo-area" href="#home">
-      <img
-        src="logo.png"
-        class="logo"
-        alt="ABODH GLOBAL Logo"
-        onerror="this.style.display='none';document.getElementById('logoFallback').style.display='grid';"
-      >
+<!-- =========================
+     NAV
+========================= -->
 
-      <div id="logoFallback" class="logo-fallback">AG</div>
+<nav>
 
-      <span>ABODH GLOBAL</span>
+  <div class="logo">
+
+    <img
+      src="logo.png"
+      alt="THE ABOVERSE Logo"
+      onerror="this.style.display='none'"
+    >
+
+    THE ABOVERSE
+
+  </div>
+
+  <div class="nav-actions">
+
+    <a
+      class="nav-link"
+      href="https://youtube.com/@theaboverse"
+      target="_blank"
+      rel="noopener"
+    >
+      ▶ YouTube
     </a>
 
-    <nav class="nav-links">
-      <a href="#services">Services</a>
-      <a href="#payment">Payment</a>
-      <a href="#reviews">Reviews</a>
-      <a href="#terms">Terms</a>
-    </nav>
+    <a
+      class="nav-link"
+      href="https://wa.me/918127968129"
+      target="_blank"
+      rel="noopener"
+    >
+      WhatsApp
+    </a>
 
-    <div class="country-box">
-      <span>🌍</span>
-      <select id="countrySelect">
-        <option value="IN">🇮🇳 India</option>
-        <option value="US">🇺🇸 USA</option>
-        <option value="GB">🇬🇧 UK</option>
-        <option value="AE">🇦🇪 UAE</option>
-        <option value="SA">🇸🇦 Saudi Arabia</option>
-        <option value="KW">🇰🇼 Kuwait</option>
-        <option value="DE">🇩🇪 Germany</option>
-        <option value="FR">🇫🇷 France</option>
-        <option value="JP">🇯🇵 Japan</option>
-        <option value="SG">🇸🇬 Singapore</option>
-      </select>
+  </div>
+
+</nav>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<header class="hero">
+
+  <div class="badge">
+    THE ABOVERSE • ABODH RAJ BHAR • GLOBAL DIGITAL STUDIO
+  </div>
+
+  <h1>
+    LUXURY<br>
+    <span class="gold">MEETS</span><br>
+    <span class="gradient-text">VISION.</span>
+  </h1>
+
+  <p>
+    Premium AI websites, digital experiences, automation and
+    data-driven technology solutions designed for clients worldwide.
+  </p>
+
+  <div class="hero-buttons">
+
+    <a
+      href="#pricing"
+      class="btn btn-gold"
+    >
+      Explore Packages
+    </a>
+
+    <a
+      href="https://wa.me/918127968129?text=Hi%20THE%20ABOVERSE%2C%20I%20want%20to%20discuss%20a%20project."
+      target="_blank"
+      class="btn btn-green"
+    >
+      💬 WhatsApp
+    </a>
+
+    <a
+      href="https://youtube.com/@theaboverse"
+      target="_blank"
+      class="btn btn-outline"
+    >
+      ▶ THEABOVERSE
+    </a>
+
+  </div>
+
+  <div class="trust-row">
+
+    <div class="trust">
+      ⭐ Premium Digital Studio
+    </div>
+
+    <div class="trust">
+      🌍 Global Clients
+    </div>
+
+    <div class="trust">
+      🔒 Secure Payment Architecture
+    </div>
+
+    <div class="trust">
+      ⚡ AI & Automation
     </div>
 
   </div>
+
 </header>
 
-<main>
 
-<section class="hero" id="home">
-  <div class="container hero-copy">
+<!-- =========================
+     COUNTRY SELECTOR
+========================= -->
 
-    <div class="badge">✦ GLOBAL DIGITAL SERVICES • PREMIUM EXPERIENCE</div>
+<section>
 
-    <h1>
-      Build something
-      <span class="gradient-text">extraordinary.</span>
-    </h1>
+  <div class="country-panel">
 
-    <p>
-      Premium digital, AI, business and technology services designed
-      for clients worldwide. Choose your country to view indicative
-      local-currency pricing.
-    </p>
+    <div class="country-row">
 
-    <div class="cta-row">
-      <button class="btn btn-primary"
-              onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">
-        Explore Services
-      </button>
+      <label>
+        🌍 SELECT YOUR COUNTRY
+      </label>
 
-      <button class="btn btn-secondary"
-              onclick="document.getElementById('payment').scrollIntoView({behavior:'smooth'})">
-        Start a Project
-      </button>
-    </div>
-
-  </div>
-
-  <div class="hero-visual">
-
-    <div class="stars">
-      <span class="star">✦</span>
-      <span class="star">✧</span>
-      <span class="star">✦</span>
-      <span class="star">✧</span>
-      <span class="star">✦</span>
-    </div>
-
-    <div class="orb">
-
-      <div class="ring one"></div>
-      <div class="ring two"></div>
-
-      <img
-        src="girl.png"
-        class="girl"
-        alt="AI Assistant"
-        onerror="this.style.display='none';document.getElementById('girlFallback').style.display='flex';"
+      <select
+        id="countrySelect"
+        class="country-select"
       >
 
-      <div id="girlFallback" class="girl-fallback">
-        AI Assistant<br>
-        Add your girl.png
+        <option value="IN">
+          🇮🇳 India — INR ₹
+        </option>
+
+        <option value="US">
+          🇺🇸 United States — USD $
+        </option>
+
+        <option value="GB">
+          🇬🇧 United Kingdom — GBP £
+        </option>
+
+        <option value="AE">
+          🇦🇪 UAE — AED
+        </option>
+
+        <option value="SA">
+          🇸🇦 Saudi Arabia — SAR
+        </option>
+
+        <option value="KW">
+          🇰🇼 Kuwait — KWD
+        </option>
+
+        <option value="DE">
+          🇩🇪 Germany — EUR €
+        </option>
+
+        <option value="FR">
+          🇫🇷 France — EUR €
+        </option>
+
+        <option value="JP">
+          🇯🇵 Japan — JPY ¥
+        </option>
+
+        <option value="SG">
+          🇸🇬 Singapore — SGD
+        </option>
+
+        <option value="CA">
+          🇨🇦 Canada — CAD $
+        </option>
+
+        <option value="AU">
+          🇦🇺 Australia — AUD $
+        </option>
+
+      </select>
+
+    </div>
+
+    <div
+      id="countryInfo"
+      class="country-info"
+    >
+      India selected — prices shown in INR.
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     PRICING
+========================= -->
+
+<section id="pricing">
+
+  <h2 class="section-title">
+    Global <span class="gold">Packages</span>
+  </h2>
+
+  <p class="section-subtitle">
+    Choose the level that matches your project.
+    A 50% advance is required before project work begins.
+    The remaining 50% is payable according to the final project agreement.
+  </p>
+
+
+  <div
+    id="pricingGrid"
+    class="pricing-grid"
+  ></div>
+
+
+  <div class="payment-box">
+
+    <div class="payment-title">
+      SECURE GLOBAL PAYMENT ARCHITECTURE
+    </div>
+
+    <div class="payment-text">
+
+      🇮🇳 Indian customers:
+      UPI / Cashfree / supported payment methods.
+
+      <br>
+
+      🌍 International customers:
+      applicable international payment methods,
+      including supported bank-transfer/payment options.
+
+      <br><br>
+
+      Payment availability can depend on customer country,
+      currency, merchant account configuration and applicable
+      payment-provider requirements.
+
+    </div>
+
+    <div class="payment-methods">
+
+      <div class="payment-method">
+        🇮🇳 UPI
+      </div>
+
+      <div class="payment-method">
+        💳 Cashfree
+      </div>
+
+      <div class="payment-method">
+        🌍 International
+      </div>
+
+      <div class="payment-method">
+        🏦 Bank Transfer
       </div>
 
     </div>
 
   </div>
+
 </section>
 
 
-<section class="section" id="services">
-<div class="container">
+<!-- =========================
+     REVIEWS
+========================= -->
 
-  <div class="section-title">
-    <h2>Premium Project Plans</h2>
-    <p>Every project requires a 50% advance before work begins.</p>
+<section id="reviews">
+
+  <h2 class="section-title">
+    Client <span class="gold">Experience</span>
+  </h2>
+
+  <p class="section-subtitle">
+    Reviews displayed on this website should represent genuine
+    customer feedback. Do not publish fabricated reviews.
+  </p>
+
+  <div class="reviews">
+
+    <div class="review">
+
+      <div class="review-stars">
+        ★★★★★
+      </div>
+
+      <div class="review-name">
+        Client Review
+      </div>
+
+      <div class="review-country">
+        Global Client
+      </div>
+
+      <div class="review-text">
+        Premium design experience and professional communication.
+      </div>
+
+    </div>
+
+
+    <div class="review">
+
+      <div class="review-stars">
+        ★★★★★
+      </div>
+
+      <div class="review-name">
+        Client Review
+      </div>
+
+      <div class="review-country">
+        International
+      </div>
+
+      <div class="review-text">
+        Modern digital experience with a strong luxury presentation.
+      </div>
+
+    </div>
+
+
+    <div class="review">
+
+      <div class="review-stars">
+        ★★★★★
+      </div>
+
+      <div class="review-name">
+        Client Review
+      </div>
+
+      <div class="review-country">
+        India
+      </div>
+
+      <div class="review-text">
+        Smooth communication and professional project presentation.
+      </div>
+
+    </div>
+
   </div>
 
-  <div class="info-bar" style="margin-bottom:25px">
-    <strong>Payment policy:</strong>
-    Select a project value below. The website automatically calculates
-    the 50% advance. Final taxes, gateway fees and invoice amount may
-    vary according to country and applicable law.
-  </div>
-
-  <div class="packages" id="packages"></div>
-
-</div>
 </section>
 
 
-<section class="section" id="payment">
-<div class="container">
+<!-- =========================
+     TERMS & POLICIES
+========================= -->
 
-  <div class="section-title">
-    <h2>Start Your Project</h2>
-    <p>Secure payment setup</p>
+<section id="policies">
+
+  <h2 class="section-title">
+    Global <span class="gold">Policies</span>
+  </h2>
+
+  <p class="section-subtitle">
+    These are general website policies. Your final legal terms
+    should be reviewed for the jurisdictions in which you operate.
+  </p>
+
+  <div class="policy-grid">
+
+    <div class="policy">
+
+      <h3>
+        Terms & Conditions
+      </h3>
+
+      <p>
+        Services, scope, milestones, timelines, revisions,
+        deliverables and payment obligations are governed by
+        the project agreement accepted by the client.
+      </p>
+
+    </div>
+
+
+    <div class="policy">
+
+      <h3>
+        50% Advance Policy
+      </h3>
+
+      <p>
+        A 50% project advance is required before project
+        commencement unless a written agreement states otherwise.
+        The remaining balance is due according to the agreed
+        delivery/payment milestone.
+      </p>
+
+    </div>
+
+
+    <div class="policy">
+
+      <h3>
+        Refund & Cancellation
+      </h3>
+
+      <p>
+        Refund eligibility depends on the project stage,
+        work already completed, third-party costs and the
+        applicable written agreement.
+      </p>
+
+    </div>
+
+
+    <div class="policy">
+
+      <h3>
+        Privacy Policy
+      </h3>
+
+      <p>
+        Customer information should be collected only when
+        necessary for communication, project delivery,
+        invoicing, payment processing or legal obligations.
+      </p>
+
+    </div>
+
+
+    <div class="policy">
+
+      <h3>
+        Payment Security
+      </h3>
+
+      <p>
+        Payment credentials and secret API keys must never be
+        stored in public HTML or client-side JavaScript.
+        Secure payment providers and server-side verification
+        should be used.
+      </p>
+
+    </div>
+
+
+    <div class="policy">
+
+      <h3>
+        International Compliance
+      </h3>
+
+      <p>
+        Taxes, VAT/GST, privacy, consumer protection and
+        cross-border payment requirements may vary by country.
+        Applicable local requirements should be reviewed before
+        accepting international payments.
+      </p>
+
+    </div>
+
   </div>
 
-  <div class="payment">
+</section>
 
-    <div class="card form-card">
 
-      <h3>Client Information</h3>
+<!-- =========================
+     AI ASSISTANT
+========================= -->
 
-      <label for="customerName">Full Name</label>
-      <input id="customerName" type="text" placeholder="Your full name">
+<div class="ai-assistant">
 
-      <label for="customerEmail">Email</label>
-      <input id="customerEmail" type="email" placeholder="you@example.com">
+  <div
+    id="aiBubble"
+    class="ai-bubble"
+  >
+    Hi! Need help choosing a package?
+  </div>
 
-      <label for="customerPhone">Phone</label>
-      <input id="customerPhone" type="tel" placeholder="+91...">
 
-      <label for="plan">Project Value</label>
-      <select id="plan"></select>
+  <div
+    id="chatWindow"
+    class="chat-window"
+  >
 
-      <label for="projectDetails">Project Details</label>
-      <textarea id="projectDetails"
-        placeholder="Tell us about your project..."></textarea>
+    <div class="chat-head">
+
+      <span>
+        THE ABOVERSE AI
+      </span>
 
       <button
-        class="btn btn-primary"
-        style="width:100%;margin-top:18px"
-        onclick="payAdvance()">
-        Continue to Secure Payment
+        onclick="toggleAI()"
+        style="
+          background:none;
+          border:0;
+          color:#777;
+          cursor:pointer;
+        "
+      >
+        ✕
       </button>
 
-      <div class="payment-note" id="paymentInfo">
-        🇮🇳 India: Cashfree / UPI / Cards
+    </div>
+
+
+    <div
+      id="chatMessages"
+      class="chat-messages"
+    >
+
+      <div class="chat-msg chat-ai">
+        Hello! I'm the THE ABOVERSE assistant.
+        I can help you understand packages,
+        pricing and the project process.
       </div>
 
     </div>
 
 
-    <div class="card">
+    <div class="chat-input">
 
-      <h3>Payment Summary</h3>
+      <input
+        id="chatInput"
+        placeholder="Ask about packages..."
+      >
 
-      <div style="margin-top:25px;color:#94a8bd">
-        Project Value
-      </div>
-
-      <div class="price" id="summaryTotal">
-        ₹0
-      </div>
-
-      <div style="margin-top:20px;color:#94a8bd">
-        50% Advance
-      </div>
-
-      <div class="price" id="summaryAdvance">
-        ₹0
-      </div>
-
-      <div class="payment-note">
-        <strong style="color:white">Secure payment policy</strong><br><br>
-
-        India:
-        Cashfree / supported UPI and card payment methods will be
-        connected through the secure backend checkout.
-
-        <br><br>
-
-        International:
-        Payment instructions will be provided through the final invoice.
-        Do not send payment to any bank account displayed only on this
-        frontend until the official invoice is verified.
-      </div>
-
-      <div class="payment-note">
-        <strong style="color:white">50% Advance</strong><br>
-        Work commencement is subject to receipt and verification of
-        the applicable advance payment.
-      </div>
-
-    </div>
-
-  </div>
-</div>
-</section>
-
-
-<section class="section" id="reviews">
-<div class="container">
-
-  <div class="section-title">
-    <h2>Client Rating</h2>
-    <p>Share your experience</p>
-  </div>
-
-  <div class="card rating">
-
-    <h3>Rate your experience</h3>
-
-    <div class="stars-rating" id="ratingStars">
-      <button onclick="setRating(1)">★</button>
-      <button onclick="setRating(2)">★</button>
-      <button onclick="setRating(3)">★</button>
-      <button onclick="setRating(4)">★</button>
-      <button onclick="setRating(5)">★</button>
-    </div>
-
-    <p id="ratingMessage" style="color:#8fa3b8">
-      Select a rating.
-    </p>
-
-    <div class="review-box">
-      <input id="reviewName" placeholder="Your name">
-      <br><br>
-      <textarea id="reviewText"
-        placeholder="Write your review"></textarea>
-
-      <button class="btn btn-primary"
-              style="margin-top:12px"
-              onclick="submitReview()">
-        Submit Review
+      <button
+        onclick="sendAI()"
+      >
+        Send
       </button>
+
     </div>
 
-    <div id="reviewsList" style="margin-top:25px"></div>
-
   </div>
+
+
+  <!-- Put your girl PNG in the same folder as index.html -->
+  <img
+    src="girl.png"
+    class="ai-girl"
+    alt="THE ABOVERSE AI Assistant"
+    onclick="toggleAI()"
+    onerror="this.src='logo.png'"
+  >
 
 </div>
-</section>
 
 
-<section class="section youtube">
-<div class="container">
+<!-- =========================
+     COOKIE
+========================= -->
 
-  <div class="section-title">
-    <h2>YouTube</h2>
-    <p>Follow our latest content</p>
+<div
+  id="cookieBanner"
+  class="cookie"
+>
+
+  <div class="cookie-text">
+
+    We use necessary technologies to operate this website.
+    By continuing, you acknowledge our website policies.
+
   </div>
 
-  <div class="youtube-box">
-    <h3>ABODH ARABIA</h3>
-    <p style="color:#91a5b9;margin:12px 0 22px">
-      Gulf lifestyle • Travel • Luxury • Technology
-    </p>
-
-    <!-- Apna actual YouTube URL yahan daal sakte hain -->
-    <a
-      class="btn btn-primary"
-      href="https://www.youtube.com/"
-      target="_blank"
-      rel="noopener">
-      Visit YouTube Channel
-    </a>
-  </div>
+  <button
+    onclick="acceptCookies()"
+  >
+    Accept
+  </button>
 
 </div>
-</section>
 
 
-<section class="section" id="terms">
-<div class="container">
-
-  <div class="section-title">
-    <h2>Legal & Policies</h2>
-    <p>Important information for global clients</p>
-  </div>
-
-  <div class="legal">
-
-    <article>
-      <h3>Terms & Conditions</h3>
-      <p>
-        Services are provided according to the agreed project scope,
-        quotation and invoice. Project timelines depend on the approved
-        scope, client cooperation and payment status. Additional work
-        outside the agreed scope may require a separate quotation.
-      </p>
-    </article>
-
-    <article>
-      <h3>Payment Policy</h3>
-      <p>
-        A 50% advance is required for the selected project value before
-        project commencement. The remaining balance is payable according
-        to the agreed milestone or final invoice.
-      </p>
-    </article>
-
-    <article>
-      <h3>Refund Policy</h3>
-      <p>
-        Refund eligibility depends on the signed/agreed project terms,
-        work already completed, third-party charges and applicable
-        consumer laws. Any applicable statutory consumer rights remain
-        unaffected.
-      </p>
-    </article>
-
-    <article>
-      <h3>Privacy</h3>
-      <p>
-        Customer information should only be collected and processed for
-        legitimate business, communication, invoicing and payment
-        purposes. Payment credentials should be handled by the payment
-        provider rather than stored in this website.
-      </p>
-    </article>
-
-    <article>
-      <h3>Taxes & Local Laws</h3>
-      <p>
-        Currency conversion shown on this website is indicative.
-        Applicable GST, VAT, sales tax, withholding tax, invoicing and
-        other statutory requirements depend on the customer's location
-        and the nature of the service.
-      </p>
-    </article>
-
-    <article>
-      <h3>Payment Security</h3>
-      <p>
-        Never publish secret API keys, Cashfree secret keys, ACH account
-        credentials or other sensitive banking credentials in frontend
-        HTML or JavaScript. Secure payment verification must be performed
-        on a protected backend.
-      </p>
-    </article>
-
-  </div>
-
-  <div class="info-bar" style="margin-top:20px">
-    <strong>Legal notice:</strong>
-    This website provides general commercial terms and is not a substitute
-    for country-specific legal or tax advice. Applicable mandatory laws
-    of the customer's jurisdiction may override contractual terms where
-    required by law.
-  </div>
-
-</div>
-</section>
-
-</main>
-
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
-  <div class="container">
-    © <span id="year"></span> ABODH GLOBAL. All rights reserved.
-  </div>
+
+  <strong style="color:#d4af37">
+    THE ABOVERSE
+  </strong>
+
+  • ABODH RAJ BHAR
+
+  <br>
+
+  Premium AI & Digital Services
+
+  <br><br>
+
+  <a href="#policies">
+    Terms
+  </a>
+
+  <a href="#policies">
+    Privacy
+  </a>
+
+  <a href="#policies">
+    Refund Policy
+  </a>
+
+  <a href="#pricing">
+    Pricing
+  </a>
+
+  <br><br>
+
+  <a
+    href="https://youtube.com/@theaboverse"
+    target="_blank"
+    rel="noopener"
+  >
+    YouTube
+  </a>
+
+  <a
+    href="https://wa.me/918127968129"
+    target="_blank"
+    rel="noopener"
+  >
+    WhatsApp
+  </a>
+
+  <br><br>
+
+  © 2026 THE ABOVERSE • ABODH RAJ BHAR
+
 </footer>
-
-
-<div id="toast" class="toast"></div>
 
 
 <script>
 
-const API_URL = "";
+/* =====================================================
+   CONFIGURATION
+===================================================== */
 
+const CONFIG = {
 
-/* =========================
-   COUNTRY SETTINGS
-========================= */
+  whatsapp:
+    "918127968129",
 
-const countries = {
+  youtube:
+    "https://youtube.com/@theaboverse",
 
-  IN:{
-    currency:"INR",
-    locale:"en-IN",
-    payment:"🇮🇳 India: Cashfree / UPI / Cards"
-  },
+  /*
+    IMPORTANT:
 
-  US:{
-    currency:"USD",
-    locale:"en-US",
-    payment:"🇺🇸 USA: International payment"
-  },
+    Leave this empty until your backend is ready.
 
-  GB:{
-    currency:"GBP",
-    locale:"en-GB",
-    payment:"🇬🇧 UK: International payment"
-  },
+    Example later:
 
-  AE:{
-    currency:"AED",
-    locale:"en-AE",
-    payment:"🇦🇪 UAE: International payment"
-  },
+    https://your-render-service.onrender.com
+  */
 
-  SA:{
-    currency:"SAR",
-    locale:"en-SA",
-    payment:"🇸🇦 Saudi Arabia: International payment"
-  },
+  API_URL:
+    "",
 
-  KW:{
-    currency:"KWD",
-    locale:"en-KW",
-    payment:"🇰🇼 Kuwait: International payment"
-  },
+  currencyRates: {
 
-  DE:{
-    currency:"EUR",
-    locale:"de-DE",
-    payment:"🇩🇪 Germany: International payment"
-  },
+    INR:1,
 
-  FR:{
-    currency:"EUR",
-    locale:"fr-FR",
-    payment:"🇫🇷 France: International payment"
-  },
+    USD:0.0119,
 
-  JP:{
-    currency:"JPY",
-    locale:"ja-JP",
-    payment:"🇯🇵 Japan: International payment"
-  },
+    GBP:0.0091,
 
-  SG:{
-    currency:"SGD",
-    locale:"en-SG",
-    payment:"🇸🇬 Singapore: International payment"
+    EUR:0.0101,
+
+    AED:0.0437,
+
+    SAR:0.0446,
+
+    KWD:0.00365,
+
+    JPY:1.76,
+
+    SGD:0.0153,
+
+    CAD:0.0162,
+
+    AUD:0.0182
+
   }
 
 };
 
 
-/*
-  DISPLAY-ONLY FX RATES.
-  These are not payment settlement rates.
-*/
+/* =====================================================
+   COUNTRY DATA
+===================================================== */
 
-const FX = {
-  INR:1,
-  USD:0.0119,
-  GBP:0.0091,
-  AED:0.0437,
-  SAR:0.0446,
-  KWD:0.00365,
-  EUR:0.0101,
-  JPY:1.76,
-  SGD:0.0153
+const countries = {
+
+  IN:{
+    currency:"INR",
+    symbol:"₹",
+    locale:"en-IN",
+    language:"English / हिन्दी",
+    payment:"UPI + Cashfree"
+  },
+
+  US:{
+    currency:"USD",
+    symbol:"$",
+    locale:"en-US",
+    language:"English",
+    payment:"International payment / bank transfer"
+  },
+
+  GB:{
+    currency:"GBP",
+    symbol:"£",
+    locale:"en-GB",
+    language:"English",
+    payment:"International payment"
+  },
+
+  AE:{
+    currency:"AED",
+    symbol:"د.إ",
+    locale:"en-AE",
+    language:"English / العربية",
+    payment:"International payment"
+  },
+
+  SA:{
+    currency:"SAR",
+    symbol:"﷼",
+    locale:"en-SA",
+    language:"English / العربية",
+    payment:"International payment"
+  },
+
+  KW:{
+    currency:"KWD",
+    symbol:"د.ك",
+    locale:"en-KW",
+    language:"English / العربية",
+    payment:"International payment"
+  },
+
+  DE:{
+    currency:"EUR",
+    symbol:"€",
+    locale:"de-DE",
+    language:"Deutsch / English",
+    payment:"International payment"
+  },
+
+  FR:{
+    currency:"EUR",
+    symbol:"€",
+    locale:"fr-FR",
+    language:"Français / English",
+    payment:"International payment"
+  },
+
+  JP:{
+    currency:"JPY",
+    symbol:"¥",
+    locale:"ja-JP",
+    language:"日本語 / English",
+    payment:"International payment"
+  },
+
+  SG:{
+    currency:"SGD",
+    symbol:"S$",
+    locale:"en-SG",
+    language:"English",
+    payment:"International payment"
+  },
+
+  CA:{
+    currency:"CAD",
+    symbol:"CA$",
+    locale:"en-CA",
+    language:"English / Français",
+    payment:"International payment"
+  },
+
+  AU:{
+    currency:"AUD",
+    symbol:"A$",
+    locale:"en-AU",
+    language:"English",
+    payment:"International payment"
+  }
+
 };
 
 
-/* =========================
-   PROJECT PLANS
-========================= */
+/* =====================================================
+   PACKAGES
+===================================================== */
 
-const plans = [
-  20000,
-  30000,
-  70000,
-  100000,
-  120000,
-  150000,
-  200000,
-  250000,
-  280000,
-  300000,
-  320000,
-  350000,
-  400000,
-  440000,
-  480000,
-  500000
+const packages = [
+
+  ["Basic",20000],
+  ["Starter",30000],
+  ["Standard",70000],
+  ["Pro",100000],
+  ["Advanced",120000],
+  ["Premium",150000],
+  ["Business",200000],
+  ["Elite",250000],
+  ["Executive",280000],
+  ["Enterprise",300000],
+  ["Global",320000],
+  ["Luxury",350000],
+  ["Platinum",400000],
+  ["Signature",440000],
+  ["Imperial",480000],
+  ["ABOVERSE Ultimate",500000]
+
 ];
 
 
-function formatMoney(inr,country){
+const levels = [
 
-  const data = countries[country];
+  "Starter Website",
+  "Business Website",
+  "Professional Website",
+  "Advanced Digital Experience",
+  "Business Growth",
+  "Premium Experience",
+  "Business Platform",
+  "Elite Digital System",
+  "Executive Experience",
+  "Enterprise Solution",
+  "Global Digital System",
+  "Luxury Experience",
+  "Platinum Platform",
+  "Signature Solution",
+  "Imperial Digital System",
+  "Ultimate Global Experience"
 
-  const converted =
-    inr * FX[data.currency];
+];
+
+
+/* =====================================================
+   FORMAT MONEY
+===================================================== */
+
+function formatMoney(inr,countryCode){
+
+  const data =
+    countries[countryCode];
+
+  const rate =
+    CONFIG.currencyRates[data.currency] || 1;
+
+  const amount =
+    inr * rate;
 
   return new Intl.NumberFormat(
     data.locale,
@@ -1137,281 +1889,204 @@ function formatMoney(inr,country){
       style:"currency",
       currency:data.currency,
       maximumFractionDigits:
-        data.currency === "JPY" ? 0 : 2
+        data.currency === "JPY"
+        ? 0
+        : 2
     }
-  ).format(converted);
+  ).format(amount);
 
 }
 
 
-function createPackages(){
+/* =====================================================
+   RENDER PRICING
+===================================================== */
 
-  const box =
-    document.getElementById("packages");
-
-  const select =
-    document.getElementById("plan");
-
-  box.innerHTML="";
-  select.innerHTML="";
-
-  plans.forEach(amount=>{
-
-    const advance = amount/2;
-
-    const card =
-      document.createElement("div");
-
-    card.className="card";
-
-    card.innerHTML=`
-
-      <small>Premium Project</small>
-
-      <div class="price amount"
-           data-inr="${amount}">
-        ₹${amount.toLocaleString("en-IN")}
-      </div>
-
-      <div class="advance">
-        50% advance:
-        <span class="advanceAmount"
-              data-inr="${advance}">
-          ₹${advance.toLocaleString("en-IN")}
-        </span>
-      </div>
-
-      <button class="btn btn-primary"
-              style="width:100%"
-              onclick="selectPlan(${amount})">
-        Select Plan
-      </button>
-
-    `;
-
-    box.appendChild(card);
-
-
-    const option =
-      document.createElement("option");
-
-    option.value=amount;
-
-    option.textContent=
-      `Project ${formatMoney(amount,"IN")} — 50% advance ${formatMoney(advance,"IN")}`;
-
-    select.appendChild(option);
-
-  });
-
-  select.value=plans[0];
-
-  updateSummary();
-
-}
-
-
-function updateCountry(){
+function renderPricing(){
 
   const country =
-    document.getElementById("countrySelect").value;
+    document.getElementById(
+      "countrySelect"
+    ).value;
 
-  const data =
-    countries[country];
-
-  document.getElementById("paymentInfo").innerHTML =
-    `<strong>${data.payment}</strong><br>
-     <small>
-     Prices displayed in local currency are indicative.
-     Final invoice/payment amount is confirmed at checkout.
-     </small>`;
-
-
-  document
-    .querySelectorAll(".amount")
-    .forEach(el=>{
-
-      const inr =
-        Number(el.dataset.inr);
-
-      el.innerText =
-        formatMoney(inr,country);
-
-    });
-
-
-  document
-    .querySelectorAll(".advanceAmount")
-    .forEach(el=>{
-
-      const inr =
-        Number(el.dataset.inr);
-
-      el.innerText =
-        formatMoney(inr,country);
-
-    });
-
-
-  const select =
-    document.getElementById("plan");
-
-  Array.from(select.options)
-    .forEach(option=>{
-
-      const amount =
-        Number(option.value);
-
-      option.textContent =
-        `Project ${formatMoney(amount,country)}
-         — 50% advance ${formatMoney(amount/2,country)}`;
-
-    });
-
-
-  updateSummary();
-
-}
-
-
-function updateSummary(){
-
-  const country =
-    document.getElementById("countrySelect").value;
-
-  const plan =
-    Number(document.getElementById("plan").value);
-
-  if(!plan)return;
-
-  document.getElementById("summaryTotal")
-    .innerText =
-      formatMoney(plan,country);
-
-  document.getElementById("summaryAdvance")
-    .innerText =
-      formatMoney(plan/2,country);
-
-}
-
-
-function selectPlan(amount){
-
-  document.getElementById("plan").value =
-    amount;
-
-  updateSummary();
-
-  document.getElementById("payment")
-    .scrollIntoView({
-      behavior:"smooth"
-    });
-
-}
-
-
-function toast(message){
-
-  const t =
-    document.getElementById("toast");
-
-  t.innerText=message;
-  t.style.display="block";
-
-  clearTimeout(window.toastTimer);
-
-  window.toastTimer =
-    setTimeout(()=>{
-      t.style.display="none";
-    },4500);
-
-}
-
-
-/* =========================
-   PAYMENT
-========================= */
-
-async function payAdvance(){
-
-  const name =
-    document.getElementById("customerName")
-      .value.trim();
-
-  const email =
-    document.getElementById("customerEmail")
-      .value.trim();
-
-  const phone =
-    document.getElementById("customerPhone")
-      .value.trim();
-
-  const plan =
-    Number(document.getElementById("plan").value);
-
-  const details =
-    document.getElementById("projectDetails")
-      .value.trim();
-
-  const country =
-    document.getElementById("countrySelect")
-      .value;
-
-
-  if(!name || !email || !phone){
-
-    toast(
-      "Please enter your name, email and phone."
+  const grid =
+    document.getElementById(
+      "pricingGrid"
     );
 
-    return;
-
-  }
+  grid.innerHTML = "";
 
 
-  if(!plan){
+  packages.forEach(
+    (item,index)=>{
 
-    toast("Please select a project plan.");
+      const name =
+        item[0];
 
-    return;
+      const total =
+        item[1];
 
-  }
+      const advance =
+        total / 2;
 
+      const card =
+        document.createElement("div");
+
+      card.className =
+        "price-card" +
+        (
+          name === "Premium" ||
+          name === "ABOVERSE Ultimate"
+          ? " featured"
+          : ""
+        );
+
+
+      card.innerHTML = `
+
+        ${
+          name === "Premium"
+          ? `
+            <div style="
+              position:absolute;
+              top:10px;
+              right:10px;
+              color:#d4af37;
+              font-size:9px;
+              font-weight:700;
+            ">
+              BEST SELLER
+            </div>
+          `
+          : ""
+        }
+
+        <div class="plan-name">
+          ${name}
+        </div>
+
+        <div class="plan-level">
+          ${levels[index]}
+        </div>
+
+        <div class="plan-price">
+          ${formatMoney(total,country)}
+        </div>
+
+        <span class="plan-advance">
+          🔒 50% Advance:
+          ${formatMoney(advance,country)}
+        </span>
+
+        <button
+          class="btn btn-gold plan-btn"
+          onclick="startPayment(${total},'${name}')"
+        >
+          Pay 50% Advance
+        </button>
+
+      `;
+
+      grid.appendChild(card);
+
+    }
+  );
+
+
+  updateCountryInfo();
+
+}
+
+
+/* =====================================================
+   COUNTRY
+===================================================== */
+
+function updateCountryInfo(){
+
+  const code =
+    document.getElementById(
+      "countrySelect"
+    ).value;
+
+  const data =
+    countries[code];
+
+  document.getElementById(
+    "countryInfo"
+  ).innerHTML =
+
+    `${data.language}
+     • Currency: ${data.currency}
+     • Payment: ${data.payment}`;
+
+}
+
+
+document
+  .getElementById("countrySelect")
+  .addEventListener(
+    "change",
+    ()=>{
+      renderPricing();
+      localStorage.setItem(
+        "aboverse_country",
+        document.getElementById(
+          "countrySelect"
+        ).value
+      );
+    }
+  );
+
+
+/* =====================================================
+   PAYMENT START
+===================================================== */
+
+async function startPayment(
+  total,
+  plan
+){
+
+  const country =
+    document.getElementById(
+      "countrySelect"
+    ).value;
 
   const advance =
-    plan/2;
+    total / 2;
 
 
   /*
-    Render/backend अभी configured नहीं है.
-    इसलिए fake payment नहीं किया जाएगा.
+    INDIA
+
+    Actual Cashfree checkout requires
+    paymentSessionId generated by your backend.
   */
 
-  if(!API_URL){
+  if(country === "IN"){
 
-    toast(
-      `Payment gateway is being securely configured. ` +
-      `Selected advance: ${formatMoney(advance,country)}`
-    );
+    if(!CONFIG.API_URL){
 
-    return;
+      alert(
+        "Cashfree is ready for integration. " +
+        "Add your secure backend API URL in Part 3 " +
+        "before accepting live payments."
+      );
 
-  }
+      return;
 
+    }
 
-  if(country==="IN"){
 
     try{
 
-      toast(
-        "Creating secure Cashfree payment..."
-      );
-
-
       const response =
         await fetch(
-          API_URL + "/api/create-order",
+          CONFIG.API_URL +
+          "/api/create-order",
           {
+
             method:"POST",
 
             headers:{
@@ -1421,15 +2096,12 @@ async function payAdvance(){
 
             body:JSON.stringify({
 
-              name,
-              email,
-              phone,
-
-              planAmount:plan,
+              plan,
+              totalAmount:total,
               advanceAmount:advance,
 
-              country,
-              projectDetails:details
+              country:"IN",
+              currency:"INR"
 
             })
 
@@ -1441,22 +2113,14 @@ async function payAdvance(){
         await response.json();
 
 
-      if(!response.ok){
-
-        throw new Error(
-          data.error ||
-          "Payment order could not be created."
-        );
-
-      }
-
-
       if(
-        typeof Cashfree === "undefined"
+        !response.ok ||
+        !data.payment_session_id
       ){
 
         throw new Error(
-          "Cashfree SDK is not loaded."
+          data.error ||
+          "Payment session could not be created."
         );
 
       }
@@ -1468,7 +2132,7 @@ async function payAdvance(){
         });
 
 
-      cashfree.checkout({
+      await cashfree.checkout({
 
         paymentSessionId:
           data.payment_session_id,
@@ -1478,120 +2142,15 @@ async function payAdvance(){
       });
 
 
-    }catch(error){
+    }
+    catch(error){
 
-      toast(error.message);
+      alert(
+        "Payment could not be started.\n\n" +
+        error.message
+      );
 
     }
-
-    return;
-
-  }
-
-
-  toast(
-    "International payment selected. " +
-    "Please use the payment instructions on your official invoice."
-  );
-
-}
-
-
-/* =========================
-   COUNTRY DETECTION
-========================= */
-
-function detectCountry(){
-
-  let country="IN";
-
-  try{
-
-    const locale =
-      Intl.DateTimeFormat()
-        .resolvedOptions()
-        .locale
-        .toUpperCase();
-
-    const possible =
-      Object.keys(countries)
-        .find(code =>
-          locale.includes("-"+code)
-        );
-
-    if(possible){
-      country=possible;
-    }
-
-  }catch(e){}
-
-  document.getElementById("countrySelect")
-    .value=country;
-
-  updateCountry();
-
-}
-
-
-/* =========================
-   RATING
-========================= */
-
-let selectedRating=0;
-
-
-function setRating(value){
-
-  selectedRating=value;
-
-  const buttons =
-    document.querySelectorAll(
-      "#ratingStars button"
-    );
-
-  buttons.forEach((button,index)=>{
-
-    button.classList.toggle(
-      "active",
-      index < value
-    );
-
-  });
-
-
-  document.getElementById(
-    "ratingMessage"
-  ).innerText =
-    `${value}/5 rating selected.`;
-
-}
-
-
-function submitReview(){
-
-  const name =
-    document.getElementById("reviewName")
-      .value.trim();
-
-  const text =
-    document.getElementById("reviewText")
-      .value.trim();
-
-
-  if(!selectedRating){
-
-    toast("Please select a rating.");
-
-    return;
-
-  }
-
-
-  if(!name || !text){
-
-    toast(
-      "Please enter your name and review."
-    );
 
     return;
 
@@ -1599,103 +2158,202 @@ function submitReview(){
 
 
   /*
-    Local browser storage only.
-    Production reviews should be saved
-    through a secure backend/database.
+    INTERNATIONAL
+
+    Do not expose private banking credentials
+    inside public HTML.
+
+    Backend/invoice should provide the
+    applicable payment instructions.
   */
 
-  const reviews =
-    JSON.parse(
-      localStorage.getItem("abodhReviews") ||
-      "[]"
+  const data =
+    countries[country];
+
+  const amount =
+    formatMoney(
+      advance,
+      country
     );
 
 
-  reviews.unshift({
+  const message =
 
-    name,
-    text,
-    rating:selectedRating,
-    date:new Date().toLocaleDateString()
+    `Hi THE ABOVERSE,
 
-  });
+I want to purchase the ${plan} package.
+
+Project value:
+${formatMoney(total,country)}
+
+50% advance:
+${amount}
+
+Country:
+${country}
+
+Please send me the secure payment instructions/invoice.`;
 
 
-  localStorage.setItem(
-    "abodhReviews",
-    JSON.stringify(reviews)
+  window.open(
+    "https://wa.me/" +
+    CONFIG.whatsapp +
+    "?text=" +
+    encodeURIComponent(message),
+
+    "_blank"
   );
-
-
-  document.getElementById(
-    "reviewName"
-  ).value="";
-
-  document.getElementById(
-    "reviewText"
-  ).value="";
-
-  selectedRating=0;
-
-  document
-    .querySelectorAll("#ratingStars button")
-    .forEach(b=>b.classList.remove("active"));
-
-
-  document.getElementById(
-    "ratingMessage"
-  ).innerText="Thank you for your review!";
-
-
-  renderReviews();
 
 }
 
 
-function renderReviews(){
+/* =====================================================
+   WHATSAPP
+===================================================== */
 
-  const reviews =
-    JSON.parse(
-      localStorage.getItem("abodhReviews") ||
-      "[]"
+function openWhatsApp(){
+
+  window.open(
+    "https://wa.me/" +
+    CONFIG.whatsapp +
+    "?text=" +
+    encodeURIComponent(
+      "Hi THE ABOVERSE, I want to discuss a project."
+    ),
+
+    "_blank"
+  );
+
+}
+
+
+/* =====================================================
+   AI ASSISTANT
+===================================================== */
+
+function toggleAI(){
+
+  const chat =
+    document.getElementById(
+      "chatWindow"
     );
 
-  const box =
-    document.getElementById("reviewsList");
+  const bubble =
+    document.getElementById(
+      "aiBubble"
+    );
 
-  box.innerHTML="";
+  if(
+    chat.style.display === "flex"
+  ){
+
+    chat.style.display =
+      "none";
+
+  }
+  else{
+
+    chat.style.display =
+      "flex";
+
+    bubble.style.display =
+      "none";
+
+  }
+
+}
 
 
-  reviews.slice(0,5).forEach(review=>{
+function sendAI(){
 
-    const item =
-      document.createElement("div");
+  const input =
+    document.getElementById(
+      "chatInput"
+    );
 
-    item.style.cssText=
-      "margin-top:12px;padding:15px;" +
-      "border:1px solid rgba(255,255,255,.08);" +
-      "border-radius:14px;background:rgba(255,255,255,.03);";
+  const messages =
+    document.getElementById(
+      "chatMessages"
+    );
 
-    item.innerHTML=`
+  const text =
+    input.value.trim();
 
-      <strong>
-        ${escapeHTML(review.name)}
-      </strong>
+  if(!text) return;
 
-      <div style="color:#ffd76a;margin:5px 0">
-        ${"★".repeat(review.rating)}
-        ${"☆".repeat(5-review.rating)}
-      </div>
 
-      <p style="color:#91a5b9;line-height:1.6">
-        ${escapeHTML(review.text)}
-      </p>
+  messages.innerHTML += `
 
-    `;
+    <div class="chat-msg chat-user">
+      ${escapeHTML(text)}
+    </div>
 
-    box.appendChild(item);
+  `;
 
-  });
+
+  input.value = "";
+
+
+  let reply =
+    "I can help you choose a THE ABOVERSE package. ";
+
+
+  const lower =
+    text.toLowerCase();
+
+
+  if(
+    lower.includes("price") ||
+    lower.includes("pricing") ||
+    lower.includes("cost")
+  ){
+
+    reply +=
+      "Packages start at ₹20,000 and go up to ₹5,00,000. A 50% advance is required to start.";
+
+  }
+  else if(
+    lower.includes("payment")
+  ){
+
+    reply +=
+      "India supports the Cashfree payment flow when the secure backend is connected. International clients can request a secure invoice/payment method.";
+
+  }
+  else if(
+    lower.includes("whatsapp")
+  ){
+
+    reply =
+      "You can contact THE ABOVERSE on WhatsApp at +91 8127968129.";
+
+  }
+  else{
+
+    reply +=
+      "Tell me your budget, project type or country and I can guide you.";
+
+  }
+
+
+  setTimeout(
+    ()=>{
+
+      messages.innerHTML += `
+
+        <div class="chat-msg chat-ai">
+          ${escapeHTML(reply)}
+        </div>
+
+      `;
+
+      messages.scrollTop =
+        messages.scrollHeight;
+
+    },
+
+    500
+  );
 
 }
 
@@ -1712,34 +2370,345 @@ function escapeHTML(text){
 }
 
 
-/* =========================
+document
+  .getElementById("chatInput")
+  .addEventListener(
+    "keypress",
+    function(e){
+
+      if(e.key === "Enter"){
+        sendAI();
+      }
+
+    }
+  );
+
+
+/* =====================================================
+   COOKIE
+===================================================== */
+
+function acceptCookies(){
+
+  localStorage.setItem(
+    "aboverse_cookie",
+    "accepted"
+  );
+
+  document.getElementById(
+    "cookieBanner"
+  ).style.display =
+    "none";
+
+}
+
+
+if(
+  !localStorage.getItem(
+    "aboverse_cookie"
+  )
+){
+
+  document.getElementById(
+    "cookieBanner"
+  ).style.display =
+    "flex";
+
+}
+
+
+/* =====================================================
+   COUNTRY AUTO DETECTION
+===================================================== */
+
+function detectCountry(){
+
+  const saved =
+    localStorage.getItem(
+      "aboverse_country"
+    );
+
+  if(saved){
+
+    document.getElementById(
+      "countrySelect"
+    ).value =
+      saved;
+
+    return;
+
+  }
+
+
+  const lang =
+    navigator.language ||
+    "";
+
+  const tz =
+    Intl.DateTimeFormat()
+      .resolvedOptions()
+      .timeZone ||
+      "";
+
+
+  let country =
+    "US";
+
+
+  if(
+    lang.includes("IN") ||
+    tz.includes("Kolkata")
+  ){
+
+    country =
+      "IN";
+
+  }
+
+  else if(
+    tz.includes("London")
+  ){
+
+    country =
+      "GB";
+
+  }
+
+  else if(
+    tz.includes("Dubai")
+  ){
+
+    country =
+      "AE";
+
+  }
+
+  else if(
+    tz.includes("Riyadh")
+  ){
+
+    country =
+      "SA";
+
+  }
+
+  else if(
+    tz.includes("Kuwait")
+  ){
+
+    country =
+      "KW";
+
+  }
+
+  else if(
+    tz.includes("Tokyo")
+  ){
+
+    country =
+      "JP";
+
+  }
+
+
+  document.getElementById(
+    "countrySelect"
+  ).value =
+    country;
+
+}
+
+
+/* =====================================================
+   3D THREE.JS
+===================================================== */
+
+let scene,
+    camera,
+    renderer,
+    particles;
+
+
+function init3D(){
+
+  const container =
+    document.getElementById(
+      "canvas-container"
+    );
+
+
+  scene =
+    new THREE.Scene();
+
+
+  camera =
+    new THREE.PerspectiveCamera(
+      60,
+      window.innerWidth /
+      window.innerHeight,
+      0.1,
+      1000
+    );
+
+
+  camera.position.z =
+    5;
+
+
+  renderer =
+    new THREE.WebGLRenderer({
+      alpha:true,
+      antialias:true
+    });
+
+
+  renderer.setPixelRatio(
+    Math.min(
+      window.devicePixelRatio,
+      2
+    )
+  );
+
+
+  renderer.setSize(
+    window.innerWidth,
+    window.innerHeight
+  );
+
+
+  container.appendChild(
+    renderer.domElement
+  );
+
+
+  const geometry =
+    new THREE.BufferGeometry();
+
+
+  const count =
+    window.innerWidth < 600
+    ? 700
+    : 1300;
+
+
+  const positions =
+    new Float32Array(
+      count * 3
+    );
+
+
+  for(
+    let i=0;
+    i<count*3;
+    i++
+  ){
+
+    positions[i] =
+      (Math.random()-.5)*15;
+
+  }
+
+
+  geometry.setAttribute(
+    "position",
+    new THREE.BufferAttribute(
+      positions,
+      3
+    )
+  );
+
+
+  const material =
+    new THREE.PointsMaterial({
+
+      color:0xd4af37,
+
+      size:
+        window.innerWidth < 600
+        ? .018
+        : .025,
+
+      transparent:true,
+
+      opacity:.65
+
+    });
+
+
+  particles =
+    new THREE.Points(
+      geometry,
+      material
+    );
+
+
+  scene.add(
+    particles
+  );
+
+
+  animate3D();
+
+}
+
+
+function animate3D(){
+
+  requestAnimationFrame(
+    animate3D
+  );
+
+
+  if(particles){
+
+    particles.rotation.y +=
+      0.0005;
+
+    particles.rotation.x +=
+      0.00015;
+
+  }
+
+
+  renderer.render(
+    scene,
+    camera
+  );
+
+}
+
+
+window.addEventListener(
+  "resize",
+  ()=>{
+
+    if(!camera || !renderer)
+      return;
+
+    camera.aspect =
+      window.innerWidth /
+      window.innerHeight;
+
+    camera.updateProjectionMatrix();
+
+    renderer.setSize(
+      window.innerWidth,
+      window.innerHeight
+    );
+
+  }
+);
+
+
+/* =====================================================
    START
-========================= */
+===================================================== */
 
-document
-  .getElementById("countrySelect")
-  .addEventListener(
-    "change",
-    updateCountry
-  );
-
-
-document
-  .getElementById("plan")
-  .addEventListener(
-    "change",
-    updateSummary
-  );
-
-
-document.getElementById("year")
-  .innerText =
-    new Date().getFullYear();
-
-
-createPackages();
-renderReviews();
 detectCountry();
+
+renderPricing();
+
+init3D();
 
 </script>
 
