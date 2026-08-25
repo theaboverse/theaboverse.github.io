@@ -6,13 +6,12 @@
 
 <title>THE ABOVERSE | Premium AI & Digital Services</title>
 
-<meta name="description"
-content="THE ABOVERSE — Premium AI websites, digital experiences and data solutions.">
-
+<meta name="description" content="THE ABOVERSE — Premium AI websites, digital experiences and data solutions.">
 <meta name="theme-color" content="#050505">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<!-- External Scripts: Three.js for Particle Field & Official Cashfree Web SDK V3 -->
+<script src="https://cloudflare.com"></script>
+<script src="https://cashfree.com"></script>
 
 <style>
 *{
@@ -154,6 +153,12 @@ nav a{
   font-size:13px;
   cursor:pointer;
   text-decoration:none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn:hover{
+  transform: scale(1.04);
+  box-shadow: 0 4px 15px rgba(212,175,55,0.2);
 }
 
 .gold-btn{
@@ -210,6 +215,11 @@ section{
   padding:22px;
   border-radius:18px;
   text-align:center;
+  transition: border 0.3s;
+}
+
+.card:hover{
+  border-color: #D4AF37;
 }
 
 .card h3{
@@ -236,11 +246,12 @@ section{
 
 .payment-box{
   max-width:650px;
-  margin:auto;
+  margin: 35px auto auto;
   background:#111;
   border:1px dashed #D4AF37;
   padding:22px;
   border-radius:17px;
+  display: none;
 }
 
 .payment-box label{
@@ -261,14 +272,6 @@ section{
   outline:none;
 }
 
-.status{
-  text-align:center;
-  color:#aaa;
-  font-size:12px;
-  line-height:1.6;
-  margin-top:12px;
-}
-
 .notice{
   margin-top:12px;
   padding:12px;
@@ -280,6 +283,7 @@ section{
   line-height:1.6;
 }
 
+/* CHAT INTEGRATION GRAPHICS */
 .chat{
   position:fixed;
   right:18px;
@@ -293,8 +297,12 @@ section{
   border-radius:50%;
   border:0;
   background:#D4AF37;
-  font-size:22px;
+  font-size:24px;
   cursor:pointer;
+  box-shadow: 0 4px 15px rgba(212,175,55,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .chat-box{
@@ -302,19 +310,49 @@ section{
   position:absolute;
   right:0;
   bottom:68px;
-  width:330px;
-  height:420px;
+  width:340px;
+  height:440px;
   background:#111;
   border:1px solid #D4AF37;
   border-radius:14px;
   overflow:hidden;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.8);
 }
 
 .chat-head{
-  padding:13px;
+  padding:12px 15px;
   background:#191919;
   color:#D4AF37;
   font-weight:bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid #222;
+}
+
+/* Care Operator Photo Styling */
+.chat-avatar{
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #D4AF37;
+  background: #222;
+  object-fit: cover;
+}
+
+.chat-title-text {
+  flex: 1;
+  font-size: 13px;
+}
+
+.chat-close-btn {
+  cursor: pointer;
+  color: #aaa;
+  font-size: 16px;
+}
+
+.chat-close-btn:hover {
+  color: #fff;
 }
 
 .chat-messages{
@@ -322,43 +360,64 @@ section{
   padding:12px;
   overflow-y:auto;
   font-size:12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: #0b0b0b;
 }
 
 .message{
-  padding:8px 10px;
-  margin-bottom:8px;
-  border-radius:8px;
+  padding:10px 12px;
+  border-radius:12px;
   max-width:85%;
+  word-wrap: break-word;
+  line-height: 1.5;
 }
 
 .ai{
-  background:#222;
+  background:#1c1c1e;
+  color: #eaeaea;
+  align-self: flex-start;
+  border-bottom-left-radius: 2px;
 }
 
 .user{
   background:#D4AF37;
   color:#000;
-  margin-left:auto;
+  font-weight: 500;
+  align-self: flex-end;
+  border-bottom-right-radius: 2px;
 }
 
 .chat-input{
   display:flex;
-  border-top:1px solid #333;
+  border-top:1px solid #222;
+  background: #111;
 }
 
 .chat-input input{
   flex:1;
-  background:#050505;
+  background:transparent;
   color:#fff;
   border:0;
-  padding:12px;
+  padding:14px;
+  outline: none;
+  font-size: 12px;
 }
 
 .chat-input button{
   background:#D4AF37;
   border:0;
-  padding:0 15px;
+  padding:0 18px;
   font-weight:bold;
+  cursor: pointer;
+  color: #000;
+  font-size: 12px;
+  transition: background 0.2s;
+}
+
+.chat-input button:hover {
+  background: #ffcc00;
 }
 
 footer{
@@ -375,7 +434,6 @@ footer{
   .hero{
     min-height:80vh;
   }
-
   .chat-box{
     width:calc(100vw - 30px);
     right:-5px;
@@ -389,981 +447,95 @@ footer{
 <div id="canvas-container"></div>
 
 <nav>
-
 <div class="logo">
-<img src="logo.png" alt="The Aboverse">
-ABOVERSE
+  <img src="logo.png" alt="The Aboverse">
+  ABOVERSE
 </div>
-
-<a
-href="https://youtube.com/@theaboverse"
-target="_blank"
-rel="noopener">
-▶ YouTube
-</a>
-
+<a href="https://youtube.com" target="_blank" rel="noopener">▶ YouTube</a>
 </nav>
 
-
 <!-- HERO -->
-
 <div class="hero">
+  <div class="badge">@THEABOVERSE • ABODH RAJ BHAR</div>
+  <h1>LUXURY<br><span class="gold">MEETS</span><br>VISION.</h1>
+  <p>Premium AI websites, modern digital experiences and enterprise data solutions built for scale.</p>
 
-<div class="badge">
-@THEABOVERSE • ABODH RAJ BHAR
+  <div class="flag-row">
+    <span>🇮🇳 INR ₹</span>
+    <span>🇺🇸 USD $</span>
+    <span>🇬🇧 GBP £</span>
+    <span>🇪🇺 EUR €</span>
+    <span>🇦🇪 AED</span>
+    <span>🇨🇦 CAD</span>
+    <span>🇦🇺 AUD</span>
+    <span>🇯🇵 JPY</span>
+  </div>
+
+  <div>
+    <a href="#pricing" class="btn gold-btn">View Packages</a>
+    <button class="btn green-btn" onclick="openWhatsApp()">💬 WhatsApp</button>
+    <a href="https://youtube.com" target="_blank" rel="noopener" class="btn red-btn">▶ YouTube</a>
+  </div>
+
+  <div class="trust-row" style="margin-top: 20px;">
+    <div class="trust">🔒 Cashfree Secure Layer</div>
+    <div class="trust">🌍 Global Architecture</div>
+    <div class="trust">💳 International Wire / UPI / Cards</div>
+  </div>
 </div>
-
-<h1>
-LUXURY<br>
-<span class="gold">MEETS</span><br>
-VISION.
-</h1>
-
-<p>
-Premium AI websites, modern digital experiences
-and data solutions for businesses worldwide.
-</p>
-
-<div class="flag-row">
-
-<span>🇮🇳 INR ₹</span>
-<span>🇺🇸 USD $</span>
-<span>🇬🇧 GBP £</span>
-<span>🇪🇺 EUR €</span>
-<span>🇦🇪 AED</span>
-<span>🇨🇦 CAD</span>
-<span>🇦🇺 AUD</span>
-<span>🇯🇵 JPY</span>
-
-</div>
-
-<div>
-
-<a href="#pricing" class="btn gold-btn">
-View Packages
-</a>
-
-<button class="btn green-btn" onclick="openWhatsApp()">
-💬 WhatsApp
-</button>
-
-<a
-href="https://youtube.com/@theaboverse"
-target="_blank"
-class="btn red-btn">
-▶ YouTube
-</a>
-
-</div>
-
-<div class="trust-row">
-
-<div class="trust">
-🔒 Secure Payment Verification
-</div>
-
-<div class="trust">
-🌍 Global Services
-</div>
-
-<div class="trust">
-💳 UPI / Card / Global Payment
-</div>
-
-</div>
-
-</div>
-
 
 <!-- PRICING -->
-
 <section id="pricing">
-
-<h2 class="title">
-Global <span class="gold">Pricing</span>
-</h2>
-
-<div class="note">
-50% advance policy applies where agreed.
-International USD/ACH payment instructions are handled privately.
-Never expose bank secrets or API secrets in website source code.
-</div>
-
-
-<div class="grid">
-
-<div class="card">
-<h3>Basic</h3>
-<div class="price">₹20,000</div>
-<span class="advance">50% Advance: ₹10,000</span>
-<button class="btn gold-btn"
-onclick="selectPackage('Basic',10000)">
-Pay Advance
-</button>
-</div>
-
-
-<div class="card">
-<h3>Standard</h3>
-<div class="price">₹50,000</div>
-<span class="advance">50% Advance: ₹25,000</span>
-<button class="btn gold-btn"
-onclick="selectPackage('Standard',25000)">
-Pay Advance
-</button>
-</div>
-
-
-<div class="card">
-<h3>Growth</h3>
-<div class="price">₹60,000</div>
-<span class="advance">50% Advance: ₹30,000</span>
-<button class="btn gold-btn"
-onclick="selectPackage('Growth',30000)">
-Pay Advance
-</button>
-</div>
-
-
-<div class="card">
-<h3>Premium ⭐</h3>
-<div class="price">₹70,000</div>
-<span class="advance">50% Advance: ₹35,000</span>
-<button class="btn gold-btn"
-onclick="selectPackage('Premium',35000)">
-Pay Advance
-</button>
-</div>
-
-
-<div class="card">
-<h3>Luxury</h3>
-<div class="price">₹1,00,000</div>
-<span class="advance">50% Advance: ₹50,000</span>
-<button class="btn gold-btn"
-onclick="selectPackage('Luxury',50000)">
-Pay Advance
-</button>
-</div>
-
-
-<div class="card">
-<h3>Empire</h3>
-<div class="price">₹1,50,000</div>
-<span class="advance">50% Advance: ₹75,000</span>
-<button class="btn gold-btn"
-onclick="selectPackage('Empire',75000)">
-Pay Advance
-</button>
-</div>
-
-</div>
-
-</section>
-
-
-<!-- PAYMENT -->
-
-<section id="payment">
-
-<h2 class="title">
-Secure <span class="gold">Payment</span>
-</h2>
-
-<div class="payment-box">
-
-<label>Full Name</label>
-
-<input
-id="customerName"
-type="text"
-placeholder="Your full name"
-autocomplete="name"
->
-
-
-<label>Email</label>
-
-<input
-id="customerEmail"
-type="email"
-placeholder="you@example.com"
-autocomplete="email"
->
-
-
-<label>Phone</label>
-
-<input
-id="customerPhone"
-type="tel"
-placeholder="+91XXXXXXXXXX"
-autocomplete="tel"
->
-
-
-<div id="selectedPackage" class="status">
-Choose a package above.
-</div>
-
-
-<button
-class="btn gold-btn"
-style="width:100%"
-onclick="startPayment()">
-
-Continue to Secure Checkout
-
-</button>
-
-
-<div id="paymentStatus" class="status">
-Payment will be verified server-side.
-</div>
-
-
-<div class="notice">
-
-<b>Security:</b>
-
-Never enter OTP, UPI PIN, CVV,
-bank password or card PIN on this website.
-
-</div>
-
-
-<div class="notice">
-
-<b>India UPI:</b>
-
-<span class="gold">
-abodharabia@axl
-</span>
-
-<br>
-
-For automatic verification,
-use secure checkout.
-
-</div>
-
-
-<button
-class="btn green-btn"
-style="width:100%"
-onclick="requestUSD()">
-
-🇺🇸 Request Secure USD / ACH Instructions
-
-</button>
-
-</div>
-
-</section>
-
-
-<!-- ABOUT -->
-
-<section>
-
-<h2 class="title">
-About <span class="gold">The Aboverse</span>
-</h2>
-
-<div class="payment-box">
-
-<div class="status">
-
-A premium digital studio focused on
-AI, web development, data experiences
-and modern technology.
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- CHAT -->
-
-<div class="chat">
-
-<button
-class="chat-button"
-onclick="toggleChat()">
-💬
-</button>
-
-
-<div id="chatBox" class="chat-box">
-
-<div class="chat-head">
-ABOVERSE ASSISTANT
-</div>
-
-
-<div id="chatMessages" class="chat-messages">
-
-<div class="message ai">
-Hello! Tell me what digital project you need.
-</div>
-
-</div>
-
-
-<div class="chat-input">
-
-<input
-id="chatInput"
-placeholder="Type your requirement..."
-maxlength="500"
->
-
-<button onclick="sendMessage()">
-Send
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-
-<footer>
-
-© 2026 The Aboverse • Premium AI & Digital Services
-
-<br>
-
-UPI: abodharabia@axl
-
-</footer>
-
-
-<script>
-
-/* ==================================================
-   PART 1 + PART 2 + PART 3
-   FRONTEND COMBINED
-   ================================================== */
-
-
-/* BACKEND URL
-
-IMPORTANT:
-यहाँ बाद में आपके deployed backend का URL आएगा.
-
-Example:
-
-const API_BASE_URL =
-"https://your-backend.onrender.com";
-
-अभी placeholder है.
-*/
-
-const API_BASE_URL =
-"https://YOUR-BACKEND-DOMAIN.com";
-
-
-let selectedPackage = "";
-let selectedAmount = 0;
-
-
-/* PACKAGE */
-
-function selectPackage(name, amount){
-
-selectedPackage = name;
-selectedAmount = amount;
-
-document.getElementById(
-"selectedPackage"
-).textContent =
-name +
-" selected — ₹" +
-amount.toLocaleString("en-IN") +
-" advance";
-
-document.getElementById(
-"payment"
-).scrollIntoView({
-behavior:"smooth"
-});
-
-}
-
-
-/* PAYMENT */
-
-async function startPayment(){
-
-const name =
-document.getElementById("customerName")
-.value.trim();
-
-const email =
-document.getElementById("customerEmail")
-.value.trim();
-
-const phone =
-document.getElementById("customerPhone")
-.value.trim();
-
-const status =
-document.getElementById("paymentStatus");
-
-
-if(!selectedPackage){
-
-alert("Please select a package first.");
-return;
-
-}
-
-
-if(!name){
-
-alert("Please enter your full name.");
-return;
-
-}
-
-
-if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
-
-alert("Please enter a valid email.");
-return;
-
-}
-
-
-/* BACKEND NOT CONNECTED */
-
-if(
-API_BASE_URL.includes(
-"YOUR-BACKEND-DOMAIN"
-)
-){
-
-alert(
-"Payment backend abhi connected nahi hai. " +
-"server.js deploy karne ke baad API_BASE_URL replace karein."
-);
-
-return;
-
-}
-
-
-status.textContent =
-"Creating secure payment order...";
-
-
-try{
-
-const response =
-await fetch(
-API_BASE_URL +
-"/api/create-order",
-{
-method:"POST",
-
-headers:{
-"Content-Type":
-"application/json"
-},
-
-body:JSON.stringify({
-
-name:name,
-
-email:email,
-
-phone:phone,
-
-package:selectedPackage
-
-})
-
-}
-);
-
-
-const data =
-await response.json();
-
-
-if(
-!response.ok ||
-!data.success
-){
-
-throw new Error(
-data.error ||
-"Order creation failed"
-);
-
-}
-
-
-/* RAZORPAY */
-
-const options = {
-
-key:data.keyId,
-
-amount:data.amount,
-
-currency:data.currency,
-
-name:"THE ABOVERSE",
-
-description:
-data.package +
-" advance",
-
-order_id:
-data.orderId,
-
-prefill:{
-
-name:
-data.customer.name,
-
-email:
-data.customer.email,
-
-contact:
-data.customer.phone || ""
-
-},
-
-theme:{
-color:"#D4AF37"
-},
-
-
-handler:
-async function(payment){
-
-status.textContent =
-"Verifying payment...";
-
-
-try{
-
-const verifyResponse =
-await fetch(
-
-API_BASE_URL +
-"/api/verify-payment",
-
-{
-
-method:"POST",
-
-headers:{
-"Content-Type":
-"application/json"
-},
-
-body:JSON.stringify({
-
-razorpay_payment_id:
-payment.razorpay_payment_id,
-
-razorpay_order_id:
-payment.razorpay_order_id,
-
-razorpay_signature:
-payment.razorpay_signature,
-
-localOrderId:
-data.localOrderId
-
-})
-
-}
-
-);
-
-
-const verifyData =
-await verifyResponse.json();
-
-
-if(
-!verifyResponse.ok ||
-!verifyData.success
-){
-
-throw new Error(
-verifyData.error ||
-"Verification failed"
-);
-
-}
-
-
-status.textContent =
-"✅ Payment verified successfully.";
-
-
-}catch(error){
-
-console.error(error);
-
-status.textContent =
-"⚠️ Payment verification pending. Please contact support.";
-
-}
-
-},
-
-
-modal:{
-
-ondismiss:
-function(){
-
-status.textContent =
-"Payment window closed.";
-
-}
-
-}
-
-};
-
-
-const razorpay =
-new Razorpay(options);
-
-
-razorpay.on(
-"payment.failed",
-function(){
-
-status.textContent =
-"❌ Payment failed or cancelled.";
-
-}
-);
-
-
-razorpay.open();
-
-
-}catch(error){
-
-console.error(error);
-
-status.textContent =
-"❌ Unable to create payment order.";
-
-}
-
-}
-
-
-/* USD / ACH */
-
-function requestUSD(){
-
-const message =
-"Hi Abodh, I want to make an international USD/ACH payment. Please send me the secure verified payment instructions privately.";
-
-window.open(
-
-"https://wa.me/918127968129?text=" +
-encodeURIComponent(message),
-
-"_blank"
-
-);
-
-}
-
-
-/* WHATSAPP */
-
-function openWhatsApp(){
-
-const message =
-"Hi Aboverse! I want to discuss a premium digital project.";
-
-window.open(
-
-"https://wa.me/918127968129?text=" +
-encodeURIComponent(message),
-
-"_blank"
-
-);
-
-}
-
-
-/* CHAT */
-
-function toggleChat(){
-
-const box =
-document.getElementById("chatBox");
-
-box.style.display =
-box.style.display === "block"
-? "none"
-: "block";
-
-}
-
-
-function addMessage(text,type){
-
-const messages =
-document.getElementById(
-"chatMessages"
-);
-
-const div =
-document.createElement("div");
-
-div.className =
-"message " + type;
-
-div.textContent = text;
-
-messages.appendChild(div);
-
-messages.scrollTop =
-messages.scrollHeight;
-
-}
-
-
-function sendMessage(){
-
-const input =
-document.getElementById(
-"chatInput"
-);
-
-const text =
-input.value.trim();
-
-
-if(!text)
-return;
-
-
-addMessage(
-text,
-"user"
-);
-
-input.value = "";
-
-
-setTimeout(
-
-function(){
-
-addMessage(
-
-"Thanks! Please contact us on WhatsApp for a project quote.",
-
-"ai"
-
-);
-
-},
-
-500
-
-);
-
-}
-
-
-document.getElementById(
-"chatInput"
-).addEventListener(
-"keydown",
-function(e){
-
-if(e.key === "Enter")
-sendMessage();
-
-}
-);
-
-
-/* ==================================================
-   3D BACKGROUND
-   ================================================== */
-
-if(window.THREE){
-
-const container =
-document.getElementById(
-"canvas-container"
-);
-
-const scene =
-new THREE.Scene();
-
-
-const camera =
-new THREE.PerspectiveCamera(
-
-75,
-
-window.innerWidth /
-window.innerHeight,
-
-0.1,
-
-1000
-
-);
-
-
-const renderer =
-new THREE.WebGLRenderer({
-
-alpha:true,
-
-antialias:true
-
-});
-
-
-renderer.setPixelRatio(
-Math.min(
-window.devicePixelRatio,
-1.5
-)
-);
-
-
-renderer.setSize(
-window.innerWidth,
-window.innerHeight
-);
-
-
-container.appendChild(
-renderer.domElement
-);
-
-
-const geometry =
-new THREE.BufferGeometry();
-
-
-const count = 1200;
-
-
-const positions =
-new Float32Array(
-count * 3
-);
-
-
-for(
-let i=0;
-i<count*3;
-i++
-){
-
-positions[i] =
-(Math.random()-0.5)*6;
-
-}
-
-
-geometry.setAttribute(
-
-"position",
-
-new THREE.BufferAttribute(
-positions,
-3
-)
-
-);
-
-
-const material =
-new THREE.PointsMaterial({
-
-size:.007,
-
-color:0xD4AF37
-
-});
-
-
-const particles =
-new THREE.Points(
-geometry,
-material
-);
-
-
-scene.add(particles);
-
-
-camera.position.z = 2.4;
-
-
-function animate(){
-
-requestAnimationFrame(
-animate
-);
-
-particles.rotation.y +=
-0.0008;
-
-particles.rotation.x +=
-0.0002;
-
-renderer.render(
-scene,
-camera
-);
-
-}
-
-
-animate();
-
-
-window.addEventListener(
-"resize",
-function(){
-
-camera.aspect =
-window.innerWidth /
-window.innerHeight;
-
-camera.updateProjectionMatrix();
-
-renderer.setSize(
-window.innerWidth,
-window.innerHeight
-);
-
-}
-);
-
-}
-
-</script>
-
-</body>
-</html>
+  <h2 class="title">Global <span class="gold">Pricing</span></h2>
+
+  <div class="note">
+    50% project advance deployment policy applies. 
+    International wire instructions (USD/ACH/SEPA) are generated dynamically based on client geo-location context.
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Basic</h3>
+      <div class="price">₹20,000</div>
+      <span class="advance">50% Advance: ₹10,000</span>
+      <button class="btn gold-btn" onclick="selectPackage('Basic', 10000)">Pay Advance</button>
+    </div>
+
+    <div class="card">
+      <h3>Standard</h3>
+      <div class="price">₹50,000</div>
+      <span class="advance">50% Advance: ₹25,000</span>
+      <button class="btn gold-btn" onclick="selectPackage('Standard', 25000)">Pay Advance</button>
+    </div>
+
+    <div class="card">
+      <h3>Growth</h3>
+      <div class="price">₹60,000</div>
+      <span class="advance">50% Advance: ₹30,000</span>
+      <button class="btn gold-btn" onclick="selectPackage('Growth', 30000)">Pay Advance</button>
+    </div>
+
+    <div class="card">
+      <h3>Premium ⭐</h3>
+      <div class="price">₹70,000</div>
+      <span class="advance">50% Advance: ₹35,000</span>
+      <button class="btn gold-btn" onclick="selectPackage('Premium', 35000)">Pay Advance</button>
+    </div>
+
+    <div class="card">
+      <h3>Luxury</h3>
+      <div class="price">₹1,00,000</div>
+      <span class="advance">50% Advance: ₹50,000</span>
+      <button class="btn gold-btn" onclick="selectPackage('Luxury', 50000)">Pay Advance</button>
+    </div>
+
+    <div class="card">
+      <h3>Empire</h3>
+      <div class="price">₹1,50,000</div>
+      <span class="advance">50% Advance: ₹75,000</span>
+      <button class="btn gold-btn" onclick="selectPackage('Empire', 75000)">Pay Advance</button>
+    </div>
+  </div>
+
+  <!-- Cashfree Checkout Summary Layer -->
+  <div id="payment-gateway" class="payment-box">
