@@ -1,377 +1,764 @@
-const countries = {
-  IN:{name:"India",currency:"INR",symbol:"₹",rate:1},
-  US:{name:"United States",currency:"USD",symbol:"$",rate:.012},
-  GB:{name:"United Kingdom",currency:"GBP",symbol:"£",rate:.0095},
-  CA:{name:"Canada",currency:"CAD",symbol:"C$",rate:.016},
-  AU:{name:"Australia",currency:"AUD",symbol:"A$",rate:.018},
-  AE:{name:"United Arab Emirates",currency:"AED",symbol:"د.إ",rate:.044},
-  SA:{name:"Saudi Arabia",currency:"SAR",symbol:"﷼",rate:.045},
-  KW:{name:"Kuwait",currency:"KWD",symbol:"د.ك",rate:.0037},
-  QA:{name:"Qatar",currency:"QAR",symbol:"﷼",rate:.043},
-  OM:{name:"Oman",currency:"OMR",symbol:"ر.ع.",rate:.0046},
-  BH:{name:"Bahrain",currency:"BHD",symbol:".د.ب",rate:.0045},
-  DE:{name:"Germany",currency:"EUR",symbol:"€",rate:.0108},
-  FR:{name:"France",currency:"EUR",symbol:"€",rate:.0108},
-  IT:{name:"Italy",currency:"EUR",symbol:"€",rate:.0108},
-  ES:{name:"Spain",currency:"EUR",symbol:"€",rate:.0108},
-  CH:{name:"Switzerland",currency:"CHF",symbol:"CHF",rate:.0102},
-  JP:{name:"Japan",currency:"JPY",symbol:"¥",rate:1.75},
-  CN:{name:"China",currency:"CNY",symbol:"¥",rate:.086},
-  SG:{name:"Singapore",currency:"SGD",symbol:"S$",rate:.016},
-  MY:{name:"Malaysia",currency:"MYR",symbol:"RM",rate:.055},
-  NZ:{name:"New Zealand",currency:"NZD",symbol:"NZ$",rate:.020},
-  ZA:{name:"South Africa",currency:"ZAR",symbol:"R",rate:.22},
-  BR:{name:"Brazil",currency:"BRL",symbol:"R$",rate:.065},
-  MX:{name:"Mexico",currency:"MXN",symbol:"MX$",rate:.22}
-};
+/* =========================================================
+   ARB GLOBLE IT & SERVICE
+   Global Website Business Script
+   ========================================================= */
 
 const packages = [
-  20000,50000,80000,120000,180000,
-  200000,240000,280000,300000,320000,
-  360000,400000,450000,500000,600000
+  { price: 20000, name: "Starter Website" },
+  { price: 50000, name: "Professional Website" },
+  { price: 80000, name: "Business Website" },
+  { price: 120000, name: "Advanced Business Website" },
+  { price: 180000, name: "Growth Website" },
+  { price: 200000, name: "Premium Website" },
+  { price: 240000, name: "Professional Growth Website" },
+  { price: 280000, name: "Advanced Growth Website" },
+  { price: 300000, name: "Business Pro Website" },
+  { price: 320000, name: "Enterprise Website" },
+  { price: 360000, name: "Enterprise Growth Website" },
+  { price: 400000, name: "Premium Enterprise Website" },
+  { price: 450000, name: "Advanced Enterprise Website" },
+  { price: 500000, name: "Global Business Website" },
+  { price: 600000, name: "Global Enterprise Solution" }
 ];
 
-const services = [
- ["◈","Custom Website Design","Modern responsive websites planned around your business, brand, audience and conversion goals."],
- ["⌘","Website Development","Functional websites with navigation, forms, calls to action and mobile support."],
- ["◎","Domain Registration","Professional domain setup and connection support for new or existing domains."],
- ["◉","Website Hosting","Hosting setup and website launch support for your online presence."],
- ["↗","Business Landing Pages","Focused pages for products, services, campaigns and enquiries."],
- ["✦","AI & Digital Support","AI-assisted support, content guidance and practical technology solutions."]
-];
+/* ================= COUNTRIES ================= */
 
-const process = [
- ["1","Share Your Requirements","Tell us about your business, preferred style, audience and features."],
- ["2","Choose Your Solution","Select a package or request a custom quotation."],
- ["3","We Build","We design and develop the agreed pages and features."],
- ["4","Review & Launch","Review, approve agreed work and launch the website."]
-];
+const countries = {
+  "India": { code: "INR", symbol: "₹", rate: 1 },
+  "USA": { code: "USD", symbol: "$", rate: 0.0118 },
+  "Canada": { code: "CAD", symbol: "C$", rate: 0.016 },
+  "UK": { code: "GBP", symbol: "£", rate: 0.0093 },
+  "UAE": { code: "AED", symbol: "AED ", rate: 0.0433 },
+  "Saudi Arabia": { code: "SAR", symbol: "SAR ", rate: 0.0443 },
+  "Kuwait": { code: "KWD", symbol: "KWD ", rate: 0.00362 },
+  "Qatar": { code: "QAR", symbol: "QAR ", rate: 0.0430 },
+  "Oman": { code: "OMR", symbol: "OMR ", rate: 0.00455 },
+  "Bahrain": { code: "BHD", symbol: "BHD ", rate: 0.00445 },
+  "Germany": { code: "EUR", symbol: "€", rate: 0.0101 },
+  "France": { code: "EUR", symbol: "€", rate: 0.0101 },
+  "Switzerland": { code: "CHF", symbol: "CHF ", rate: 0.0092 },
+  "Australia": { code: "AUD", symbol: "A$", rate: 0.0180 },
+  "New Zealand": { code: "NZD", symbol: "NZ$", rate: 0.0200 },
+  "Japan": { code: "JPY", symbol: "¥", rate: 1.76 },
+  "China": { code: "CNY", symbol: "¥", rate: 0.085 },
+  "Hong Kong": { code: "HKD", symbol: "HK$", rate: 0.092 },
+  "Singapore": { code: "SGD", symbol: "S$", rate: 0.0155 },
+  "Malaysia": { code: "MYR", symbol: "RM ", rate: 0.049 },
+  "Thailand": { code: "THB", symbol: "฿", rate: 0.419 },
+  "South Africa": { code: "ZAR", symbol: "R ", rate: 0.212 },
+  "Brazil": { code: "BRL", symbol: "R$ ", rate: 0.063 },
+  "Mexico": { code: "MXN", symbol: "MX$ ", rate: 0.220 }
+};
 
-const aiRules = [
- {
-  keys:["service","website","design","development","domain","hosting","landing","ai"],
-  answer:"ARB Globle IT & Service provides custom website design, website development, domain setup, hosting, landing pages, AI-assisted digital support and website updates."
- },
- {
-  keys:["50%","advance","payment","pay","start"],
-  answer:"The standard project policy requires 50% advance before project work begins. The remaining 50% is payable after the agreed work approval/milestone or according to the written invoice."
- },
- {
-  keys:["refund","cancel","cancellation"],
-  answer:"The standard 50% advance is non-refundable after project work or reserved project resources have started, subject to the written agreement and applicable law."
- },
- {
-  keys:["india","cashfree","upi","card"],
-  answer:"For India, supported Cashfree checkout, UPI and card methods can be used when enabled. Payment secrets must remain on the secure backend."
- },
- {
-  keys:["international","global","ach","bank transfer","usa","uk","uae","kuwait","germany"],
-  answer:"Yes. ARB Globle IT & Service serves international clients. ACH or bank-transfer instructions should only be supplied through a verified official invoice."
- },
- {
-  keys:["currency","usd","eur","gbp","aed","sar","kwd","inr"],
-  answer:"The website supports country-based currency display. The displayed conversion is indicative; the final invoice/payment amount should be confirmed before payment."
- },
- {
-  keys:["domain"],
-  answer:"Yes. We can help with a new professional domain or connect an existing domain, subject to registrar and DNS settings."
- },
- {
-  keys:["hosting"],
-  answer:"Yes. Hosting setup can be arranged with the website project. The exact hosting plan depends on traffic, technology and features."
- },
- {
-  keys:["delivery","timeline","days","quick","how long"],
-  answer:"Delivery time depends on project scope, pages, features, content and feedback. The confirmed timeline is stated in the quotation/project agreement."
- },
- {
-  keys:["revision","changes"],
-  answer:"Yes. Revisions are handled according to the selected package and written project scope."
- },
- {
-  keys:["gst","tax","taxes"],
-  answer:"For India, applicable GST/taxes are charged according to the business's actual tax status and applicable law and are shown on the invoice. International tax treatment depends on applicable law."
- },
- {
-  keys:["privacy","policy","terms","condition"],
-  answer:"The website provides Payment Policy, Refund/Cancellation Policy, India Tax Policy, International Client Policy, Privacy, Terms & Conditions and Payment Security information."
- },
- {
-  keys:["price","pricing","package","packages","cost"],
-  answer:"Available project values are ₹20,000, ₹50,000, ₹80,000, ₹1.2 lakh, ₹1.8 lakh, ₹2 lakh, ₹2.4 lakh, ₹2.8 lakh, ₹3 lakh, ₹3.2 lakh, ₹3.6 lakh, ₹4 lakh, ₹4.5 lakh, ₹5 lakh and ₹6 lakh. Every standard package requires 50% advance."
- },
- {
-  keys:["whatsapp","contact","email"],
-  answer:"WhatsApp: +91 81279 68129. Email: arbglobalitservice@gmail.com. You can also contact ARB Globle IT & Service through the website."
- }
-];
+/* ================= HELPERS ================= */
 
-function esc(text){
- const d=document.createElement("div");
- d.textContent=String(text ?? "");
- return d.innerHTML;
+function formatINR(value) {
+  return "₹" + Number(value).toLocaleString("en-IN");
 }
 
-function getCountry(){
- let saved=localStorage.getItem("arb_country");
- if(saved && countries[saved]) return saved;
+function formatLocal(value, country) {
+  const currency = countries[country];
 
- const lang=(navigator.language||"en-IN").toUpperCase();
- const code=lang.split("-")[1];
- if(code && countries[code]) return code;
+  if (!currency) return formatINR(value);
 
- return "IN";
+  const converted = value * currency.rate;
+
+  return (
+    currency.symbol +
+    converted.toLocaleString("en-US", {
+      maximumFractionDigits: currency.code === "JPY" ? 0 : 2
+    })
+  );
 }
 
-let currentCountry=getCountry();
-let selectedPackage=null;
+/* ================= PRICE TABLE ================= */
 
-function money(inr){
- const c=countries[currentCountry];
- let value=inr*c.rate;
- return c.symbol + value.toLocaleString(undefined,{
-  maximumFractionDigits:c.currency==="JPY"?0:2
- })+" "+c.currency;
+const priceTable = document.getElementById("priceTable");
+
+if (priceTable) {
+  priceTable.innerHTML = packages.map(pkg => {
+    const advance = pkg.price / 2;
+
+    return `
+      <tr>
+        <td>${formatINR(pkg.price)}</td>
+        <td>${formatINR(advance)}</td>
+      </tr>
+    `;
+  }).join("");
 }
 
-function setupCountries(){
- const select=document.getElementById("countrySelect");
+/* ================= COUNTRY SELECT ================= */
 
- Object.entries(countries).forEach(([code,c])=>{
-  const option=document.createElement("option");
-  option.value=code;
-  option.textContent=c.name+" — "+c.currency;
-  select.appendChild(option);
- });
+const countrySelect = document.getElementById("countrySelect");
+const formCountry = document.getElementById("formCountry");
 
- select.value=currentCountry;
+function populateCountries(select) {
+  if (!select) return;
 
- select.addEventListener("change",()=>{
-  currentCountry=select.value;
-  localStorage.setItem("arb_country",currentCountry);
-  renderPackages();
-  updateSelected();
- });
-}
+  select.innerHTML = "";
 
-function renderServices(){
- const box=document.getElementById("servicesGrid");
-
- box.innerHTML=services.map(s=>`
- <article class="card">
-   <div style="font-size:28px;margin-bottom:10px">${s[0]}</div>
-   <h3>${esc(s[1])}</h3>
-   <p>${esc(s[2])}</p>
- </article>
- `).join("");
-}
-
-function renderProcess(){
- const box=document.getElementById("processGrid");
-
- box.innerHTML=process.map(p=>`
- <article class="card">
-   <div class="num">${p[0]}</div>
-   <h3>${esc(p[1])}</h3>
-   <p>${esc(p[2])}</p>
- </article>
- `).join("");
-}
-
-function renderPackages(){
- const box=document.getElementById("packagesGrid");
-
- box.innerHTML=packages.map((price,index)=>{
-  const advance=price/2;
-
-  return `
-  <article class="card package">
-    <small>ARB Website Package ${index+1}</small>
-    <h3 style="margin-top:8px">${money(price)}</h3>
-    <div class="price">${money(price)}</div>
-    <div class="advance">50% Advance: ${money(advance)}</div>
-    <p>Professional website solution with scope and features according to the selected package.</p>
-    <button class="btn primary" onclick="selectPackage(${price})">
-      Choose Package
-    </button>
-  </article>`;
- }).join("");
-}
-
-function selectPackage(price){
- selectedPackage=price;
- updateSelected();
-
- document.getElementById("payment").scrollIntoView({
-  behavior:"smooth"
- });
-}
-
-function updateSelected(){
- const p=document.getElementById("selectedPackage");
- const price=document.getElementById("selectedPrice");
- const advance=document.getElementById("selectedAdvance");
-
- if(!selectedPackage){
-  p.textContent="Choose a package above.";
-  price.textContent="—";
-  advance.textContent="50% Advance: —";
-  return;
- }
-
- p.textContent="Selected Project: "+money(selectedPackage);
- price.textContent=money(selectedPackage);
- advance.textContent="50% Advance: "+money(selectedPackage/2);
-}
-
-function addAI(text,type){
- const box=document.getElementById("aiMessages");
- const div=document.createElement("div");
-
- div.className="ai-msg "+type;
- div.innerHTML=esc(text).replace(/\n/g,"<br>");
-
- box.appendChild(div);
- box.scrollTop=box.scrollHeight;
-}
-
-function localAI(question){
- const q=question.toLowerCase().trim();
-
- if(!q){
-  return "Please type your question.";
- }
-
- let best=null;
- let score=0;
-
- for(const rule of aiRules){
-  let s=0;
-
-  for(const key of rule.keys){
-   if(q.includes(key.toLowerCase())) s++;
-  }
-
-  if(s>score){
-   score=s;
-   best=rule.answer;
-  }
- }
-
- if(best) return best;
-
- return "I can help with ARB Globle IT & Service information including services, website packages, 50% advance, remaining payment, Cashfree, international ACH/bank transfer, currencies, domain, hosting, delivery, revisions, GST/tax, refund, privacy, terms and contact details. For a custom requirement, please contact us on WhatsApp or email.";
-}
-
-function setupAI(){
- const input=document.getElementById("aiInput");
- const send=document.getElementById("aiSend");
- const quick=document.getElementById("quickPrompts");
-
- addAI(
-  "Hello! I am the ARB Global AI Assistant. Ask me about services, packages, 50% advance, payment, global clients, domain, hosting, delivery or policies.",
-  "bot"
- );
-
- const prompts=[
-  "What services do you offer?",
-  "How does 50% advance work?",
-  "Do you support international clients?",
-  "How can I pay from India?",
-  "What is the refund policy?",
-  "What are your packages?"
- ];
-
- quick.innerHTML=prompts.map(x=>`
- <button type="button">${esc(x)}</button>
- `).join("");
-
- quick.querySelectorAll("button").forEach(btn=>{
-  btn.addEventListener("click",()=>{
-   input.value=btn.textContent;
-   send.click();
+  Object.keys(countries).forEach(country => {
+    const option = document.createElement("option");
+    option.value = country;
+    option.textContent =
+      `${country} — ${countries[country].code}`;
+    select.appendChild(option);
   });
- });
-
- send.addEventListener("click",async()=>{
-  const q=input.value.trim();
-
-  if(!q)return;
-
-  input.value="";
-  addAI(q,"user");
-
-  const answer=localAI(q);
-
-  setTimeout(()=>{
-   addAI(answer,"bot");
-  },180);
- });
-
- input.addEventListener("keydown",e=>{
-  if(e.key==="Enter"){
-   e.preventDefault();
-   send.click();
-  }
- });
 }
 
-function sendRequirements(){
- const name=document.getElementById("fullName").value.trim();
- const business=document.getElementById("businessName").value.trim();
- const email=document.getElementById("email").value.trim();
- const whatsapp=document.getElementById("whatsapp").value.trim();
- const requirements=document.getElementById("requirements").value.trim();
+populateCountries(countrySelect);
+populateCountries(formCountry);
 
- let message=
-`Hello ARB Globle IT & Service,
+/* ================= PACKAGE SELECT ================= */
+
+const packageSelect = document.getElementById("packageSelect");
+
+if (packageSelect) {
+  packageSelect.innerHTML = packages.map((pkg, index) => {
+    return `
+      <option value="${index}">
+        ${pkg.name} — ${formatINR(pkg.price)} — 50% Advance ${formatINR(pkg.price / 2)}
+      </option>
+    `;
+  }).join("");
+}
+
+/* ================= LOCAL CURRENCY DISPLAY ================= */
+
+let selectedPackageIndex = 0;
+
+function updateCurrencyDisplay() {
+  const country =
+    countrySelect?.value || "India";
+
+  const pkg =
+    packages[selectedPackageIndex] || packages[0];
+
+  const priceElement =
+    document.getElementById("convertedPrice");
+
+  const advanceElement =
+    document.getElementById("convertedAdvance");
+
+  const packageElement =
+    document.getElementById("currencyPackage");
+
+  if (packageElement) {
+    packageElement.textContent = pkg.name;
+  }
+
+  if (priceElement) {
+    priceElement.textContent =
+      formatLocal(pkg.price, country);
+  }
+
+  if (advanceElement) {
+    advanceElement.textContent =
+      formatLocal(pkg.price / 2, country);
+  }
+}
+
+if (countrySelect) {
+  countrySelect.addEventListener(
+    "change",
+    updateCurrencyDisplay
+  );
+}
+
+/* ================= PACKAGE BUTTONS ================= */
+
+document.querySelectorAll(".package-btn").forEach(button => {
+
+  button.addEventListener("click", () => {
+
+    const price =
+      Number(button.dataset.price);
+
+    const index =
+      packages.findIndex(
+        pkg => pkg.price === price
+      );
+
+    if (index >= 0) {
+      selectedPackageIndex = index;
+    }
+
+    if (packageSelect) {
+      packageSelect.value =
+        String(selectedPackageIndex);
+    }
+
+    updateCurrencyDisplay();
+
+    document
+      .getElementById("contact")
+      ?.scrollIntoView({
+        behavior: "smooth"
+      });
+  });
+
+});
+
+/* ================= FORM ================= */
+
+const projectForm =
+  document.getElementById("projectForm");
+
+if (projectForm) {
+
+  projectForm.addEventListener(
+    "submit",
+    function(event) {
+
+      event.preventDefault();
+
+      const name =
+        document.getElementById("fullName").value.trim();
+
+      const business =
+        document.getElementById("businessName").value.trim();
+
+      const email =
+        document.getElementById("email").value.trim();
+
+      const phone =
+        document.getElementById("phone").value.trim();
+
+      const country =
+        document.getElementById("formCountry").value;
+
+      const website =
+        document.getElementById("websiteType").value;
+
+      const packageIndex =
+        Number(document.getElementById("packageSelect").value);
+
+      const requirements =
+        document.getElementById("requirements").value.trim();
+
+      const additional =
+        document.getElementById("additional").value.trim();
+
+      const pkg =
+        packages[packageIndex] || packages[0];
+
+      const message = `
+Hello ARB Globle IT & Service,
 
 I want to start a website project.
 
-Name: ${name||"Not provided"}
-Business: ${business||"Not provided"}
+Name: ${name}
+Business: ${business}
 Email: ${email}
-WhatsApp: ${whatsapp}
-Country/Currency: ${countries[currentCountry].name} / ${countries[currentCountry].currency}
-Package: ${selectedPackage ? money(selectedPackage) : "Custom / Not selected"}
-50% Advance: ${selectedPackage ? money(selectedPackage/2) : "To be quoted"}
+WhatsApp: ${phone}
+Country: ${country}
+
+Website Type: ${website}
+
+Package: ${pkg.name}
+Project Value: ${formatLocal(pkg.price, country)}
+50% Advance: ${formatLocal(pkg.price / 2, country)}
 
 Requirements:
-${requirements||"Please contact me to discuss my requirements."}`;
+${requirements || "Not provided"}
 
- window.open(
-  "https://wa.me/918127968129?text="+encodeURIComponent(message),
-  "_blank"
- );
+Additional Requirements:
+${additional || "Not provided"}
+      `.trim();
+
+      const whatsappURL =
+        "https://wa.me/918127968129?text=" +
+        encodeURIComponent(message);
+
+      window.open(
+        whatsappURL,
+        "_blank"
+      );
+
+    }
+  );
 }
 
-function createFallingRings(){
- const count=innerWidth<600?7:14;
+/* ================= PAYMENT BUTTON ================= */
 
- for(let i=0;i<count;i++){
-  const ring=document.createElement("div");
+const payBtn =
+  document.getElementById("payBtn");
 
-  ring.className="falling-ring";
-  ring.style.setProperty("--x",Math.random()*100+"vw");
-  ring.style.setProperty("--r",Math.random()*180+"deg");
-  ring.style.setProperty("--d",(7+Math.random()*10).toFixed(1)+"s");
-  ring.style.setProperty("--delay",(-Math.random()*12).toFixed(1)+"s");
+if (payBtn) {
 
-  ring.style.width=(55+Math.random()*100)+"px";
-  ring.style.height=(18+Math.random()*35)+"px";
+  payBtn.addEventListener("click", () => {
 
-  document.body.appendChild(ring);
- }
+    const packageIndex =
+      Number(
+        document.getElementById("packageSelect")?.value || 0
+      );
+
+    const pkg =
+      packages[packageIndex] || packages[0];
+
+    const country =
+      document.getElementById("formCountry")?.value ||
+      "India";
+
+    const message = `
+Hello ARB Globle IT & Service,
+
+I want to pay the 50% advance for:
+
+Package: ${pkg.name}
+Project Value: ${formatLocal(pkg.price, country)}
+50% Advance: ${formatLocal(pkg.price / 2, country)}
+
+Country: ${country}
+
+Please provide the official secure payment checkout/invoice.
+    `.trim();
+
+    const url =
+      "https://wa.me/918127968129?text=" +
+      encodeURIComponent(message);
+
+    window.open(url, "_blank");
+
+  });
+
 }
 
-document.addEventListener("DOMContentLoaded",()=>{
- document.getElementById("year").textContent=new Date().getFullYear();
+/* ================= AI ASSISTANT ================= */
 
- setupCountries();
- renderServices();
- renderProcess();
- renderPackages();
- updateSelected();
- setupAI();
- createFallingRings();
-});
+const aiLaunch =
+  document.getElementById("aiLaunch");
+
+const aiBox =
+  document.getElementById("aiBox");
+
+const aiClose =
+  document.getElementById("aiClose");
+
+const aiInput =
+  document.getElementById("aiInput");
+
+const aiSend =
+  document.getElementById("aiSend");
+
+const aiMessages =
+  document.getElementById("aiMessages");
+
+function addAIMessage(text, type = "ai") {
+
+  const div =
+    document.createElement("div");
+
+  div.className =
+    `message ${type}`;
+
+  div.textContent = text;
+
+  aiMessages.appendChild(div);
+
+  aiMessages.scrollTop =
+    aiMessages.scrollHeight;
+}
+
+function aiReply(question) {
+
+  const q =
+    question.toLowerCase().trim();
+
+  if (!q) {
+    return "Please type your question. I can help with ARB services, packages, prices, payment, domain, hosting, policies and international clients.";
+  }
+
+  if (
+    q.includes("hello") ||
+    q.includes("hi") ||
+    q.includes("hey") ||
+    q.includes("namaste")
+  ) {
+    return "Hello! Welcome to ARB Globle IT & Service. I can help you with website services, packages, pricing, 50% advance, payment methods, domain, hosting, global currencies and project process.";
+  }
+
+  if (
+    q.includes("price") ||
+    q.includes("cost") ||
+    q.includes("package") ||
+    q.includes("pricing")
+  ) {
+    return "ARB currently offers project options from ₹20,000 to ₹6,00,000. Every listed project option has a 50% advance. The remaining 50% is payable according to the agreed project milestone, review or approval.";
+  }
+
+  if (
+    q.includes("20,000") ||
+    q.includes("20000")
+  ) {
+    return "The ₹20,000 Starter Website has a 50% advance of ₹10,000.";
+  }
+
+  if (
+    q.includes("50,000") ||
+    q.includes("50000")
+  ) {
+    return "The ₹50,000 project option has a 50% advance of ₹25,000.";
+  }
+
+  if (
+    q.includes("80,000") ||
+    q.includes("80000")
+  ) {
+    return "The ₹80,000 Business Website option has a 50% advance of ₹40,000.";
+  }
+
+  if (
+    q.includes("1.2 lakh") ||
+    q.includes("120000") ||
+    q.includes("1,20,000")
+  ) {
+    return "The ₹1,20,000 project option has a 50% advance of ₹60,000.";
+  }
+
+  if (
+    q.includes("1.8 lakh") ||
+    q.includes("180000") ||
+    q.includes("1,80,000")
+  ) {
+    return "The ₹1,80,000 Growth Website option has a 50% advance of ₹90,000.";
+  }
+
+  if (
+    q.includes("2 lakh") ||
+    q.includes("200000") ||
+    q.includes("2,00,000")
+  ) {
+    return "The ₹2,00,000 project option has a 50% advance of ₹1,00,000.";
+  }
+
+  if (
+    q.includes("2.4 lakh") ||
+    q.includes("240000") ||
+    q.includes("2,40,000")
+  ) {
+    return "The ₹2,40,000 project option has a 50% advance of ₹1,20,000.";
+  }
+
+  if (
+    q.includes("2.8 lakh") ||
+    q.includes("280000") ||
+    q.includes("2,80,000")
+  ) {
+    return "The ₹2,80,000 project option has a 50% advance of ₹1,40,000.";
+  }
+
+  if (
+    q.includes("3 lakh") ||
+    q.includes("300000") ||
+    q.includes("3,00,000")
+  ) {
+    return "The ₹3,00,000 project option has a 50% advance of ₹1,50,000.";
+  }
+
+  if (
+    q.includes("3.2 lakh") ||
+    q.includes("320000") ||
+    q.includes("3,20,000")
+  ) {
+    return "The ₹3,20,000 project option has a 50% advance of ₹1,60,000.";
+  }
+
+  if (
+    q.includes("3.6 lakh") ||
+    q.includes("360000") ||
+    q.includes("3,60,000")
+  ) {
+    return "The ₹3,60,000 project option has a 50% advance of ₹1,80,000.";
+  }
+
+  if (
+    q.includes("4 lakh") ||
+    q.includes("400000") ||
+    q.includes("4,00,000")
+  ) {
+    return "The ₹4,00,000 project option has a 50% advance of ₹2,00,000.";
+  }
+
+  if (
+    q.includes("4.5 lakh") ||
+    q.includes("450000") ||
+    q.includes("4,50,000")
+  ) {
+    return "The ₹4,50,000 project option has a 50% advance of ₹2,25,000.";
+  }
+
+  if (
+    q.includes("5 lakh") ||
+    q.includes("500000") ||
+    q.includes("5,00,000")
+  ) {
+    return "The ₹5,00,000 project option has a 50% advance of ₹2,50,000.";
+  }
+
+  if (
+    q.includes("6 lakh") ||
+    q.includes("600000") ||
+    q.includes("6,00,000")
+  ) {
+    return "The ₹6,00,000 Global Enterprise Solution has a 50% advance of ₹3,00,000.";
+  }
+
+  if (
+    q.includes("advance") ||
+    q.includes("50%")
+  ) {
+    return "ARB's standard project structure is 50% advance before work starts, with the remaining 50% payable after the agreed project milestone, review or approval.";
+  }
+
+  if (
+    q.includes("refund") ||
+    q.includes("refundable") ||
+    q.includes("cancel")
+  ) {
+    return "The standard policy is that the 50% advance is generally non-refundable after project acceptance and work commencement, subject to the written agreement and applicable laws.";
+  }
+
+  if (
+    q.includes("domain")
+  ) {
+    return "Yes. ARB can help with professional domain registration or connect an existing domain to your website.";
+  }
+
+  if (
+    q.includes("hosting")
+  ) {
+    return "Yes. Website hosting setup and deployment support can be arranged with the website project.";
+  }
+
+  if (
+    q.includes("website")
+  ) {
+    return "ARB provides custom website design, development, landing pages, domain setup, hosting support, website updates and digital technology services.";
+  }
+
+  if (
+    q.includes("service")
+  ) {
+    return "ARB Globle IT & Service provides custom website design, website development, domain registration, hosting setup, landing pages and website support.";
+  }
+
+  if (
+    q.includes("international") ||
+    q.includes("global") ||
+    q.includes("foreign") ||
+    q.includes("outside india")
+  ) {
+    return "Yes. ARB Globle IT & Service is designed for India and international clients. You can select your country to see an indicative local-currency display.";
+  }
+
+  if (
+    q.includes("currency") ||
+    q.includes("usd") ||
+    q.includes("dollar") ||
+    q.includes("pound") ||
+    q.includes("euro") ||
+    q.includes("aed") ||
+    q.includes("sar") ||
+    q.includes("kwd") ||
+    q.includes("qar")
+  ) {
+    return "The website supports indicative currency display for INR, USD, GBP, EUR, AED, SAR, KWD, QAR, OMR, BHD, CAD, AUD, JPY and several other currencies.";
+  }
+
+  if (
+    q.includes("cashfree") ||
+    q.includes("upi") ||
+    q.includes("card")
+  ) {
+    return "India clients can use supported Cashfree payment methods such as UPI/cards where enabled. Live payment checkout must be connected through a secure backend.";
+  }
+
+  if (
+    q.includes("ach") ||
+    q.includes("bank transfer") ||
+    q.includes("bank")
+  ) {
+    return "Global ACH / bank-transfer payment can be arranged where supported. Official bank/payment details should only be provided through a verified invoice or secure payment process.";
+  }
+
+  if (
+    q.includes("gst") ||
+    q.includes("tax") ||
+    q.includes("vat")
+  ) {
+    return "Applicable GST, VAT or other taxes depend on the transaction, customer location and applicable law. The final tax treatment should be confirmed on the invoice.";
+  }
+
+  if (
+    q.includes("delivery") ||
+    q.includes("how long") ||
+    q.includes("time")
+  ) {
+    return "Delivery time depends on the project scope, pages, features, content and feedback. The exact timeline should be confirmed before the project starts.";
+  }
+
+  if (
+    q.includes("revision") ||
+    q.includes("change")
+  ) {
+    return "Yes. Clients can request revisions according to the revision limits and scope agreed for the selected project.";
+  }
+
+  if (
+    q.includes("whatsapp") ||
+    q.includes("contact") ||
+    q.includes("phone")
+  ) {
+    return "You can contact ARB on WhatsApp at +91 8127968129.";
+  }
+
+  if (
+    q.includes("email") ||
+    q.includes("gmail")
+  ) {
+    return "ARB's official contact email is arbglobalitservice@gmail.com.";
+  }
+
+  if (
+    q.includes("youtube")
+  ) {
+    return "You can visit the ARB Globle IT Services YouTube channel from the YouTube section of this website.";
+  }
+
+  if (
+    q.includes("who are you") ||
+    q.includes("your name")
+  ) {
+    return "I am the ARB AI Assistant, created to help global clients understand ARB Globle IT & Service, its website services, packages, payment structure and project process.";
+  }
+
+  if (
+    q.includes("start") ||
+    q.includes("order") ||
+    q.includes("buy") ||
+    q.includes("purchase")
+  ) {
+    return "To start, select a package, submit your requirements and contact ARB on WhatsApp. The official payment process should be completed only through the verified payment/invoice method.";
+  }
+
+  return "I can help with ARB services, website packages, prices from ₹20,000 to ₹6,00,000, 50% advance, domain, hosting, currencies, Cashfree, ACH/bank transfer, GST/tax information, delivery, revisions and contact details. Please ask your question in a little more detail.";
+}
+
+function sendAI() {
+
+  if (!aiInput || !aiMessages) return;
+
+  const question =
+    aiInput.value.trim();
+
+  if (!question) return;
+
+  addAIMessage(
+    question,
+    "user"
+  );
+
+  aiInput.value = "";
+
+  setTimeout(() => {
+
+    addAIMessage(
+      aiReply(question),
+      "ai"
+    );
+
+  }, 250);
+}
+
+if (aiLaunch) {
+  aiLaunch.addEventListener(
+    "click",
+    () => {
+      aiBox.classList.add("open");
+      aiInput?.focus();
+    }
+  );
+}
+
+if (aiClose) {
+  aiClose.addEventListener(
+    "click",
+    () => {
+      aiBox.classList.remove("open");
+    }
+  );
+}
+
+if (aiSend) {
+  aiSend.addEventListener(
+    "click",
+    sendAI
+  );
+}
+
+if (aiInput) {
+  aiInput.addEventListener(
+    "keydown",
+    event => {
+      if (event.key === "Enter") {
+        sendAI();
+      }
+    }
+  );
+}
+
+/* ================= MOBILE MENU ================= */
+
+const menuBtn =
+  document.getElementById("menuBtn");
+
+const mainNav =
+  document.getElementById("mainNav");
+
+if (menuBtn && mainNav) {
+
+  menuBtn.addEventListener(
+    "click",
+    () => {
+      mainNav.classList.toggle("open");
+    }
+  );
+
+  mainNav.querySelectorAll("a")
+    .forEach(link => {
+      link.addEventListener(
+        "click",
+        () => {
+          mainNav.classList.remove("open");
+        }
+      );
+    });
+}
+
+/* ================= YEAR ================= */
+
+const year =
+  document.getElementById("year");
+
+if (year) {
+  year.textContent =
+    new Date().getFullYear();
+}
+
+/* ================= DEFAULT ================= */
+
+if (countrySelect) {
+  countrySelect.value = "India";
+}
+
+if (formCountry) {
+  formCountry.value = "India";
+}
+
+if (packageSelect) {
+  packageSelect.value = "0";
+}
+
+updateCurrencyDisplay();
