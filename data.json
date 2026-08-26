@@ -1,0 +1,56 @@
+{
+  "brand": {
+    "name": "ARB Globle IT & Service",
+    "legalName": "Abodh raj bhar global information of technology & service",
+    "whatsapp": "+91 8127968129",
+    "email": "arbglobalitservice@gmail.com",
+    "youtube": "https://youtube.com/@arb_globle_it_services?si=H-PvpxzkWzXeewuz",
+    "advancePercent": 50
+  },
+
+  "packages": [
+    {"priceINR":20000,"advancePercent":50},
+    {"priceINR":50000,"advancePercent":50},
+    {"priceINR":80000,"advancePercent":50},
+    {"priceINR":120000,"advancePercent":50},
+    {"priceINR":180000,"advancePercent":50},
+    {"priceINR":200000,"advancePercent":50},
+    {"priceINR":240000,"advancePercent":50},
+    {"priceINR":280000,"advancePercent":50},
+    {"priceINR":300000,"advancePercent":50},
+    {"priceINR":320000,"advancePercent":50},
+    {"priceINR":360000,"advancePercent":50},
+    {"priceINR":400000,"advancePercent":50},
+    {"priceINR":450000,"advancePercent":50},
+    {"priceINR":500000,"advancePercent":50},
+    {"priceINR":600000,"advancePercent":50}
+  ],
+
+  "services": [
+    "Custom Website Design",
+    "Website Development",
+    "Domain Registration",
+    "Website Hosting",
+    "Business Landing Pages",
+    "AI & Digital Support"
+  ],
+
+  "payment": {
+    "india": "Cashfree / supported UPI and card methods through secure backend checkout.",
+    "international": "ACH / bank transfer instructions only through verified official invoice.",
+    "advance": "50% advance before standard project work begins.",
+    "balance": "Remaining 50% after agreed work approval/milestone.",
+    "security": "Cashfree secret keys, bank credentials and private API keys must never be placed in frontend code."
+  },
+
+  "taxPolicy": {
+    "india": "Applicable Indian GST/taxes are charged according to the actual tax status and applicable law and are shown on the invoice.",
+    "international": "International tax treatment depends on applicable law, client jurisdiction and transaction structure."
+  },
+
+  "contact": {
+    "whatsapp": "+91 8127968129",
+    "email": "arbglobalitservice@gmail.com",
+    "youtube": "https://youtube.com/@arb_globle_it_services?si=H-PvpxzkWzXeewuz"
+  }
+}
