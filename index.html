@@ -1,685 +1,1851 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#050b16">
-<meta name="description" content="ARB Globle IT & Service — Abodh raj bhar global information of technology & service. Professional websites, AI assistance, domain, hosting and global digital services.">
-<title>ARB Globle IT & Service | Global IT & Digital Services</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
-font-family:Arial,Helvetica,sans-serif;color:#eef7ff;
-background:
-radial-gradient(circle at 15% 10%,rgba(0,220,255,.16),transparent 28%),
-radial-gradient(circle at 85% 15%,rgba(120,70,255,.18),transparent 30%),
-linear-gradient(135deg,#020611,#071525 50%,#020611);
-min-height:100vh;overflow-x:hidden
-}
-body:before{
-content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;
-background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
-linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
-background-size:55px 55px
-}
-a{text-decoration:none;color:inherit}
-button,input,textarea,select{font:inherit}
-.container{width:min(1180px,92%);margin:auto}
+  <title>ARB Globle IT & Service | Global Information Technology Services</title>
 
-header{
-position:sticky;top:0;z-index:1000;
-background:rgba(2,7,18,.86);
-backdrop-filter:blur(18px);
-border-bottom:1px solid rgba(255,255,255,.08)
-}
-.nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:15px}
-.logo-area{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.5px}
-.logo{width:46px;height:46px;object-fit:contain;border-radius:13px}
-.brand-sub{display:block;color:#6eeaff;font-size:9px;letter-spacing:.3px;margin-top:3px}
-.nav-links{display:flex;gap:16px;color:#b8c9db;font-size:13px}
-.nav-links a:hover{color:#fff}
-.country select{
-background:#091729;color:#fff;border:1px solid rgba(255,255,255,.15);
-border-radius:10px;padding:9px
-}
+  <meta name="description" content="ARB Globle IT & Service - Abodh Raj Bhar Global Information of Technology & Service. Professional websites, web development, domain, hosting and digital services for clients worldwide.">
+  <meta name="keywords" content="ARB Globle IT Service, website development, global IT services, web design, domain, hosting, Abodh Raj Bhar">
+  <meta name="author" content="Abodh Raj Bhar">
 
-.hero{
-min-height:690px;display:grid;grid-template-columns:1.08fr .92fr;
-align-items:center;gap:30px;padding:70px 0
-}
-.badge{
-display:inline-flex;padding:9px 14px;border-radius:999px;
-border:1px solid rgba(0,220,255,.3);background:rgba(0,220,255,.07);
-color:#76ebff;font-size:12px
-}
-.hero h1{
-font-size:clamp(42px,6vw,76px);line-height:.98;
-letter-spacing:-3px;margin:20px 0
-}
-.gradient{
-background:linear-gradient(90deg,#fff,#6beaff,#9a82ff);
--webkit-background-clip:text;color:transparent
-}
-.hero p{max-width:680px;color:#a7b9ca;line-height:1.8;font-size:17px;margin:20px 0}
-.cta{display:flex;flex-wrap:wrap;gap:12px}
-.btn{
-display:inline-block;border:0;cursor:pointer;padding:13px 19px;
-border-radius:13px;font-weight:900
-}
-.primary{color:#03101c;background:linear-gradient(135deg,#65efff,#8a7bff)}
-.secondary{color:#fff;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12)}
+  <meta name="theme-color" content="#07111f">
 
-.hero-visual{min-height:450px;display:grid;place-items:center;position:relative}
-.orb{
-width:310px;height:310px;border-radius:50%;display:grid;place-items:center;
-background:radial-gradient(circle at 35% 25%,rgba(255,255,255,.13),transparent 20%),
-radial-gradient(circle,#112d47,#06101d 68%);
-border:1px solid rgba(255,255,255,.1);
-box-shadow:inset 0 0 50px rgba(0,225,255,.15),0 0 100px rgba(70,100,255,.14)
-}
-.hero-img{width:145px;height:145px;object-fit:contain;border-radius:50%;z-index:5}
-.ring{
-position:absolute;border:1px solid rgba(96,231,255,.55);border-radius:50%;
-animation:spin 9s linear infinite
-}
-.ring1{width:380px;height:145px;transform:rotate(24deg)}
-.ring2{width:410px;height:170px;transform:rotate(-35deg);
-border-color:rgba(153,113,255,.5);animation-duration:13s;animation-direction:reverse}
-@keyframes spin{to{transform:rotate(384deg)}}
+  <meta property="og:title" content="ARB Globle IT & Service">
+  <meta property="og:description" content="Global website design, development, domain, hosting and digital technology services.">
+  <meta property="og:type" content="website">
 
-.section{padding:78px 0}
-.section-title{text-align:center;margin-bottom:34px}
-.section-title h2{font-size:clamp(30px,4vw,46px);margin-bottom:9px}
-.section-title p{color:#8fa3b8}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.card{
-padding:22px;border:1px solid rgba(255,255,255,.1);
-background:rgba(255,255,255,.035);border-radius:20px;
-box-shadow:0 20px 60px rgba(0,0,0,.16)
-}
-.card h3{margin-bottom:10px}
-.card p{color:#91a5b9;line-height:1.7;font-size:14px}
+  <link rel="icon" href="logo.png">
 
-.packages{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.price{font-size:25px;font-weight:900;margin:10px 0 4px}
-.advance{color:#70edff;font-size:14px;margin-bottom:14px}
-.package small{color:#8095a9}
-.package .btn{margin-top:14px;width:100%;text-align:center}
+  <style>
+    :root {
+      --bg: #050b14;
+      --bg2: #071525;
+      --card: rgba(10, 24, 42, .78);
+      --line: rgba(120, 190, 255, .18);
+      --text: #f4f8ff;
+      --muted: #9db0c8;
+      --blue: #35a9ff;
+      --cyan: #00e5ff;
+      --green: #25d366;
+      --gold: #ffd166;
+      --danger: #ff6577;
+      --shadow: 0 20px 70px rgba(0,0,0,.35);
+      --radius: 22px;
+    }
 
-.trust{
-display:grid;grid-template-columns:repeat(4,1fr);gap:10px
-}
-.trust div{
-padding:13px;text-align:center;border:1px solid rgba(255,255,255,.09);
-border-radius:13px;background:rgba(255,255,255,.035);
-color:#bcefff;font-size:12px;font-weight:800
-}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-.process{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
-.num{
-width:38px;height:38px;display:grid;place-items:center;
-border-radius:50%;background:linear-gradient(135deg,#65efff,#8b79ff);
-color:#03101c;font-weight:900;margin-bottom:12px
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-.ai-grid{display:grid;grid-template-columns:1fr 330px;gap:18px}
-.ai-messages{height:330px;overflow:auto;padding-right:5px}
-.ai-msg{max-width:88%;padding:11px 13px;border-radius:15px;margin:8px 0;line-height:1.6;font-size:14px}
-.ai-msg.bot{background:rgba(0,220,255,.07);border:1px solid rgba(0,220,255,.12)}
-.ai-msg.user{margin-left:auto;background:rgba(139,121,255,.12)}
-.ai-input{display:flex;gap:8px;margin-top:10px}
-.ai-input input{
-flex:1;color:#fff;background:#081524;border:1px solid rgba(255,255,255,.13);
-border-radius:12px;padding:12px
-}
-.quick{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
-.quick button{
-color:#cfe0ef;background:rgba(255,255,255,.04);
-border:1px solid rgba(255,255,255,.1);padding:7px 9px;
-border-radius:999px;cursor:pointer;font-size:12px
-}
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 15% 10%, rgba(0,229,255,.10), transparent 28%),
+        radial-gradient(circle at 85% 30%, rgba(53,169,255,.10), transparent 28%),
+        linear-gradient(135deg, #030812, #071525 55%, #030812);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
 
-.faq{max-width:850px;margin:auto}
-.faq details{
-border:1px solid rgba(255,255,255,.09);border-radius:15px;
-padding:16px 18px;margin:10px 0;background:rgba(255,255,255,.035)
-}
-.faq summary{cursor:pointer;font-weight:800}
-.faq p{color:#91a5b9;line-height:1.7;margin-top:12px}
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-.portfolio{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.mock{
-height:150px;display:grid;place-items:center;font-size:50px;
-border-radius:15px;background:linear-gradient(135deg,#0b263d,#11152f);
-margin-bottom:14px
-}
-.portfolio p{color:#91a5b9;line-height:1.6;font-size:14px}
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
 
-.legal{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}
-.legal article{
-padding:20px;border-radius:17px;background:rgba(255,255,255,.035);
-border:1px solid rgba(255,255,255,.08)
-}
-.legal p{color:#91a5b9;line-height:1.7;font-size:14px}
+    /* ================= 3D FALLING RINGS ================= */
 
-.payment-grid,.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.field{margin:13px 0}
-.field label{display:block;color:#b6c7d9;font-size:13px;margin-bottom:7px}
-.field input,.field textarea,.field select{
-width:100%;color:#fff;background:#081524;
-border:1px solid rgba(255,255,255,.13);border-radius:12px;padding:12px
-}
-.field textarea{min-height:120px;resize:vertical}
-.summary-price{font-size:32px;font-weight:900;margin:10px 0}
-.note{
-padding:15px;border-radius:15px;background:rgba(0,220,255,.06);
-border:1px solid rgba(0,220,255,.15);color:#9db2c7;line-height:1.7;margin-top:14px
-}
-.contact-item{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.06);color:#a9bbcd}
-.contact-item a{color:#7eeaff}
+    .space-background {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: -1;
+      perspective: 1000px;
+    }
 
-.whatsapp{
-position:fixed;right:18px;bottom:18px;z-index:5000;
-background:#19c463;color:#fff;border-radius:999px;padding:13px 17px;
-font-weight:900;box-shadow:0 10px 30px rgba(0,0,0,.35)
-}
+    .ring {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      border: 3px solid rgba(0, 229, 255, .55);
+      border-radius: 50%;
+      box-shadow:
+        0 0 20px rgba(0,229,255,.35),
+        inset 0 0 18px rgba(53,169,255,.18);
+      animation: falling linear infinite;
+      transform-style: preserve-3d;
+    }
 
-.falling-ring{
-position:fixed;z-index:-1;pointer-events:none;border:1px solid rgba(103,232,255,.25);
-border-radius:50%;left:var(--x);top:-100px;
-animation:ringFall var(--d) linear infinite;animation-delay:var(--delay)
-}
-@keyframes ringFall{
-0%{top:-100px;opacity:0;transform:perspective(500px) rotateX(65deg) rotateZ(var(--r)) scale(.7)}
-12%{opacity:.7}
-100%{top:112vh;opacity:0;transform:perspective(500px) rotateX(65deg) rotateZ(calc(var(--r) + 220deg)) scale(1.25)}
-}
-footer{border-top:1px solid rgba(255,255,255,.08);padding:30px 0;color:#788da3;font-size:13px}
+    .ring:nth-child(1) {
+      left: 5%;
+      animation-duration: 12s;
+      animation-delay: -4s;
+    }
 
-@media(max-width:950px){
-.hero{grid-template-columns:1fr;text-align:center}
-.hero p{margin-left:auto;margin-right:auto}
-.cta{justify-content:center}
-.packages,.grid,.portfolio{grid-template-columns:repeat(2,1fr)}
-.process{grid-template-columns:repeat(2,1fr)}
-.ai-grid,.payment-grid,.contact-grid{grid-template-columns:1fr}
-.trust{grid-template-columns:repeat(2,1fr)}
-.nav-links{display:none}
-}
-@media(max-width:580px){
-.packages,.grid,.portfolio,.legal,.process,.trust{grid-template-columns:1fr}
-.orb{width:250px;height:250px}
-.ring1{width:290px;height:115px}
-.ring2{width:310px;height:130px}
-.hero-img{width:115px;height:115px}
-.hero{padding-top:45px}
-}
-</style>
+    .ring:nth-child(2) {
+      left: 23%;
+      width: 55px;
+      height: 55px;
+      animation-duration: 17s;
+      animation-delay: -9s;
+    }
+
+    .ring:nth-child(3) {
+      left: 48%;
+      width: 140px;
+      height: 140px;
+      animation-duration: 20s;
+      animation-delay: -12s;
+    }
+
+    .ring:nth-child(4) {
+      left: 70%;
+      width: 75px;
+      height: 75px;
+      animation-duration: 14s;
+      animation-delay: -7s;
+    }
+
+    .ring:nth-child(5) {
+      left: 88%;
+      width: 120px;
+      height: 120px;
+      animation-duration: 18s;
+      animation-delay: -14s;
+    }
+
+    @keyframes falling {
+      0% {
+        top: -180px;
+        transform: translateZ(-300px) rotateX(60deg) rotateY(0deg) scale(.5);
+        opacity: 0;
+      }
+      15% {
+        opacity: .8;
+      }
+      50% {
+        transform: translateZ(100px) rotateX(180deg) rotateY(180deg) scale(1);
+      }
+      100% {
+        top: 110vh;
+        transform: translateZ(-100px) rotateX(360deg) rotateY(360deg) scale(.65);
+        opacity: 0;
+      }
+    }
+
+    /* ================= NAV ================= */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(18px);
+      background: rgba(3, 9, 18, .78);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      max-width: 1200px;
+      margin: auto;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+    }
+
+    .brand img {
+      width: 45px;
+      height: 45px;
+      object-fit: contain;
+      border-radius: 12px;
+    }
+
+    .brand-text small {
+      display: block;
+      color: var(--muted);
+      font-size: 10px;
+      margin-top: 3px;
+    }
+
+    nav {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+    }
+
+    nav a {
+      color: #d9e8f8;
+      font-size: 14px;
+      transition: .2s;
+    }
+
+    nav a:hover {
+      color: var(--cyan);
+    }
+
+    .menu-btn {
+      display: none;
+      background: transparent;
+      border: 1px solid var(--line);
+      color: white;
+      padding: 8px 10px;
+      border-radius: 10px;
+    }
+
+    /* ================= COMMON ================= */
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 20px;
+    }
+
+    section {
+      padding: 90px 0;
+      position: relative;
+    }
+
+    .section-title {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 45px;
+    }
+
+    .section-title span {
+      color: var(--cyan);
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 2px;
+      font-weight: 700;
+    }
+
+    .section-title h2 {
+      font-size: clamp(30px, 5vw, 48px);
+      margin: 10px 0 15px;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 13px;
+      padding: 14px 21px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: .25s;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--cyan), var(--blue));
+      color: #00111d;
+      box-shadow: 0 10px 30px rgba(0,229,255,.18);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--line);
+      color: white;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+    }
+
+    /* ================= HERO ================= */
+
+    .hero {
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: 45px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      padding: 8px 13px;
+      border: 1px solid var(--line);
+      background: rgba(0,229,255,.05);
+      border-radius: 100px;
+      color: var(--cyan);
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 7vw, 76px);
+      line-height: 1.02;
+      letter-spacing: -3px;
+    }
+
+    .hero h1 strong {
+      color: var(--cyan);
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.8;
+      margin: 25px 0;
+      max-width: 720px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .trust-line {
+      margin-top: 22px;
+      color: #b9c9db;
+      font-size: 13px;
+    }
+
+    .hero-visual {
+      min-height: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-orbit {
+      width: 300px;
+      height: 300px;
+      border: 1px solid rgba(0,229,255,.35);
+      border-radius: 50%;
+      position: relative;
+      animation: orbit 15s linear infinite;
+      box-shadow: 0 0 80px rgba(0,229,255,.08);
+    }
+
+    .hero-orbit::before,
+    .hero-orbit::after {
+      content: "";
+      position: absolute;
+      inset: 35px;
+      border: 1px solid rgba(53,169,255,.25);
+      border-radius: 50%;
+    }
+
+    .hero-orbit::after {
+      inset: 80px;
+      border-color: rgba(0,229,255,.4);
+    }
+
+    .hero-logo {
+      position: absolute;
+      inset: 95px;
+      width: 110px;
+      height: 110px;
+      object-fit: contain;
+      border-radius: 25px;
+      animation: counter 15s linear infinite;
+    }
+
+    @keyframes orbit {
+      from { transform: rotate(0deg) rotateX(60deg); }
+      to { transform: rotate(360deg) rotateX(60deg); }
+    }
+
+    @keyframes counter {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(-360deg); }
+    }
+
+    /* ================= SERVICES ================= */
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .service-card {
+      padding: 28px;
+    }
+
+    .icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      background: rgba(0,229,255,.08);
+      color: var(--cyan);
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    .service-card h3 {
+      margin-bottom: 12px;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    /* ================= WHY ================= */
+
+    .benefit {
+      padding: 25px;
+    }
+
+    .benefit h3 {
+      margin-bottom: 10px;
+    }
+
+    .benefit p {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ================= PROCESS ================= */
+
+    .process {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+
+    .step {
+      padding: 25px;
+      position: relative;
+    }
+
+    .step-num {
+      font-size: 35px;
+      color: var(--cyan);
+      font-weight: 900;
+      margin-bottom: 15px;
+    }
+
+    .step p {
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    /* ================= PACKAGES ================= */
+
+    .package-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .package {
+      padding: 28px;
+      position: relative;
+    }
+
+    .package.featured {
+      border-color: rgba(0,229,255,.6);
+      transform: translateY(-8px);
+    }
+
+    .package h3 {
+      font-size: 24px;
+    }
+
+    .package .price {
+      font-size: 30px;
+      font-weight: 900;
+      margin: 15px 0 4px;
+      color: var(--cyan);
+    }
+
+    .package small {
+      color: var(--muted);
+    }
+
+    .package ul {
+      list-style: none;
+      margin: 20px 0;
+    }
+
+    .package li {
+      margin: 10px 0;
+      color: #d4e2ef;
+      font-size: 14px;
+    }
+
+    .package li::before {
+      content: "✓";
+      color: var(--cyan);
+      margin-right: 8px;
+    }
+
+    /* ================= PRICE TABLE ================= */
+
+    .price-table-wrap {
+      overflow-x: auto;
+      border-radius: 18px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 550px;
+    }
+
+    th, td {
+      padding: 16px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+    }
+
+    th {
+      color: var(--cyan);
+      background: rgba(0,229,255,.05);
+    }
+
+    td {
+      color: #d9e7f4;
+    }
+
+    /* ================= PORTFOLIO ================= */
+
+    .portfolio-card {
+      padding: 28px;
+      text-align: center;
+    }
+
+    .portfolio-card img {
+      width: 100%;
+      max-width: 280px;
+      height: 170px;
+      object-fit: cover;
+      border-radius: 15px;
+      margin-bottom: 18px;
+    }
+
+    /* ================= FAQ ================= */
+
+    .faq-list {
+      max-width: 850px;
+      margin: auto;
+    }
+
+    details {
+      margin-bottom: 12px;
+      padding: 20px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 15px;
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    details p {
+      color: var(--muted);
+      line-height: 1.7;
+      margin-top: 15px;
+    }
+
+    /* ================= CONTACT ================= */
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 25px;
+    }
+
+    .contact-info,
+    .form-card {
+      padding: 30px;
+    }
+
+    .contact-item {
+      padding: 15px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .contact-item strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .contact-item span,
+    .contact-item a {
+      color: var(--muted);
+    }
+
+    form {
+      display: grid;
+      gap: 14px;
+    }
+
+    .two {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    label {
+      color: #d9e7f4;
+      font-size: 13px;
+      font-weight: 700;
+      display: grid;
+      gap: 7px;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 13px;
+      border-radius: 11px;
+      border: 1px solid var(--line);
+      background: rgba(0,0,0,.25);
+      color: white;
+      outline: none;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    option {
+      background: #071525;
+    }
+
+    /* ================= BADGES ================= */
+
+    .badges {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 35px;
+    }
+
+    .badge {
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.035);
+      border-radius: 100px;
+      color: #d8e7f5;
+      font-size: 12px;
+    }
+
+    /* ================= POLICY ================= */
+
+    .policy {
+      padding: 28px;
+      margin-bottom: 15px;
+    }
+
+    .policy h3 {
+      color: var(--cyan);
+      margin-bottom: 10px;
+    }
+
+    .policy p {
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 50px 0 30px;
+      background: rgba(0,0,0,.25);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 30px;
+    }
+
+    footer h3,
+    footer h4 {
+      margin-bottom: 15px;
+    }
+
+    footer p,
+    footer a {
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 14px;
+    }
+
+    .copyright {
+      border-top: 1px solid var(--line);
+      margin-top: 30px;
+      padding-top: 20px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+
+    /* ================= WHATSAPP ================= */
+
+    .whatsapp {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 500;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--green);
+      color: white;
+      font-size: 28px;
+      box-shadow: 0 10px 35px rgba(37,211,102,.35);
+    }
+
+    /* ================= AI ASSISTANT ================= */
+
+    .ai-launch {
+      position: fixed;
+      right: 20px;
+      bottom: 90px;
+      z-index: 501;
+      border: 1px solid rgba(0,229,255,.4);
+      background: rgba(4,18,32,.95);
+      color: white;
+      padding: 11px 15px;
+      border-radius: 100px;
+      cursor: pointer;
+      box-shadow: 0 10px 35px rgba(0,0,0,.35);
+    }
+
+    .ai-box {
+      position: fixed;
+      right: 20px;
+      bottom: 145px;
+      width: min(380px, calc(100vw - 30px));
+      height: 540px;
+      z-index: 600;
+      background: #071525;
+      border: 1px solid rgba(0,229,255,.3);
+      border-radius: 22px;
+      box-shadow: 0 25px 80px rgba(0,0,0,.55);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .ai-box.open {
+      display: flex;
+    }
+
+    .ai-head {
+      padding: 17px;
+      background: linear-gradient(135deg, #0b2945, #06131f);
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .ai-head small {
+      display: block;
+      color: var(--cyan);
+      margin-top: 4px;
+    }
+
+    .ai-close {
+      background: transparent;
+      border: 0;
+      color: white;
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    .ai-messages {
+      flex: 1;
+      padding: 15px;
+      overflow-y: auto;
+    }
+
+    .message {
+      max-width: 88%;
+      padding: 11px 13px;
+      margin-bottom: 10px;
+      border-radius: 14px;
+      line-height: 1.5;
+      font-size: 13px;
+    }
+
+    .message.ai {
+      background: rgba(0,229,255,.08);
+      border: 1px solid rgba(0,229,255,.12);
+    }
+
+    .message.user {
+      margin-left: auto;
+      background: rgba(53,169,255,.18);
+    }
+
+    .ai-input {
+      display: flex;
+      gap: 8px;
+      padding: 12px;
+      border-top: 1px solid var(--line);
+    }
+
+    .ai-input input {
+      flex: 1;
+    }
+
+    .ai-input button {
+      border: 0;
+      border-radius: 10px;
+      padding: 0 15px;
+      background: var(--cyan);
+      color: #00111d;
+      font-weight: 800;
+    }
+
+    /* ================= RESPONSIVE ================= */
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-visual {
+        min-height: 280px;
+      }
+
+      .grid-3,
+      .package-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .process {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      nav {
+        display: none;
+        position: absolute;
+        left: 15px;
+        right: 15px;
+        top: 75px;
+        padding: 18px;
+        background: #071525;
+        border: 1px solid var(--line);
+        border-radius: 15px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav.open {
+        display: flex;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+    }
+
+    @media (max-width: 600px) {
+      section {
+        padding: 65px 0;
+      }
+
+      .hero h1 {
+        letter-spacing: -2px;
+      }
+
+      .grid-3,
+      .package-grid,
+      .process,
+      .footer-grid,
+      .two {
+        grid-template-columns: 1fr;
+      }
+
+      .package.featured {
+        transform: none;
+      }
+
+      .hero-orbit {
+        width: 240px;
+        height: 240px;
+      }
+
+      .hero-logo {
+        inset: 75px;
+        width: 90px;
+        height: 90px;
+      }
+
+      .ai-box {
+        right: 10px;
+        bottom: 135px;
+      }
+
+      .whatsapp {
+        right: 14px;
+        bottom: 15px;
+      }
+
+      .ai-launch {
+        right: 14px;
+        bottom: 83px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
-<div class="container nav">
-<a class="logo-area" href="#home">
-<img class="logo" src="logo.png" alt="ARB Globle IT & Service Logo"
-onerror="this.style.display='none'">
-<span>
-ARB GLOBLE IT & SERVICE
-<span class="brand-sub">Abodh raj bhar global information of technology & service</span>
-</span>
-</a>
+  <!-- 3D FALLING RINGS -->
+  <div class="space-background" aria-hidden="true">
+    <div class="ring"></div>
+    <div class="ring"></div>
+    <div class="ring"></div>
+    <div class="ring"></div>
+    <div class="ring"></div>
+  </div>
 
-<nav class="nav-links">
-<a href="#services">Services</a>
-<a href="#plans">Packages</a>
-<a href="#how">How It Works</a>
-<a href="#ai">AI Assistant</a>
-<a href="#faq">FAQ</a>
-<a href="#contact">Contact</a>
-</nav>
+  <!-- HEADER -->
+  <header>
+    <div class="nav">
+      <a href="#home" class="brand">
+        <img src="logo.png" alt="ARB Globle IT & Service Logo">
+        <div class="brand-text">
+          ARB Globle IT & Service
+          <small>Abodh Raj Bhar Global Information of Technology & Service</small>
+        </div>
+      </a>
 
-<div class="country">
-<select id="countrySelect"></select>
-</div>
-</div>
-</header>
+      <button class="menu-btn" id="menuBtn">☰</button>
 
-<main>
+      <nav id="mainNav">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#packages">Packages</a>
+        <a href="#process">How It Works</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+        <a href="#contact" class="btn btn-primary">Start Your Website</a>
+      </nav>
+    </div>
+  </header>
 
-<section class="hero" id="home">
-<div class="container" style="display:contents">
-<div>
-<span class="badge">🌐 GLOBAL IT & DIGITAL SERVICES</span>
-<h1>Your Global Business Deserves a <span class="gradient">Website That Works Everywhere.</span></h1>
-<p>
-Professional website design, development, AI assistance, domain and hosting support
-for businesses and clients worldwide.
-</p>
+  <!-- HERO -->
+  <main>
 
-<div class="cta">
-<a class="btn primary" href="#plans">Build My Website</a>
-<a class="btn secondary" href="#services">View Services</a>
-<a class="btn secondary" href="#contact">Request Custom Quote</a>
-</div>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
 
-<p style="font-size:12px;margin-top:18px">
-Custom design • Global reach • Secure payment process • AI assistance
-</p>
-</div>
+        <div>
+          <div class="eyebrow">GLOBAL INFORMATION TECHNOLOGY SERVICES</div>
 
-<div class="hero-visual">
-<div class="orb">
-<img class="hero-img" src="image.png" alt="ARB Global IT Services"
-onerror="this.onerror=null;this.src='logo.png'">
-<div class="ring ring1"></div>
-<div class="ring ring2"></div>
-</div>
-</div>
-</div>
-</section>
+          <h1>
+            Your Global Business Deserves a
+            <strong>Website That Works Everywhere.</strong>
+          </h1>
 
-<section class="section">
-<div class="container">
-<div class="trust">
-<div>🔒 SSL Secure</div>
-<div>💳 Cashfree Secure Checkout</div>
-<div>🌐 Global Client Support</div>
-<div>🛡️ Secure Payment Processing</div>
-</div>
-</div>
-</section>
+          <p>
+            ARB Globle IT & Service helps businesses worldwide build professional
+            websites, landing pages and digital solutions with domain, hosting,
+            payment support and a complete online setup.
+          </p>
 
-<section class="section" id="services">
-<div class="container">
-<div class="section-title">
-<h2>Everything You Need to Go Online</h2>
-<p>Professional technology services for local and international clients.</p>
-</div>
-<div class="grid" id="servicesGrid"></div>
-</div>
-</section>
+          <div class="hero-actions">
+            <a href="#packages" class="btn btn-primary">Build My Website</a>
+            <a href="#services" class="btn btn-secondary">View Our Services</a>
+          </div>
 
-<section class="section" id="plans">
-<div class="container">
-<div class="section-title">
-<h2>Choose Your Website Solution</h2>
-<p>Every package requires 50% advance. Remaining amount follows the agreed milestone.</p>
-</div>
-<div class="packages" id="packagesGrid"></div>
-</div>
-</section>
+          <div class="trust-line">
+            ✓ Custom Design &nbsp; ✓ Global Reach &nbsp; ✓ 50% Advance &nbsp;
+            ✓ Domain & Hosting Support
+          </div>
+        </div>
 
-<section class="section" id="how">
-<div class="container">
-<div class="section-title">
-<h2>From Your Idea to a Live Website</h2>
-<p>Four simple steps.</p>
-</div>
-<div class="process" id="processGrid"></div>
-</div>
-</section>
+        <div class="hero-visual">
+          <div class="hero-orbit">
+            <img class="hero-logo" src="logo.png" alt="ARB Globle IT & Service">
+          </div>
+        </div>
 
-<section class="section" id="ai">
-<div class="container">
-<div class="section-title">
-<h2>🤖 ARB Global AI Assistant</h2>
-<p>Ask about services, packages, payment, policies, domain, hosting, tax and global support.</p>
-</div>
+      </div>
+    </section>
 
-<div class="ai-grid">
-<div class="card">
-<div class="ai-messages" id="aiMessages"></div>
-<div class="ai-input">
-<input id="aiInput" placeholder="Ask your question..." autocomplete="off">
-<button class="btn primary" id="aiSend">Ask AI</button>
-</div>
-<div class="quick" id="quickPrompts"></div>
-</div>
+    <!-- INTRO -->
+    <section>
+      <div class="container">
+        <div class="section-title">
+          <span>Why ARB</span>
+          <h2>A Website Made for Your Business — Not a Generic Template</h2>
+          <p>
+            Every business is different. We create websites around your business,
+            customers, services and goals — whether you operate locally,
+            nationally or internationally.
+          </p>
+        </div>
+      </div>
+    </section>
 
-<div class="card">
-<h3>Global Client Support</h3>
-<p>
-The ARB assistant is configured with the business information,
-services, package prices, payment rules and policies published on this website.
-</p>
-<div class="note">
-<strong>50% Advance</strong><br>
-Standard projects require 50% advance before work begins.
-</div>
-<div class="note">
-<strong>India Payment</strong><br>
-Cashfree / supported UPI and card methods through secure checkout.
-</div>
-<div class="note">
-<strong>International Payment</strong><br>
-ACH / bank transfer instructions only through verified official invoice.
-</div>
-</div>
-</div>
-</div>
-</section>
+    <!-- SERVICES -->
+    <section id="services">
+      <div class="container">
 
-<section class="section" id="portfolio">
-<div class="container">
-<div class="section-title">
-<h2>Portfolio / Live Work</h2>
-<p>Demo concepts and project examples.</p>
-</div>
+        <div class="section-title">
+          <span>Our Services</span>
+          <h2>Everything You Need to Go Online</h2>
+          <p>
+            From design to launch, ARB provides a complete technology service
+            experience for global clients.
+          </p>
+        </div>
 
-<div class="portfolio">
-<div class="card">
-<div class="mock">🌐</div>
-<h3>Business Website</h3>
-<p>Responsive corporate/business website concept.</p>
-<a class="btn secondary" href="#contact">Request Similar Website</a>
-</div>
+        <div class="grid-3">
 
-<div class="card">
-<div class="mock">🛒</div>
-<h3>Business / E-Commerce</h3>
-<p>Product and service focused website concept.</p>
-<a class="btn secondary" href="#contact">Request Similar Website</a>
-</div>
+          <div class="card service-card">
+            <div class="icon">🎨</div>
+            <h3>Custom Website Design</h3>
+            <p>
+              Modern responsive websites designed around your brand,
+              audience, colours and business requirements.
+            </p>
+          </div>
 
-<div class="card">
-<div class="mock">🤖</div>
-<h3>AI Website Assistant</h3>
-<p>AI-assisted client support and FAQ experience.</p>
-<a class="btn secondary" href="#ai">Try AI Assistant</a>
-</div>
-</div>
-</div>
-</section>
+          <div class="card service-card">
+            <div class="icon">💻</div>
+            <h3>Website Development</h3>
+            <p>
+              Functional websites with clear navigation, strong calls to action
+              and a smooth user experience.
+            </p>
+          </div>
 
-<section class="section" id="faq">
-<div class="container">
-<div class="section-title">
-<h2>Frequently Asked Questions</h2>
-<p>Important questions for every client.</p>
-</div>
+          <div class="card service-card">
+            <div class="icon">🌐</div>
+            <h3>Domain Registration</h3>
+            <p>
+              Professional domain setup and connection to your website for
+              a stronger online identity.
+            </p>
+          </div>
 
-<div class="faq">
-<details>
-<summary>Is the 50% advance refundable?</summary>
-<p>
-The standard policy is that the 50% project advance is non-refundable after
-project work or reserved project resources have started, subject to the written
-agreement, applicable law and any mandatory statutory rights.
-</p>
-</details>
+          <div class="card service-card">
+            <div class="icon">☁️</div>
+            <h3>Website Hosting</h3>
+            <p>
+              Hosting setup and website deployment support for keeping your
+              business online.
+            </p>
+          </div>
 
-<details>
-<summary>When do I pay the remaining 50%?</summary>
-<p>
-The remaining 50% is payable after the agreed work/milestone is completed and
-approved, or according to the written quotation/invoice.
-</p>
-</details>
+          <div class="card service-card">
+            <div class="icon">🚀</div>
+            <h3>Business Landing Pages</h3>
+            <p>
+              Focused landing pages for products, campaigns, services,
+              enquiries and conversions.
+            </p>
+          </div>
 
-<details>
-<summary>How many days does delivery take?</summary>
-<p>
-Delivery depends on pages, features, content, integrations and client feedback.
-The confirmed timeline is mentioned in the quotation/project agreement.
-</p>
-</details>
+          <div class="card service-card">
+            <div class="icon">🛠️</div>
+            <h3>Website Updates & Support</h3>
+            <p>
+              Improve an existing website, add sections, update content or
+              prepare your online presence for growth.
+            </p>
+          </div>
 
-<details>
-<summary>Do you work with international clients?</summary>
-<p>
-Yes. ARB Globle IT & Service is designed to serve clients internationally.
-Currency display, international support and payment information are provided
-for global clients.
-</p>
-</details>
+        </div>
+      </div>
+    </section>
 
-<details>
-<summary>Do you provide domain and hosting?</summary>
-<p>
-Yes. Domain registration/setup and hosting support can be included with a website project.
-</p>
-</details>
+    <!-- WHY CHOOSE US -->
+    <section>
+      <div class="container">
 
-<details>
-<summary>What payment methods are available?</summary>
-<p>
-India clients can use supported Cashfree payment methods. International clients
-can be provided verified ACH/bank-transfer instructions through an official invoice.
-</p>
-</details>
+        <div class="section-title">
+          <span>Our Advantage</span>
+          <h2>One Partner for Your Complete Online Presence</h2>
+        </div>
 
-<details>
-<summary>Is GST charged?</summary>
-<p>
-For India, applicable taxes/GST are charged according to the applicable tax status
-and invoice. If the business is registered and the service is taxable, the applicable
-GST is shown on the invoice. International tax treatment depends on applicable law.
-</p>
-</details>
+        <div class="grid-3">
 
-<details>
-<summary>Can I request revisions?</summary>
-<p>
-Yes. Revisions are handled according to the package and written project scope.
-</p>
-</details>
-</div>
-</div>
-</section>
+          <div class="card benefit">
+            <h3>Built Around Your Requirements</h3>
+            <p>We shape the website around your business, audience and goals.</p>
+          </div>
 
-<section class="section" id="policies">
-<div class="container">
-<div class="section-title">
-<h2>Global & India Policies</h2>
-<p>Clear information before payment.</p>
-</div>
+          <div class="card benefit">
+            <h3>Professional on Every Screen</h3>
+            <p>Responsive experience across mobile, tablet and desktop.</p>
+          </div>
 
-<div class="legal">
-<article>
-<h3>Payment Policy</h3>
-<p>
-50% advance is required for standard projects before work begins.
-The remaining 50% is payable after the agreed work approval/milestone.
-</p>
-</article>
+          <div class="card benefit">
+            <h3>Domain & Hosting Options</h3>
+            <p>Arrange your website, domain and hosting together.</p>
+          </div>
 
-<article>
-<h3>Refund & Cancellation</h3>
-<p>
-The standard 50% advance is non-refundable after project work/resources have
-started, subject to the written agreement and applicable law.
-</p>
-</article>
+          <div class="card benefit">
+            <h3>Ready for Global Clients</h3>
+            <p>Professional online presence for local and international businesses.</p>
+          </div>
 
-<article>
-<h3>India Tax Policy</h3>
-<p>
-Applicable Indian taxes/GST are charged according to the business's actual
-registration and applicable law and are shown on the invoice.
-</p>
-</article>
+          <div class="card benefit">
+            <h3>Clear Communication</h3>
+            <p>Stay informed from requirements to review and launch.</p>
+          </div>
 
-<article>
-<h3>International Clients</h3>
-<p>
-International clients may have tax, VAT, withholding or other obligations in
-their own jurisdiction. Clients are responsible for their applicable local laws.
-</p>
-</article>
+          <div class="card benefit">
+            <h3>Conversion Focused</h3>
+            <p>Important sections are designed to guide visitors toward action.</p>
+          </div>
 
-<article>
-<h3>Privacy</h3>
-<p>
-Client information should be collected only for project communication,
-quotation, payment processing, delivery and support.
-</p>
-</article>
+        </div>
+      </div>
+    </section>
 
-<article>
-<h3>Payment Security</h3>
-<p>
-Cashfree secret keys, bank credentials and private API keys must never be
-published in frontend HTML or JavaScript.
-</p>
-</article>
+    <!-- PROCESS -->
+    <section id="process">
+      <div class="container">
 
-<article>
-<h3>Terms & Conditions</h3>
-<p>
-Final scope, price, timeline, revisions, payment milestones and deliverables
-are governed by the accepted quotation/invoice/project agreement.
-</p>
-</article>
+        <div class="section-title">
+          <span>How It Works</span>
+          <h2>From Your Idea to a Live Website in Four Simple Steps</h2>
+        </div>
 
-<article>
-<h3>Global Service Policy</h3>
-<p>
-Services are provided according to agreed scope and applicable laws.
-International payment instructions are supplied only through verified official channels.
-</p>
-</article>
-</div>
-</div>
-</section>
+        <div class="process">
 
-<section class="section" id="payment">
-<div class="container">
-<div class="section-title">
-<h2>Start Your Website Project</h2>
-<p>Choose a package and send your requirements.</p>
-</div>
+          <div class="card step">
+            <div class="step-num">01</div>
+            <h3>Share Requirements</h3>
+            <p>
+              Tell us about your business, services, style, audience and website goals.
+            </p>
+          </div>
 
-<div class="payment-grid">
+          <div class="card step">
+            <div class="step-num">02</div>
+            <h3>Choose Solution</h3>
+            <p>
+              Select the package that matches your project. Domain and hosting
+              can be added.
+            </p>
+          </div>
 
-<div class="card">
-<div class="field">
-<label>Full Name</label>
-<input id="fullName" placeholder="Your name">
-</div>
+          <div class="card step">
+            <div class="step-num">03</div>
+            <h3>We Build</h3>
+            <p>
+              We design, organise content and develop the key pages and features.
+            </p>
+          </div>
 
-<div class="field">
-<label>Business / Brand Name</label>
-<input id="businessName" placeholder="Business name">
-</div>
+          <div class="card step">
+            <div class="step-num">04</div>
+            <h3>Review & Launch</h3>
+            <p>
+              Review the work, provide agreed changes and launch your website.
+            </p>
+          </div>
 
-<div class="field">
-<label>Email</label>
-<input id="email" type="email" value="arbglobalitservice@gmail.com">
-</div>
+        </div>
+      </div>
+    </section>
 
-<div class="field">
-<label>WhatsApp</label>
-<input id="whatsapp" value="+91 8127968129">
-</div>
+    <!-- PACKAGES -->
+    <section id="packages">
+      <div class="container">
 
-<div class="field">
-<label>Website Type / Requirements</label>
-<textarea id="requirements" placeholder="Tell us what you want to build..."></textarea>
-</div>
+        <div class="section-title">
+          <span>Website Packages</span>
+          <h2>Choose the Right Starting Point</h2>
+          <p>
+            Every package requires a 50% advance. Remaining 50% is payable
+            according to the agreed project milestone/approval.
+          </p>
+        </div>
 
-<button class="btn primary" style="width:100%" onclick="sendRequirements()">
-Send My Requirements
-</button>
-</div>
+        <div class="package-grid">
 
-<div class="card">
-<h3>Selected Package</h3>
-<p id="selectedPackage">Choose a package above.</p>
-<div class="summary-price" id="selectedPrice">—</div>
-<div class="advance" id="selectedAdvance">50% Advance: —</div>
+          <div class="card package">
+            <h3>Starter</h3>
+            <div class="price">₹20,000</div>
+            <small>50% advance: ₹10,000</small>
 
-<div class="note">
-<strong>India Payment</strong><br>
-Cashfree / supported UPI and card checkout can be connected through secure backend.
-</div>
+            <ul>
+              <li>Professional homepage</li>
+              <li>About & services</li>
+              <li>Contact section</li>
+              <li>Mobile responsive</li>
+              <li>Basic launch support</li>
+            </ul>
 
-<div class="note">
-<strong>Global Payment</strong><br>
-ACH / bank transfer instructions are supplied only through verified official invoice.
-</div>
+            <button class="btn btn-primary package-btn" data-price="20000" data-name="Starter Website">
+              Choose Starter
+            </button>
+          </div>
 
-<div class="note">
-<strong>Payment Trust</strong><br>
-SSL Secure • Cashfree Secure Checkout • Secure Payment Processing
-</div>
-</div>
+          <div class="card package featured">
+            <h3>Business</h3>
+            <div class="price">₹80,000</div>
+            <small>50% advance: ₹40,000</small>
 
-</div>
-</div>
-</section>
+            <ul>
+              <li>Multiple custom pages</li>
+              <li>Custom design direction</li>
+              <li>Services/product sections</li>
+              <li>Enquiry form</li>
+              <li>Domain connection</li>
+              <li>Hosting setup option</li>
+            </ul>
 
-<section class="section" id="contact">
-<div class="container">
-<div class="section-title">
-<h2>Contact ARB Globle IT & Service</h2>
-<p>Global client support.</p>
-</div>
+            <button class="btn btn-primary package-btn" data-price="80000" data-name="Business Website">
+              Choose Business
+            </button>
+          </div>
 
-<div class="contact-grid">
-<div class="card">
-<h3>Official Contact</h3>
+          <div class="card package">
+            <h3>Growth</h3>
+            <div class="price">₹1,80,000</div>
+            <small>50% advance: ₹90,000</small>
 
-<div class="contact-item">
-WhatsApp:
-<a href="https://wa.me/918127968129" target="_blank">
-+91 81279 68129
-</a>
-</div>
+            <ul>
+              <li>Advanced custom website</li>
+              <li>Landing pages</li>
+              <li>Conversion focused layout</li>
+              <li>Domain & hosting option</li>
+              <li>Content guidance</li>
+              <li>Post-launch support</li>
+            </ul>
 
-<div class="contact-item">
-Email:
-<a href="mailto:arbglobalitservice@gmail.com">
-arbglobalitservice@gmail.com
-</a>
-</div>
+            <button class="btn btn-primary package-btn" data-price="180000" data-name="Growth Website">
+              Choose Growth
+            </button>
+          </div>
 
-<div class="contact-item">
-YouTube:
-<a href="https://youtube.com/@arb_globle_it_services?si=H-PvpxzkWzXeewuz"
-target="_blank">
-ARB Globle IT & Service
-</a>
-</div>
-</div>
+        </div>
 
-<div class="card">
-<h3>Business Identity</h3>
-<p>
-<strong>ARB Globle IT & Service</strong><br><br>
-Abodh raj bhar global information of technology & service
-</p>
-<br>
-<p>
-Professional website design, development, AI assistance,
-domain, hosting and global digital services.
-</p>
-</div>
-</div>
-</div>
-</section>
+        <div style="height:30px"></div>
 
-</main>
+        <div class="card price-table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Project Value</th>
+                <th>50% Advance</th>
+              </tr>
+            </thead>
+            <tbody id="priceTable"></tbody>
+          </table>
+        </div>
 
-<a class="whatsapp"
-href="https://wa.me/918127968129?text=Hello%20ARB%20Globle%20IT%20%26%20Service%2C%20I%20want%20to%20discuss%20a%20website."
-target="_blank" rel="noopener">
-💬 WhatsApp
-</a>
+      </div>
+    </section>
 
-<footer>
-<div class="container">
-© <span id="year"></span> ARB Globle IT & Service —
-Abodh raj bhar global information of technology & service.
-<br><br>
-WhatsApp: +91 81279 68129 ·
-Email: arbglobalitservice@gmail.com ·
-Global Client Support
-</div>
-</footer>
+    <!-- CURRENCY -->
+    <section>
+      <div class="container">
 
-<script src="script.js"></script>
+        <div class="section-title">
+          <span>Global Currency</span>
+          <h2>See Prices in Your Local Currency</h2>
+          <p>
+            Select your country. The website will display an indicative local
+            currency value for the project and 50% advance.
+          </p>
+        </div>
+
+        <div class="card" style="padding:25px;max-width:650px;margin:auto">
+
+          <label>
+            Select Country
+            <select id="countrySelect"></select>
+          </label>
+
+          <div style="margin-top:25px">
+            <p style="color:var(--muted)">Selected Package</p>
+            <h3 id="currencyPackage">Starter Website</h3>
+
+            <p style="margin-top:15px;color:var(--muted)">Project Value</p>
+            <h2 id="convertedPrice" style="color:var(--cyan)">₹20,000</h2>
+
+            <p style="margin-top:15px;color:var(--muted)">50% Advance</p>
+            <h2 id="convertedAdvance" style="color:var(--gold)">₹10,000</h2>
+          </div>
+
+          <p style="margin-top:20px;color:var(--muted);font-size:12px">
+            Currency conversion is an indicative display only. Final invoice,
+            payment amount and applicable taxes should be confirmed before payment.
+          </p>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section id="portfolio">
+      <div class="container">
+
+        <div class="section-title">
+          <span>Portfolio</span>
+          <h2>Live Work & Digital Projects</h2>
+          <p>Explore our online work and technology projects.</p>
+        </div>
+
+        <div class="grid-3">
+
+          <div class="card portfolio-card">
+            <img src="girl.png" alt="ARB project preview">
+            <h3>ARB Digital Experience</h3>
+            <p style="color:var(--muted);margin:10px 0 18px">
+              Interactive responsive web experience.
+            </p>
+            <a class="btn btn-secondary" href="https://theaboverse.github.io" target="_blank">
+              View Live
+            </a>
+          </div>
+
+          <div class="card portfolio-card">
+            <img src="logo.png" alt="ARB website project">
+            <h3>Business Website</h3>
+            <p style="color:var(--muted);margin:10px 0 18px">
+              Professional business website solution.
+            </p>
+            <a class="btn btn-secondary" href="#contact">
+              Start Similar Project
+            </a>
+          </div>
+
+          <div class="card portfolio-card">
+            <img src="logo.png" alt="Global IT project">
+            <h3>Global IT Solution</h3>
+            <p style="color:var(--muted);margin:10px 0 18px">
+              Technology and digital service solution.
+            </p>
+            <a class="btn btn-secondary" href="#contact">
+              Request Project
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECURITY -->
+    <section>
+      <div class="container">
+
+        <div class="section-title">
+          <span>Payment & Trust</span>
+          <h2>Built for Secure Global Client Communication</h2>
+          <p>
+            Payment credentials and secret keys should always remain on a secure
+            server and must never be placed directly in frontend source code.
+          </p>
+        </div>
+
+        <div class="badges">
+          <div class="badge">🔒 SSL Secure</div>
+          <div class="badge">💳 Cashfree Secure Checkout</div>
+          <div class="badge">🛡️ Secure Payment Processing</div>
+          <div class="badge">🌍 Global Client Support</div>
+          <div class="badge">🏦 Global ACH / Bank Transfer</div>
+          <div class="badge">🇮🇳 India Cashfree / UPI / Cards</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="container">
+
+        <div class="section-title">
+          <span>FAQ</span>
+          <h2>Questions Global Clients Usually Ask</h2>
+        </div>
+
+        <div class="faq-list">
+
+          <details>
+            <summary>Is the 50% advance refundable?</summary>
+            <p>
+              The standard project policy is that the 50% advance is non-refundable
+              once the project has been accepted and work has started, subject to
+              the applicable written agreement and consumer laws.
+            </p>
+          </details>
+
+          <details>
+            <summary>When is the remaining 50% payable?</summary>
+            <p>
+              The remaining 50% is payable after the agreed project milestone,
+              review or work approval, as specified in the project agreement.
+            </p>
+          </details>
+
+          <details>
+            <summary>How long does delivery take?</summary>
+            <p>
+              Delivery time depends on project scope, number of pages, features,
+              content and client feedback. A delivery timeline should be confirmed
+              before the project begins.
+            </p>
+          </details>
+
+          <details>
+            <summary>Do you work with international clients?</summary>
+            <p>
+              Yes. ARB Globle IT & Service is designed to serve clients in India
+              and international markets.
+            </p>
+          </details>
+
+          <details>
+            <summary>Which payment methods are available?</summary>
+            <p>
+              India clients may use supported Cashfree payment methods such as
+              UPI/cards where enabled. International clients may use approved
+              global payment or bank-transfer methods subject to availability.
+            </p>
+          </details>
+
+          <details>
+            <summary>Is GST applicable?</summary>
+            <p>
+              Applicable Indian taxes should be calculated according to the
+              customer's location, transaction structure and applicable law.
+              Do not assume a fixed tax treatment without the required business
+              and tax details.
+            </p>
+          </details>
+
+          <details>
+            <summary>Can I request revisions?</summary>
+            <p>
+              Yes. Revisions can be requested according to the number of revisions
+              and scope agreed in the project package or written project agreement.
+            </p>
+          </details>
+
+          <details>
+            <summary>Can ARB connect my existing domain?</summary>
+            <p>
+              Yes. Existing domains can generally be connected to the new website
+              subject to registrar and DNS access.
+            </p>
+          </details>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- POLICIES -->
+    <section>
+      <div class="container">
+
+        <div class="section-title">
+          <span>Policies</span>
+          <h2>Global & India Policies</h2>
+        </div>
+
+        <div class="card policy">
+          <h3>Payment Policy</h3>
+          <p>
+            Standard projects require 50% advance before work begins.
+            The remaining 50% is payable after the agreed milestone, review
+            or approval. Exact payment milestones should be recorded in the
+            project agreement.
+          </p>
+        </div>
+
+        <div class="card policy">
+          <h3>Refund & Cancellation Policy</h3>
+          <p>
+            The 50% advance is generally non-refundable after project acceptance
+            and commencement of work, subject to the written agreement and
+            applicable consumer protection laws.
+          </p>
+        </div>
+
+        <div class="card policy">
+          <h3>Privacy Policy</h3>
+          <p>
+            Client information should only be collected for legitimate business,
+            communication, project delivery and payment purposes. Payment secrets
+            must never be stored in frontend code.
+          </p>
+        </div>
+
+        <div class="card policy">
+          <h3>Global & Local Laws</h3>
+          <p>
+            Clients are responsible for providing accurate information and
+            complying with laws applicable to their business and location.
+            ARB Globle IT & Service will operate according to applicable laws
+            and contractual obligations.
+          </p>
+        </div>
+
+        <div class="card policy">
+          <h3>Taxes</h3>
+          <p>
+            Applicable taxes, GST, VAT or other charges depend on the transaction,
+            customer location and applicable law. Final tax treatment should be
+            confirmed on the invoice before payment.
+          </p>
+        </div>
+
+        <div class="card policy">
+          <h3>Payment Security</h3>
+          <p>
+            Never publish Cashfree API secrets, ACH credentials, bank passwords,
+            private keys or other confidential payment credentials inside HTML,
+            JavaScript or JSON files.
+          </p>
+        </div>
+
+        <div class="card policy">
+          <h3>Terms & Conditions</h3>
+          <p>
+            Project scope, delivery timeline, revisions, payment milestones,
+            domain/hosting responsibility and cancellation terms should be agreed
+            before work starts.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+
+        <div class="section-title">
+          <span>Start Your Project</span>
+          <h2>Let's Build Your Business Online</h2>
+          <p>
+            Send your requirements and select your preferred website package.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+
+          <div class="card contact-info">
+
+            <h2>ARB Globle IT & Service</h2>
+
+            <p style="color:var(--muted);line-height:1.8;margin:15px 0 25px">
+              Abodh Raj Bhar Global Information of Technology & Service
+            </p>
+
+            <div class="contact-item">
+              <strong>WhatsApp</strong>
+              <a href="https://wa.me/918127968129" target="_blank">
+                +91 8127968129
+              </a>
+            </div>
+
+            <div class="contact-item">
+              <strong>Email</strong>
+              <a href="mailto:arbglobalitservice@gmail.com">
+                arbglobalitservice@gmail.com
+              </a>
+            </div>
+
+            <div class="contact-item">
+              <strong>YouTube</strong>
+              <a href="https://youtube.com/@arb_globle_it_services" target="_blank">
+                ARB Globle IT Services
+              </a>
+            </div>
+
+            <div class="contact-item">
+              <strong>Business Address</strong>
+              <span>ADD_VERIFIED_BUSINESS_ADDRESS</span>
+            </div>
+
+            <div class="contact-item">
+              <strong>GSTIN</strong>
+              <span>ADD_VERIFIED_GSTIN</span>
+            </div>
+
+            <div class="contact-item">
+              <strong>Official Email</strong>
+              <span>arbglobalitservice@gmail.com</span>
+            </div>
+
+          </div>
+
+          <div class="card form-card">
+
+            <form id="projectForm">
+
+              <div class="two">
+
+                <label>
+                  Full Name
+                  <input id="fullName" required placeholder="Your full name">
+                </label>
+
+                <label>
+                  Business / Brand Name
+                  <input id="businessName" required placeholder="Business name">
+                </label>
+
+              </div>
+
+              <div class="two">
+
+                <label>
+                  Email
+                  <input id="email" type="email" required placeholder="you@example.com">
+                </label>
+
+                <label>
+                  WhatsApp Number
+                  <input id="phone" placeholder="+Country code">
+                </label>
+
+              </div>
+
+              <label>
+                Country
+                <select id="formCountry"></select>
+              </label>
+
+              <label>
+                Website Type
+                <select id="websiteType">
+                  <option>Business Website</option>
+                  <option>E-commerce Website</option>
+                  <option>Landing Page</option>
+                  <option>Portfolio Website</option>
+                  <option>Corporate Website</option>
+                  <option>Custom Web Application</option>
+                  <option>Website Redesign</option>
+                </select>
+              </label>
+
+              <label>
+                Preferred Package
+                <select id="packageSelect"></select>
+              </label>
+
+              <label>
+                Required Pages / Features
+                <textarea id="requirements" placeholder="Tell us what you want to build..."></textarea>
+              </label>
+
+              <label>
+                Additional Requirements
+                <textarea id="additional" placeholder="Domain, hosting, payment, special features etc."></textarea>
+              </label>
+
+              <button type="submit" class="btn btn-primary">
+                Send My Requirements
+              </button>
+
+              <button type="button" id="payBtn" class="btn btn-secondary">
+                Pay & Start My Project
+              </button>
+
+              <p style="color:var(--muted);font-size:12px;line-height:1.6">
+                Payment checkout should be connected to your secure payment
+                backend before accepting live payments.
+              </p>
+
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- YOUTUBE -->
+    <section>
+      <div class="container">
+        <div class="section-title">
+          <span>Follow ARB</span>
+          <h2>ARB Globle IT Services on YouTube</h2>
+          <p>
+            Technology, digital services and global online business content.
+          </p>
+
+          <a
+            href="https://youtube.com/@arb_globle_it_services"
+            target="_blank"
+            class="btn btn-primary"
+            style="margin-top:20px"
+          >
+            Visit YouTube Channel
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div>
+          <h3>ARB Globle IT & Service</h3>
+          <p>
+            Abodh Raj Bhar Global Information of Technology & Service.
+            Professional websites and digital technology services for
+            businesses worldwide.
+          </p>
+        </div>
+
+        <div>
+          <h4>Quick Links</h4>
+          <p><a href="#services">Services</a></p>
+          <p><a href="#packages">Packages</a></p>
+          <p><a href="#process">How It Works</a></p>
+          <p><a href="#faq">FAQ</a></p>
+          <p><a href="#contact">Contact</a></p>
+        </div>
+
+        <div>
+          <h4>Contact</h4>
+          <p>
+            <a href="https://wa.me/918127968129" target="_blank">
+              WhatsApp: +91 8127968129
+            </a>
+          </p>
+          <p>
+            <a href="mailto:arbglobalitservice@gmail.com">
+              arbglobalitservice@gmail.com
+            </a>
+          </p>
+          <p>
+            <a href="https://youtube.com/@arb_globle_it_services" target="_blank">
+              YouTube
+            </a>
+          </p>
+        </div>
+
+      </div>
+
+      <div class="copyright">
+        © <span id="year"></span> ARB Globle IT & Service. All rights reserved.
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- AI ASSISTANT -->
+  <button class="ai-launch" id="aiLaunch">
+    🤖 ARB AI Assistant
+  </button>
+
+  <div class="ai-box" id="aiBox">
+
+    <div class="ai-head">
+      <div>
+        <strong>ARB AI Assistant</strong>
+        <small>Global Client Support</small>
+      </div>
+
+      <button class="ai-close" id="aiClose">×</button>
+    </div>
+
+    <div class="ai-messages" id="aiMessages">
+      <div class="message ai">
+        Hello! I am the ARB AI Assistant. Ask me about our services,
+        packages, 50% advance, currencies, payment methods, domain,
+        hosting, delivery, policies or how to contact ARB.
+      </div>
+    </div>
+
+    <div class="ai-input">
+      <input
+        id="aiInput"
+        placeholder="Ask ARB AI..."
+        autocomplete="off"
+      >
+      <button id="aiSend">Send</button>
+    </div>
+
+  </div>
+
+  <!-- WHATSAPP -->
+  <a
+    class="whatsapp"
+    href="https://wa.me/918127968129?text=Hello%20ARB%20Globle%20IT%20%26%20Service%2C%20I%20want%20to%20discuss%20a%20website%20project."
+    target="_blank"
+    aria-label="Chat on WhatsApp"
+  >
+    ☎
+  </a>
+
+  <script src="script.js"></script>
+
 </body>
 </html>
