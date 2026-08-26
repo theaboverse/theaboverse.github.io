@@ -2,7 +2,7 @@
 
 A 3D space exploration experience on the web.
 
-**Live Site:** https://ARBGITS . TheAboverse .github.io
+**Live Site:** https://TheAboverse.github.io
 
 ## About
 TheAboverse is an interactive website that lets you explore the universe above us. Built with love for space enthusiasts.
