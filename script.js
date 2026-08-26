@@ -1,5 +1,5 @@
 /* =========================================================
-   ARB GLOBLE IT & SERVICE
+   ARB GLOBAL IT & SERVICES
    Global Website Business Script
    ========================================================= */
 
