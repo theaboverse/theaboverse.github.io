@@ -2,10 +2,10 @@
 
 A 3D space exploration experience on the web.
 
-**Live Site:** https://ARBGITS . [Abodh Raj Bhar Global Information of technology & Service] .github.io
+**Live Site:** https://ARBGITS . TheAboverse .github.io
 
 ## About
-ARBGITS is an interactive website that lets you explore the universe above us. Built with love for space enthusiasts.
+TheAboverse is an interactive website that lets you explore the universe above us. Built with love for space enthusiasts.
 
 ## Tech Stack
 - HTML5 / CSS3
