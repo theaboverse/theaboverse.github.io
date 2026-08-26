@@ -1,29 +1,102 @@
 {
   "brand": {
-    "name": "ARB Globle IT & Service",
-    "legalName": "Abodh raj bhar global information of technology & service",
-    "whatsapp": "+91 8127968129",
+    "shortName": "ARB Globle IT & Service",
+    "fullName": "Abodh Raj Bhar Global Information of Technology & Service",
     "email": "arbglobalitservice@gmail.com",
-    "youtube": "https://youtube.com/@arb_globle_it_services?si=H-PvpxzkWzXeewuz",
-    "advancePercent": 50
+    "whatsapp": "+91 8127968129",
+    "youtube": "https://youtube.com/@arb_globle_it_services"
+  },
+
+  "business": {
+    "type": "Global Information Technology Services",
+    "market": "India and International",
+    "primaryService": "Custom Website Design and Development"
+  },
+
+  "paymentPolicy": {
+    "advancePercentage": 50,
+    "remainingPercentage": 50,
+    "advanceDescription": "50% advance before project work begins.",
+    "remainingDescription": "Remaining 50% after the agreed project milestone, review or approval.",
+    "advanceRefundPolicy": "Generally non-refundable after project acceptance and work commencement, subject to written agreement and applicable laws."
   },
 
   "packages": [
-    {"priceINR":20000,"advancePercent":50},
-    {"priceINR":50000,"advancePercent":50},
-    {"priceINR":80000,"advancePercent":50},
-    {"priceINR":120000,"advancePercent":50},
-    {"priceINR":180000,"advancePercent":50},
-    {"priceINR":200000,"advancePercent":50},
-    {"priceINR":240000,"advancePercent":50},
-    {"priceINR":280000,"advancePercent":50},
-    {"priceINR":300000,"advancePercent":50},
-    {"priceINR":320000,"advancePercent":50},
-    {"priceINR":360000,"advancePercent":50},
-    {"priceINR":400000,"advancePercent":50},
-    {"priceINR":450000,"advancePercent":50},
-    {"priceINR":500000,"advancePercent":50},
-    {"priceINR":600000,"advancePercent":50}
+    {
+      "name": "Starter Website",
+      "priceINR": 20000,
+      "advanceINR": 10000
+    },
+    {
+      "name": "Professional Website",
+      "priceINR": 50000,
+      "advanceINR": 25000
+    },
+    {
+      "name": "Business Website",
+      "priceINR": 80000,
+      "advanceINR": 40000
+    },
+    {
+      "name": "Advanced Business Website",
+      "priceINR": 120000,
+      "advanceINR": 60000
+    },
+    {
+      "name": "Growth Website",
+      "priceINR": 180000,
+      "advanceINR": 90000
+    },
+    {
+      "name": "Premium Website",
+      "priceINR": 200000,
+      "advanceINR": 100000
+    },
+    {
+      "name": "Professional Growth Website",
+      "priceINR": 240000,
+      "advanceINR": 120000
+    },
+    {
+      "name": "Advanced Growth Website",
+      "priceINR": 280000,
+      "advanceINR": 140000
+    },
+    {
+      "name": "Business Pro Website",
+      "priceINR": 300000,
+      "advanceINR": 150000
+    },
+    {
+      "name": "Enterprise Website",
+      "priceINR": 320000,
+      "advanceINR": 160000
+    },
+    {
+      "name": "Enterprise Growth Website",
+      "priceINR": 360000,
+      "advanceINR": 180000
+    },
+    {
+      "name": "Premium Enterprise Website",
+      "priceINR": 400000,
+      "advanceINR": 200000
+    },
+    {
+      "name": "Advanced Enterprise Website",
+      "priceINR": 450000,
+      "advanceINR": 225000
+    },
+    {
+      "name": "Global Business Website",
+      "priceINR": 500000,
+      "advanceINR": 250000
+    },
+    {
+      "name": "Global Enterprise Solution",
+      "priceINR": 600000,
+      "advanceINR": 300000
+    }
   ],
 
   "services": [
@@ -32,25 +105,61 @@
     "Domain Registration",
     "Website Hosting",
     "Business Landing Pages",
-    "AI & Digital Support"
+    "Website Updates and Support"
   ],
 
-  "payment": {
-    "india": "Cashfree / supported UPI and card methods through secure backend checkout.",
-    "international": "ACH / bank transfer instructions only through verified official invoice.",
-    "advance": "50% advance before standard project work begins.",
-    "balance": "Remaining 50% after agreed work approval/milestone.",
-    "security": "Cashfree secret keys, bank credentials and private API keys must never be placed in frontend code."
+  "paymentMethods": [
+    "India Cashfree",
+    "UPI",
+    "Cards",
+    "Global ACH",
+    "Bank Transfer"
+  ],
+
+  "supportedCurrencies": [
+    "INR",
+    "USD",
+    "GBP",
+    "EUR",
+    "AED",
+    "SAR",
+    "KWD",
+    "QAR",
+    "OMR",
+    "BHD",
+    "CAD",
+    "AUD",
+    "NZD",
+    "JPY",
+    "CNY",
+    "HKD",
+    "SGD",
+    "MYR",
+    "THB",
+    "ZAR",
+    "BRL",
+    "MXN"
+  ],
+
+  "security": {
+    "ssl": true,
+    "cashfreeSecureCheckout": true,
+    "securePaymentProcessing": true,
+    "globalClientSupport": true,
+    "secretCredentialsFrontend": false
   },
 
-  "taxPolicy": {
-    "india": "Applicable Indian GST/taxes are charged according to the actual tax status and applicable law and are shown on the invoice.",
-    "international": "International tax treatment depends on applicable law, client jurisdiction and transaction structure."
+  "policies": {
+    "payment": "50% advance and remaining 50% according to the agreed project milestone or approval.",
+    "refund": "50% advance is generally non-refundable after project acceptance and commencement of work, subject to applicable agreement and law.",
+    "privacy": "Client information should be used only for legitimate project, communication and payment purposes.",
+    "tax": "Applicable GST, VAT or other taxes depend on the transaction and applicable law.",
+    "terms": "Project scope, delivery, revisions, payment milestones and cancellation terms should be agreed before work starts."
   },
 
-  "contact": {
-    "whatsapp": "+91 8127968129",
-    "email": "arbglobalitservice@gmail.com",
-    "youtube": "https://youtube.com/@arb_globle_it_services?si=H-PvpxzkWzXeewuz"
+  "verifiedDetails": {
+    "gstin": "ADD_VERIFIED_GSTIN",
+    "businessAddress": "ADD_VERIFIED_BUSINESS_ADDRESS",
+    "officialEmail": "arbglobalitservice@gmail.com"
   }
 }
