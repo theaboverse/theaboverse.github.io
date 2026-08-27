@@ -1,7 +1,7 @@
 {
   "name": "aboverse-backend",
   "version": "3.0.0",
-  "description": "ARB Global IT & Services - Secure Cashfree Production Payment Backend",
+  "description": "ARB Global IT Services - Secure Cashfree Production Payment Backend",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"

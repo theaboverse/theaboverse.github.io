@@ -1,5 +1,5 @@
 /* =========================================================
-   ARB GLOBAL IT & SERVICES
+   ARB Global IT Services
    Global Website Business Script
    ========================================================= */
 
@@ -244,7 +244,7 @@ if (projectForm) {
         packages[packageIndex] || packages[0];
 
       const message = `
-Hello ARB Globle IT & Service,
+Hello ARB Global IT Services,
 
 I want to start a website project.
 
@@ -268,7 +268,7 @@ ${additional || "Not provided"}
       `.trim();
 
       const whatsappURL =
-        "https://wa.me/918127968129?text=" +
+        "https://wa.me/91+918127968129?text=" +
         encodeURIComponent(message);
 
       window.open(
@@ -302,7 +302,7 @@ if (payBtn) {
       "India";
 
     const message = `
-Hello ARB Globle IT & Service,
+Hello ARB Global IT Services,
 
 I want to pay the 50% advance for:
 
@@ -316,7 +316,7 @@ Please provide the official secure payment checkout/invoice.
     `.trim();
 
     const url =
-      "https://wa.me/918127968129?text=" +
+      "https://wa.me/91+918127968129?text=" +
       encodeURIComponent(message);
 
     window.open(url, "_blank");
@@ -376,7 +376,7 @@ function aiReply(question) {
     q.includes("hey") ||
     q.includes("namaste")
   ) {
-    return "Hello! Welcome to ARB Globle IT & Service. I can help you with website services, packages, pricing, 50% advance, payment methods, domain, hosting, global currencies and project process.";
+    return "Hello! Welcome to ARB Global IT Services. I can help you with website services, packages, pricing, 50% advance, payment methods, domain, hosting, global currencies and project process.";
   }
 
   if (
@@ -541,7 +541,7 @@ function aiReply(question) {
   if (
     q.includes("service")
   ) {
-    return "ARB Globle IT & Service provides custom website design, website development, domain registration, hosting setup, landing pages and website support.";
+    return "ARB Global IT Services provides custom website design, website development, domain registration, hosting setup, landing pages and website support.";
   }
 
   if (
@@ -550,7 +550,7 @@ function aiReply(question) {
     q.includes("foreign") ||
     q.includes("outside india")
   ) {
-    return "Yes. ARB Globle IT & Service is designed for India and international clients. You can select your country to see an indicative local-currency display.";
+    return "Yes. ARB Global IT Services is designed for India and international clients. You can select your country to see an indicative local-currency display.";
   }
 
   if (
@@ -611,7 +611,7 @@ function aiReply(question) {
     q.includes("contact") ||
     q.includes("phone")
   ) {
-    return "You can contact ARB on WhatsApp at +91 8127968129.";
+    return "You can contact ARB on WhatsApp at +91 +918127968129.";
   }
 
   if (
@@ -631,7 +631,7 @@ function aiReply(question) {
     q.includes("who are you") ||
     q.includes("your name")
   ) {
-    return "I am the ARB AI Assistant, created to help global clients understand ARB Globle IT & Service, its website services, packages, payment structure and project process.";
+    return "I am the ARB AI Assistant, created to help global clients understand ARB Global IT Services, its website services, packages, payment structure and project process.";
   }
 
   if (
