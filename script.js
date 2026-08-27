@@ -1,6 +1,20 @@
 /* =========================================================
-   ARB Global IT Services
-   Global Website Business Script
+   ARB GLOBLE IT SERVICE
+   Abodh Raj Bhar Global Information of Technology & Service
+   Frontend Business Script
+   ========================================================= */
+
+"use strict";
+
+/* =========================================================
+   BACKEND
+   ========================================================= */
+
+const API_URL =
+  "https://arb-global-it-services-backend.onrender.com";
+
+/* =========================================================
+   PACKAGES
    ========================================================= */
 
 const packages = [
@@ -21,119 +35,296 @@ const packages = [
   { price: 600000, name: "Global Enterprise Solution" }
 ];
 
-/* ================= COUNTRIES ================= */
+/* =========================================================
+   COUNTRIES / DISPLAY FX
+   NOTE: These rates are display-only.
+   Final payment amount must come from official invoice/checkout.
+   ========================================================= */
 
 const countries = {
-  "India": { code: "INR", symbol: "₹", rate: 1 },
-  "USA": { code: "USD", symbol: "$", rate: 0.0118 },
-  "Canada": { code: "CAD", symbol: "C$", rate: 0.016 },
-  "UK": { code: "GBP", symbol: "£", rate: 0.0093 },
-  "UAE": { code: "AED", symbol: "AED ", rate: 0.0433 },
-  "Saudi Arabia": { code: "SAR", symbol: "SAR ", rate: 0.0443 },
-  "Kuwait": { code: "KWD", symbol: "KWD ", rate: 0.00362 },
-  "Qatar": { code: "QAR", symbol: "QAR ", rate: 0.0430 },
-  "Oman": { code: "OMR", symbol: "OMR ", rate: 0.00455 },
-  "Bahrain": { code: "BHD", symbol: "BHD ", rate: 0.00445 },
-  "Germany": { code: "EUR", symbol: "€", rate: 0.0101 },
-  "France": { code: "EUR", symbol: "€", rate: 0.0101 },
-  "Switzerland": { code: "CHF", symbol: "CHF ", rate: 0.0092 },
-  "Australia": { code: "AUD", symbol: "A$", rate: 0.0180 },
-  "New Zealand": { code: "NZD", symbol: "NZ$", rate: 0.0200 },
-  "Japan": { code: "JPY", symbol: "¥", rate: 1.76 },
-  "China": { code: "CNY", symbol: "¥", rate: 0.085 },
-  "Hong Kong": { code: "HKD", symbol: "HK$", rate: 0.092 },
-  "Singapore": { code: "SGD", symbol: "S$", rate: 0.0155 },
-  "Malaysia": { code: "MYR", symbol: "RM ", rate: 0.049 },
-  "Thailand": { code: "THB", symbol: "฿", rate: 0.419 },
-  "South Africa": { code: "ZAR", symbol: "R ", rate: 0.212 },
-  "Brazil": { code: "BRL", symbol: "R$ ", rate: 0.063 },
-  "Mexico": { code: "MXN", symbol: "MX$ ", rate: 0.220 }
+
+  "India": {
+    code: "INR",
+    symbol: "₹",
+    rate: 1
+  },
+
+  "USA": {
+    code: "USD",
+    symbol: "$",
+    rate: 0.0118
+  },
+
+  "Canada": {
+    code: "CAD",
+    symbol: "C$",
+    rate: 0.016
+  },
+
+  "UK": {
+    code: "GBP",
+    symbol: "£",
+    rate: 0.0093
+  },
+
+  "UAE": {
+    code: "AED",
+    symbol: "AED ",
+    rate: 0.0433
+  },
+
+  "Saudi Arabia": {
+    code: "SAR",
+    symbol: "SAR ",
+    rate: 0.0443
+  },
+
+  "Kuwait": {
+    code: "KWD",
+    symbol: "KWD ",
+    rate: 0.00362
+  },
+
+  "Qatar": {
+    code: "QAR",
+    symbol: "QAR ",
+    rate: 0.0430
+  },
+
+  "Oman": {
+    code: "OMR",
+    symbol: "OMR ",
+    rate: 0.00455
+  },
+
+  "Bahrain": {
+    code: "BHD",
+    symbol: "BHD ",
+    rate: 0.00445
+  },
+
+  "Germany": {
+    code: "EUR",
+    symbol: "€",
+    rate: 0.0101
+  },
+
+  "France": {
+    code: "EUR",
+    symbol: "€",
+    rate: 0.0101
+  },
+
+  "Switzerland": {
+    code: "CHF",
+    symbol: "CHF ",
+    rate: 0.0092
+  },
+
+  "Australia": {
+    code: "AUD",
+    symbol: "A$",
+    rate: 0.0180
+  },
+
+  "New Zealand": {
+    code: "NZD",
+    symbol: "NZ$",
+    rate: 0.0200
+  },
+
+  "Japan": {
+    code: "JPY",
+    symbol: "¥",
+    rate: 1.76
+  },
+
+  "China": {
+    code: "CNY",
+    symbol: "¥",
+    rate: 0.085
+  },
+
+  "Hong Kong": {
+    code: "HKD",
+    symbol: "HK$",
+    rate: 0.092
+  },
+
+  "Singapore": {
+    code: "SGD",
+    symbol: "S$",
+    rate: 0.0155
+  },
+
+  "Malaysia": {
+    code: "MYR",
+    symbol: "RM ",
+    rate: 0.049
+  },
+
+  "Thailand": {
+    code: "THB",
+    symbol: "฿",
+    rate: 0.419
+  },
+
+  "South Africa": {
+    code: "ZAR",
+    symbol: "R ",
+    rate: 0.212
+  },
+
+  "Brazil": {
+    code: "BRL",
+    symbol: "R$ ",
+    rate: 0.063
+  },
+
+  "Mexico": {
+    code: "MXN",
+    symbol: "MX$ ",
+    rate: 0.220
+  }
+
 };
 
-/* ================= HELPERS ================= */
+/* =========================================================
+   HELPERS
+   ========================================================= */
 
 function formatINR(value) {
-  return "₹" + Number(value).toLocaleString("en-IN");
+
+  return "₹" +
+    Number(value).toLocaleString("en-IN");
+
 }
 
+
 function formatLocal(value, country) {
+
   const currency = countries[country];
 
-  if (!currency) return formatINR(value);
+  if (!currency) {
+    return formatINR(value);
+  }
 
-  const converted = value * currency.rate;
+  const converted =
+    Number(value) * currency.rate;
 
   return (
     currency.symbol +
     converted.toLocaleString("en-US", {
-      maximumFractionDigits: currency.code === "JPY" ? 0 : 2
+      maximumFractionDigits:
+        currency.code === "JPY" ? 0 : 2
     })
   );
+
 }
 
-/* ================= PRICE TABLE ================= */
 
-const priceTable = document.getElementById("priceTable");
+/* =========================================================
+   PRICE TABLE
+   ========================================================= */
+
+const priceTable =
+  document.getElementById("priceTable");
 
 if (priceTable) {
-  priceTable.innerHTML = packages.map(pkg => {
-    const advance = pkg.price / 2;
 
-    return `
-      <tr>
-        <td>${formatINR(pkg.price)}</td>
-        <td>${formatINR(advance)}</td>
-      </tr>
-    `;
-  }).join("");
+  priceTable.innerHTML =
+    packages.map(pkg => {
+
+      return `
+        <tr>
+          <td>${formatINR(pkg.price)}</td>
+          <td>${formatINR(pkg.price / 2)}</td>
+        </tr>
+      `;
+
+    }).join("");
+
 }
 
-/* ================= COUNTRY SELECT ================= */
 
-const countrySelect = document.getElementById("countrySelect");
-const formCountry = document.getElementById("formCountry");
+/* =========================================================
+   COUNTRY SELECT
+   ========================================================= */
+
+const countrySelect =
+  document.getElementById("countrySelect");
+
+const formCountry =
+  document.getElementById("formCountry");
+
 
 function populateCountries(select) {
+
   if (!select) return;
 
   select.innerHTML = "";
 
   Object.keys(countries).forEach(country => {
-    const option = document.createElement("option");
+
+    const option =
+      document.createElement("option");
+
     option.value = country;
+
     option.textContent =
       `${country} — ${countries[country].code}`;
+
     select.appendChild(option);
+
   });
+
 }
+
 
 populateCountries(countrySelect);
 populateCountries(formCountry);
 
-/* ================= PACKAGE SELECT ================= */
 
-const packageSelect = document.getElementById("packageSelect");
+/* =========================================================
+   PACKAGE SELECT
+   ========================================================= */
+
+const packageSelect =
+  document.getElementById("packageSelect");
 
 if (packageSelect) {
-  packageSelect.innerHTML = packages.map((pkg, index) => {
-    return `
-      <option value="${index}">
-        ${pkg.name} — ${formatINR(pkg.price)} — 50% Advance ${formatINR(pkg.price / 2)}
-      </option>
-    `;
-  }).join("");
+
+  packageSelect.innerHTML =
+    packages.map((pkg, index) => {
+
+      return `
+        <option value="${index}">
+          ${pkg.name} —
+          ${formatINR(pkg.price)} —
+          50% Advance ${formatINR(pkg.price / 2)}
+        </option>
+      `;
+
+    }).join("");
+
 }
 
-/* ================= LOCAL CURRENCY DISPLAY ================= */
+
+/* =========================================================
+   CURRENCY DISPLAY
+   ========================================================= */
 
 let selectedPackageIndex = 0;
 
+
 function updateCurrencyDisplay() {
+
   const country =
     countrySelect?.value || "India";
 
   const pkg =
-    packages[selectedPackageIndex] || packages[0];
+    packages[selectedPackageIndex] ||
+    packages[0];
 
   const priceElement =
     document.getElementById("convertedPrice");
@@ -145,65 +336,133 @@ function updateCurrencyDisplay() {
     document.getElementById("currencyPackage");
 
   if (packageElement) {
-    packageElement.textContent = pkg.name;
+
+    packageElement.textContent =
+      pkg.name;
+
   }
 
   if (priceElement) {
+
     priceElement.textContent =
       formatLocal(pkg.price, country);
+
   }
 
   if (advanceElement) {
+
     advanceElement.textContent =
-      formatLocal(pkg.price / 2, country);
+      formatLocal(
+        pkg.price / 2,
+        country
+      );
+
   }
+
 }
 
+
 if (countrySelect) {
+
   countrySelect.addEventListener(
     "change",
     updateCurrencyDisplay
   );
+
 }
 
-/* ================= PACKAGE BUTTONS ================= */
 
-document.querySelectorAll(".package-btn").forEach(button => {
+/* =========================================================
+   PACKAGE BUTTONS
+   ========================================================= */
 
-  button.addEventListener("click", () => {
+document
+  .querySelectorAll(".package-btn")
+  .forEach(button => {
 
-    const price =
-      Number(button.dataset.price);
+    button.addEventListener(
+      "click",
+      () => {
 
-    const index =
-      packages.findIndex(
-        pkg => pkg.price === price
-      );
+        const price =
+          Number(button.dataset.price);
 
-    if (index >= 0) {
-      selectedPackageIndex = index;
-    }
+        const index =
+          packages.findIndex(
+            pkg => pkg.price === price
+          );
 
-    if (packageSelect) {
-      packageSelect.value =
-        String(selectedPackageIndex);
-    }
+        if (index >= 0) {
 
-    updateCurrencyDisplay();
+          selectedPackageIndex =
+            index;
 
-    document
-      .getElementById("contact")
-      ?.scrollIntoView({
-        behavior: "smooth"
-      });
+        }
+
+        if (packageSelect) {
+
+          packageSelect.value =
+            String(selectedPackageIndex);
+
+        }
+
+        updateCurrencyDisplay();
+
+        document
+          .getElementById("contact")
+          ?.scrollIntoView({
+            behavior: "smooth"
+          });
+
+      }
+    );
+
   });
 
-});
 
-/* ================= FORM ================= */
+/* =========================================================
+   TOAST
+   ========================================================= */
+
+function showToast(message) {
+
+  const toast =
+    document.getElementById("toast");
+
+  if (!toast) {
+
+    alert(message);
+
+    return;
+
+  }
+
+  toast.textContent = message;
+
+  toast.style.display = "block";
+
+  clearTimeout(
+    window.arbToastTimer
+  );
+
+  window.arbToastTimer =
+    setTimeout(() => {
+
+      toast.style.display =
+        "none";
+
+    }, 5000);
+
+}
+
+
+/* =========================================================
+   PROJECT FORM → WHATSAPP
+   ========================================================= */
 
 const projectForm =
   document.getElementById("projectForm");
+
 
 if (projectForm) {
 
@@ -214,37 +473,65 @@ if (projectForm) {
       event.preventDefault();
 
       const name =
-        document.getElementById("fullName").value.trim();
+        document
+          .getElementById("fullName")
+          ?.value
+          .trim() || "";
 
       const business =
-        document.getElementById("businessName").value.trim();
+        document
+          .getElementById("businessName")
+          ?.value
+          .trim() || "";
 
       const email =
-        document.getElementById("email").value.trim();
+        document
+          .getElementById("email")
+          ?.value
+          .trim() || "";
 
       const phone =
-        document.getElementById("phone").value.trim();
+        document
+          .getElementById("phone")
+          ?.value
+          .trim() || "";
 
       const country =
-        document.getElementById("formCountry").value;
+        document
+          .getElementById("formCountry")
+          ?.value || "India";
 
       const website =
-        document.getElementById("websiteType").value;
+        document
+          .getElementById("websiteType")
+          ?.value || "Business Website";
 
       const packageIndex =
-        Number(document.getElementById("packageSelect").value);
+        Number(
+          document
+            .getElementById("packageSelect")
+            ?.value || 0
+        );
 
       const requirements =
-        document.getElementById("requirements").value.trim();
+        document
+          .getElementById("requirements")
+          ?.value
+          .trim() || "";
 
       const additional =
-        document.getElementById("additional").value.trim();
+        document
+          .getElementById("additional")
+          ?.value
+          .trim() || "";
 
       const pkg =
-        packages[packageIndex] || packages[0];
+        packages[packageIndex] ||
+        packages[0];
+
 
       const message = `
-Hello ARB Global IT Services,
+Hello ARB Globle IT & Service,
 
 I want to start a website project.
 
@@ -267,65 +554,302 @@ Additional Requirements:
 ${additional || "Not provided"}
       `.trim();
 
+
       const whatsappURL =
-        "https://wa.me/91+918127968129?text=" +
+        "https://wa.me/918127968129?text=" +
         encodeURIComponent(message);
+
 
       window.open(
         whatsappURL,
-        "_blank"
+        "_blank",
+        "noopener"
       );
 
     }
   );
+
 }
 
-/* ================= PAYMENT BUTTON ================= */
+
+/* =========================================================
+   CASHFREE PAYMENT
+   INDIA ONLY
+   ========================================================= */
 
 const payBtn =
   document.getElementById("payBtn");
 
-if (payBtn) {
 
-  payBtn.addEventListener("click", () => {
+async function startCashfreePayment() {
 
-    const packageIndex =
-      Number(
-        document.getElementById("packageSelect")?.value || 0
-      );
+  const name =
+    document
+      .getElementById("fullName")
+      ?.value
+      .trim() || "";
 
-    const pkg =
-      packages[packageIndex] || packages[0];
+  const email =
+    document
+      .getElementById("email")
+      ?.value
+      .trim() || "";
 
-    const country =
-      document.getElementById("formCountry")?.value ||
-      "India";
+  const phone =
+    document
+      .getElementById("phone")
+      ?.value
+      .trim() || "";
 
-    const message = `
-Hello ARB Global IT Services,
+  const country =
+    document
+      .getElementById("formCountry")
+      ?.value || "India";
+
+  const packageIndex =
+    Number(
+      document
+        .getElementById("packageSelect")
+        ?.value || 0
+    );
+
+  const requirements =
+    document
+      .getElementById("requirements")
+      ?.value
+      .trim() || "";
+
+  const additional =
+    document
+      .getElementById("additional")
+      ?.value
+      .trim() || "";
+
+  const pkg =
+    packages[packageIndex] ||
+    packages[0];
+
+  const advance =
+    pkg.price / 2;
+
+
+  if (!name) {
+
+    showToast(
+      "Please enter your full name."
+    );
+
+    return;
+
+  }
+
+
+  if (!email) {
+
+    showToast(
+      "Please enter your email address."
+    );
+
+    return;
+
+  }
+
+
+  if (!phone) {
+
+    showToast(
+      "Please enter your WhatsApp/phone number."
+    );
+
+    return;
+
+  }
+
+
+  /*
+     Cashfree India checkout.
+     International clients should use
+     the approved global payment/invoice
+     method configured for the business.
+  */
+
+  if (country !== "India") {
+
+    const internationalMessage = `
+Hello ARB Globle IT  Service,
 
 I want to pay the 50% advance for:
 
 Package: ${pkg.name}
 Project Value: ${formatLocal(pkg.price, country)}
-50% Advance: ${formatLocal(pkg.price / 2, country)}
+50% Advance: ${formatLocal(advance, country)}
 
 Country: ${country}
 
-Please provide the official secure payment checkout/invoice.
+Name: ${name}
+Email: ${email}
+WhatsApp: ${phone}
+
+Please provide the official secure international payment/invoice instructions.
     `.trim();
 
     const url =
-      "https://wa.me/91+918127968129?text=" +
-      encodeURIComponent(message);
+      "https://wa.me/918127968129?text=" +
+      encodeURIComponent(
+        internationalMessage
+      );
 
-    window.open(url, "_blank");
+    window.open(
+      url,
+      "_blank",
+      "noopener"
+    );
 
-  });
+    return;
+
+  }
+
+
+  try {
+
+    showToast(
+      "Creating secure Cashfree payment..."
+    );
+
+
+    const response =
+      await fetch(
+        API_URL +
+        "/api/create-order",
+        {
+          method: "POST",
+
+          headers: {
+            "Content-Type":
+              "application/json"
+          },
+
+          body: JSON.stringify({
+
+            name: name,
+
+            email: email,
+
+            phone: phone,
+
+            planAmount: pkg.price,
+
+            advanceAmount: advance,
+
+            country: country,
+
+            packageName: pkg.name,
+
+            projectDetails:
+              [
+                requirements,
+                additional
+              ]
+              .filter(Boolean)
+              .join("\n")
+
+          })
+
+        }
+      );
+
+
+    const data =
+      await response.json()
+        .catch(() => ({}));
+
+
+    if (!response.ok) {
+
+      throw new Error(
+        data.error ||
+        "Cashfree order could not be created."
+      );
+
+    }
+
+
+    if (
+      !data.payment_session_id
+    ) {
+
+      throw new Error(
+        "Cashfree payment session was not returned by the secure backend."
+      );
+
+    }
+
+
+    if (
+      typeof Cashfree ===
+      "undefined"
+    ) {
+
+      throw new Error(
+        "Cashfree Checkout SDK is not loaded. Add the Cashfree SDK to index.html."
+      );
+
+    }
+
+
+    const cashfree =
+      Cashfree({
+        mode: "production"
+      });
+
+
+    showToast(
+      "Opening secure Cashfree checkout..."
+    );
+
+
+    await cashfree.checkout({
+
+      paymentSessionId:
+        data.payment_session_id,
+
+      redirectTarget:
+        "_self"
+
+    });
+
+
+  } catch (error) {
+
+    console.error(
+      "Cashfree payment error:",
+      error
+    );
+
+    showToast(
+      error.message ||
+      "Payment could not be started."
+    );
+
+  }
 
 }
 
-/* ================= AI ASSISTANT ================= */
+
+if (payBtn) {
+
+  payBtn.addEventListener(
+    "click",
+    startCashfreePayment
+  );
+
+}
+
+
+/* =========================================================
+   AI ASSISTANT
+   Gemini API key stays ONLY on Render backend.
+   ========================================================= */
 
 const aiLaunch =
   document.getElementById("aiLaunch");
@@ -345,7 +869,13 @@ const aiSend =
 const aiMessages =
   document.getElementById("aiMessages");
 
-function addAIMessage(text, type = "ai") {
+
+function addAIMessage(
+  text,
+  type = "ai"
+) {
+
+  if (!aiMessages) return;
 
   const div =
     document.createElement("div");
@@ -359,16 +889,33 @@ function addAIMessage(text, type = "ai") {
 
   aiMessages.scrollTop =
     aiMessages.scrollHeight;
+
 }
 
-function aiReply(question) {
+
+/* =========================================================
+   LOCAL AI FALLBACK
+   ========================================================= */
+
+function localAIReply(question) {
 
   const q =
-    question.toLowerCase().trim();
+    question
+      .toLowerCase()
+      .trim();
+
 
   if (!q) {
-    return "Please type your question. I can help with ARB services, packages, prices, payment, domain, hosting, policies and international clients.";
+
+    return (
+      "Please type your question. " +
+      "I can help with ARB services, " +
+      "packages, pricing, payment, " +
+      "domain, hosting and international clients."
+    );
+
   }
+
 
   if (
     q.includes("hello") ||
@@ -376,8 +923,16 @@ function aiReply(question) {
     q.includes("hey") ||
     q.includes("namaste")
   ) {
-    return "Hello! Welcome to ARB Global IT Services. I can help you with website services, packages, pricing, 50% advance, payment methods, domain, hosting, global currencies and project process.";
+
+    return (
+      "Hello! Welcome to ARB Globle IT & Service. " +
+      "I can help you with website services, " +
+      "packages, pricing, payment, domain, " +
+      "hosting and international project enquiries."
+    );
+
   }
+
 
   if (
     q.includes("price") ||
@@ -385,380 +940,886 @@ function aiReply(question) {
     q.includes("package") ||
     q.includes("pricing")
   ) {
-    return "ARB currently offers project options from ₹20,000 to ₹6,00,000. Every listed project option has a 50% advance. The remaining 50% is payable according to the agreed project milestone, review or approval.";
+
+    return (
+      "ARB website project options currently " +
+      "range from ₹20,000 to ₹6,00,000. " +
+      "The standard structure is 50% advance " +
+      "and the remaining 50% according to the " +
+      "agreed project milestone, review or approval."
+    );
+
   }
 
-  if (
-    q.includes("20,000") ||
-    q.includes("20000")
-  ) {
-    return "The ₹20,000 Starter Website has a 50% advance of ₹10,000.";
-  }
-
-  if (
-    q.includes("50,000") ||
-    q.includes("50000")
-  ) {
-    return "The ₹50,000 project option has a 50% advance of ₹25,000.";
-  }
-
-  if (
-    q.includes("80,000") ||
-    q.includes("80000")
-  ) {
-    return "The ₹80,000 Business Website option has a 50% advance of ₹40,000.";
-  }
-
-  if (
-    q.includes("1.2 lakh") ||
-    q.includes("120000") ||
-    q.includes("1,20,000")
-  ) {
-    return "The ₹1,20,000 project option has a 50% advance of ₹60,000.";
-  }
-
-  if (
-    q.includes("1.8 lakh") ||
-    q.includes("180000") ||
-    q.includes("1,80,000")
-  ) {
-    return "The ₹1,80,000 Growth Website option has a 50% advance of ₹90,000.";
-  }
-
-  if (
-    q.includes("2 lakh") ||
-    q.includes("200000") ||
-    q.includes("2,00,000")
-  ) {
-    return "The ₹2,00,000 project option has a 50% advance of ₹1,00,000.";
-  }
-
-  if (
-    q.includes("2.4 lakh") ||
-    q.includes("240000") ||
-    q.includes("2,40,000")
-  ) {
-    return "The ₹2,40,000 project option has a 50% advance of ₹1,20,000.";
-  }
-
-  if (
-    q.includes("2.8 lakh") ||
-    q.includes("280000") ||
-    q.includes("2,80,000")
-  ) {
-    return "The ₹2,80,000 project option has a 50% advance of ₹1,40,000.";
-  }
-
-  if (
-    q.includes("3 lakh") ||
-    q.includes("300000") ||
-    q.includes("3,00,000")
-  ) {
-    return "The ₹3,00,000 project option has a 50% advance of ₹1,50,000.";
-  }
-
-  if (
-    q.includes("3.2 lakh") ||
-    q.includes("320000") ||
-    q.includes("3,20,000")
-  ) {
-    return "The ₹3,20,000 project option has a 50% advance of ₹1,60,000.";
-  }
-
-  if (
-    q.includes("3.6 lakh") ||
-    q.includes("360000") ||
-    q.includes("3,60,000")
-  ) {
-    return "The ₹3,60,000 project option has a 50% advance of ₹1,80,000.";
-  }
-
-  if (
-    q.includes("4 lakh") ||
-    q.includes("400000") ||
-    q.includes("4,00,000")
-  ) {
-    return "The ₹4,00,000 project option has a 50% advance of ₹2,00,000.";
-  }
-
-  if (
-    q.includes("4.5 lakh") ||
-    q.includes("450000") ||
-    q.includes("4,50,000")
-  ) {
-    return "The ₹4,50,000 project option has a 50% advance of ₹2,25,000.";
-  }
-
-  if (
-    q.includes("5 lakh") ||
-    q.includes("500000") ||
-    q.includes("5,00,000")
-  ) {
-    return "The ₹5,00,000 project option has a 50% advance of ₹2,50,000.";
-  }
-
-  if (
-    q.includes("6 lakh") ||
-    q.includes("600000") ||
-    q.includes("6,00,000")
-  ) {
-    return "The ₹6,00,000 Global Enterprise Solution has a 50% advance of ₹3,00,000.";
-  }
 
   if (
     q.includes("advance") ||
     q.includes("50%")
   ) {
-    return "ARB's standard project structure is 50% advance before work starts, with the remaining 50% payable after the agreed project milestone, review or approval.";
+
+    return (
+      "The standard project structure is 50% advance " +
+      "before work starts. The remaining 50% is payable " +
+      "after the agreed milestone, review or approval."
+    );
+
   }
+
 
   if (
     q.includes("refund") ||
     q.includes("refundable") ||
     q.includes("cancel")
   ) {
-    return "The standard policy is that the 50% advance is generally non-refundable after project acceptance and work commencement, subject to the written agreement and applicable laws.";
+
+    return (
+      "The standard policy is that the 50% advance " +
+      "is generally non-refundable after project " +
+      "acceptance and commencement of work, subject " +
+      "to the written agreement and applicable laws."
+    );
+
   }
 
-  if (
-    q.includes("domain")
-  ) {
-    return "Yes. ARB can help with professional domain registration or connect an existing domain to your website.";
+
+  if (q.includes("domain")) {
+
+    return (
+      "Yes. ARB can help with professional domain " +
+      "registration or connect an existing domain " +
+      "to your website."
+    );
+
   }
 
-  if (
-    q.includes("hosting")
-  ) {
-    return "Yes. Website hosting setup and deployment support can be arranged with the website project.";
+
+  if (q.includes("hosting")) {
+
+    return (
+      "Yes. Website hosting setup and deployment " +
+      "support can be arranged with the website project."
+    );
+
   }
 
-  if (
-    q.includes("website")
-  ) {
-    return "ARB provides custom website design, development, landing pages, domain setup, hosting support, website updates and digital technology services.";
-  }
-
-  if (
-    q.includes("service")
-  ) {
-    return "ARB Global IT Services provides custom website design, website development, domain registration, hosting setup, landing pages and website support.";
-  }
 
   if (
     q.includes("international") ||
     q.includes("global") ||
-    q.includes("foreign") ||
-    q.includes("outside india")
+    q.includes("foreign")
   ) {
-    return "Yes. ARB Global IT Services is designed for India and international clients. You can select your country to see an indicative local-currency display.";
+
+    return (
+      "Yes. ARB Global IT & Services is designed " +
+      "for India and international clients. " +
+      "International clients can contact ARB for " +
+      "approved payment and project arrangements."
+    );
+
   }
 
-  if (
-    q.includes("currency") ||
-    q.includes("usd") ||
-    q.includes("dollar") ||
-    q.includes("pound") ||
-    q.includes("euro") ||
-    q.includes("aed") ||
-    q.includes("sar") ||
-    q.includes("kwd") ||
-    q.includes("qar")
-  ) {
-    return "The website supports indicative currency display for INR, USD, GBP, EUR, AED, SAR, KWD, QAR, OMR, BHD, CAD, AUD, JPY and several other currencies.";
-  }
 
   if (
     q.includes("cashfree") ||
     q.includes("upi") ||
     q.includes("card")
   ) {
-    return "India clients can use supported Cashfree payment methods such as UPI/cards where enabled. Live payment checkout must be connected through a secure backend.";
+
+    return (
+      "India clients can use supported Cashfree " +
+      "payment methods such as UPI/cards where enabled. " +
+      "Live checkout is created through the secure backend."
+    );
+
   }
+
 
   if (
     q.includes("ach") ||
     q.includes("bank transfer") ||
     q.includes("bank")
   ) {
-    return "Global ACH / bank-transfer payment can be arranged where supported. Official bank/payment details should only be provided through a verified invoice or secure payment process.";
+
+    return (
+      "Global ACH or bank-transfer payment can be " +
+      "arranged where supported. Official payment " +
+      "details should only be provided through a " +
+      "verified invoice or secure payment process."
+    );
+
   }
+
 
   if (
     q.includes("gst") ||
     q.includes("tax") ||
     q.includes("vat")
   ) {
-    return "Applicable GST, VAT or other taxes depend on the transaction, customer location and applicable law. The final tax treatment should be confirmed on the invoice.";
+
+    return (
+      "Applicable GST, VAT or other taxes depend " +
+      "on the transaction, customer location and " +
+      "applicable law. Final tax treatment should " +
+      "be confirmed on the official invoice."
+    );
+
   }
+
 
   if (
     q.includes("delivery") ||
     q.includes("how long") ||
     q.includes("time")
   ) {
-    return "Delivery time depends on the project scope, pages, features, content and feedback. The exact timeline should be confirmed before the project starts.";
+
+    return (
+      "Delivery time depends on project scope, " +
+      "pages, features, content and client feedback. " +
+      "The exact timeline should be confirmed before " +
+      "the project starts."
+    );
+
   }
+
 
   if (
     q.includes("revision") ||
     q.includes("change")
   ) {
-    return "Yes. Clients can request revisions according to the revision limits and scope agreed for the selected project.";
+
+    return (
+      "Revisions can be requested according to " +
+      "the revision limits and project scope agreed " +
+      "for the selected package."
+    );
+
   }
+
 
   if (
     q.includes("whatsapp") ||
     q.includes("contact") ||
     q.includes("phone")
   ) {
-    return "You can contact ARB on WhatsApp at +91 +918127968129.";
+
+    return (
+      "You can contact ARB Globle IT & Service " +
+      "on WhatsApp at +91 8127968129."
+    );
+
   }
+
 
   if (
     q.includes("email") ||
     q.includes("gmail")
   ) {
-    return "ARB's official contact email is arbglobalitservice@gmail.com.";
+
+    return (
+      "Official email: arbglobalitservice@gmail.com"
+    );
+
   }
 
-  if (
-    q.includes("youtube")
-  ) {
-    return "You can visit the ARB Globle IT Services YouTube channel from the YouTube section of this website.";
+
+  if (q.includes("youtube")) {
+
+    return (
+      "You can visit the ARB Global IT Services " +
+      "YouTube channel from the YouTube section."
+    );
+
   }
 
-  if (
-    q.includes("who are you") ||
-    q.includes("your name")
-  ) {
-    return "I am the ARB AI Assistant, created to help global clients understand ARB Global IT Services, its website services, packages, payment structure and project process.";
-  }
 
-  if (
-    q.includes("start") ||
-    q.includes("order") ||
-    q.includes("buy") ||
-    q.includes("purchase")
-  ) {
-    return "To start, select a package, submit your requirements and contact ARB on WhatsApp. The official payment process should be completed only through the verified payment/invoice method.";
-  }
+  return (
+    "I can help with ARB services, website packages, " +
+    "pricing, 50% advance, payment methods, Cashfree, " +
+    "ACH/bank transfer, domain, hosting, international " +
+    "clients, GST/tax information, delivery and revisions."
+  );
 
-  return "I can help with ARB services, website packages, prices from ₹20,000 to ₹6,00,000, 50% advance, domain, hosting, currencies, Cashfree, ACH/bank transfer, GST/tax information, delivery, revisions and contact details. Please ask your question in a little more detail.";
 }
 
-function sendAI() {
 
-  if (!aiInput || !aiMessages) return;
+/* =========================================================
+   GEMINI AI → SECURE RENDER BACKEND
+   ========================================================= */
+
+async function getGeminiReply(question) {
+
+  try {
+
+    const response =
+      await fetch(
+        API_URL + "/api/ai",
+        {
+          method: "POST",
+
+          headers: {
+            "Content-Type":
+              "application/json"
+          },
+
+          body: JSON.stringify({
+            message: question
+          })
+
+        }
+      );
+
+
+    const data =
+      await response.json()
+        .catch(() => ({}));
+
+
+    if (!response.ok) {
+
+      throw new Error(
+        data.error ||
+        "AI service unavailable."
+      );
+
+    }
+
+
+    if (
+      data.reply &&
+      typeof data.reply === "string"
+    ) {
+
+      return data.reply;
+
+    }
+
+
+    if (
+      data.text &&
+      typeof data.text === "string"
+    ) {
+
+      return data.text;
+
+    }
+
+
+    throw new Error(
+      "No AI response received."
+    );
+
+
+  } catch (error) {
+
+    console.warn(
+      "Gemini backend unavailable:",
+      error
+    );
+
+    /*
+      Safe fallback:
+      Gemini API key is never exposed
+      to the browser.
+    */
+
+    return localAIReply(question);
+
+  }
+
+}
+
+
+/* =========================================================
+   SEND AI
+   ========================================================= */
+
+async function sendAI() {
+
+  if (
+    !aiInput ||
+    !aiMessages
+  ) {
+    return;
+  }
+
 
   const question =
     aiInput.value.trim();
 
-  if (!question) return;
+
+  if (!question) {
+
+    return;
+
+  }
+
 
   addAIMessage(
     question,
     "user"
   );
 
+
   aiInput.value = "";
 
-  setTimeout(() => {
+
+  addAIMessage(
+    "Please wait...",
+    "ai"
+  );
+
+
+  const loadingMessage =
+    aiMessages.lastElementChild;
+
+
+  try {
+
+    const reply =
+      await getGeminiReply(
+        question
+      );
+
+
+    if (loadingMessage) {
+
+      loadingMessage.remove();
+
+    }
+
 
     addAIMessage(
-      aiReply(question),
+      reply,
       "ai"
     );
 
-  }, 250);
+
+  } catch (error) {
+
+    if (loadingMessage) {
+
+      loadingMessage.remove();
+
+    }
+
+
+    addAIMessage(
+      localAIReply(question),
+      "ai"
+    );
+
+  }
+
 }
 
+
+/* =========================================================
+   AI OPEN / CLOSE
+   ========================================================= */
+
 if (aiLaunch) {
+
   aiLaunch.addEventListener(
     "click",
     () => {
-      aiBox.classList.add("open");
+
+      if (aiBox) {
+
+        aiBox.classList.add(
+          "open"
+        );
+
+      }
+
       aiInput?.focus();
+
     }
   );
+
 }
 
+
 if (aiClose) {
+
   aiClose.addEventListener(
     "click",
     () => {
-      aiBox.classList.remove("open");
+
+      if (aiBox) {
+
+        aiBox.classList.remove(
+          "open"
+        );
+
+      }
+
     }
   );
+
 }
 
+
 if (aiSend) {
+
   aiSend.addEventListener(
     "click",
     sendAI
   );
+
 }
 
+
 if (aiInput) {
+
   aiInput.addEventListener(
     "keydown",
     event => {
-      if (event.key === "Enter") {
+
+      if (
+        event.key === "Enter" &&
+        !event.shiftKey
+      ) {
+
+        event.preventDefault();
+
         sendAI();
+
       }
+
     }
   );
+
 }
 
-/* ================= MOBILE MENU ================= */
+
+/* =========================================================
+   REVIEWS
+   ========================================================= */
+
+let selectedRating = 0;
+
+
+function setRating(value) {
+
+  selectedRating =
+    Number(value);
+
+
+  const buttons =
+    document.querySelectorAll(
+      "#ratingStars button"
+    );
+
+
+  buttons.forEach(
+    (button, index) => {
+
+      button.classList.toggle(
+        "active",
+        index < selectedRating
+      );
+
+    }
+  );
+
+
+  const message =
+    document.getElementById(
+      "ratingMessage"
+    );
+
+
+  if (message) {
+
+    message.textContent =
+      `${selectedRating}/5 rating selected.`;
+
+  }
+
+}
+
+
+window.setRating =
+  setRating;
+
+
+function submitReview() {
+
+  const name =
+    document
+      .getElementById("reviewName")
+      ?.value
+      .trim() || "";
+
+  const text =
+    document
+      .getElementById("reviewText")
+      ?.value
+      .trim() || "";
+
+
+  if (!selectedRating) {
+
+    showToast(
+      "Please select a rating."
+    );
+
+    return;
+
+  }
+
+
+  if (!name || !text) {
+
+    showToast(
+      "Please enter your name and review."
+    );
+
+    return;
+
+  }
+
+
+  let reviews = [];
+
+
+  try {
+
+    reviews =
+      JSON.parse(
+        localStorage.getItem(
+          "abodhReviews"
+        ) || "[]"
+      );
+
+  } catch (error) {
+
+    reviews = [];
+
+  }
+
+
+  reviews.unshift({
+
+    name: name,
+
+    text: text,
+
+    rating: selectedRating,
+
+    date:
+      new Date()
+        .toLocaleDateString()
+
+  });
+
+
+  localStorage.setItem(
+    "abodhReviews",
+    JSON.stringify(reviews)
+  );
+
+
+  const reviewName =
+    document.getElementById(
+      "reviewName"
+    );
+
+  const reviewText =
+    document.getElementById(
+      "reviewText"
+    );
+
+
+  if (reviewName) {
+
+    reviewName.value = "";
+
+  }
+
+
+  if (reviewText) {
+
+    reviewText.value = "";
+
+  }
+
+
+  selectedRating = 0;
+
+
+  document
+    .querySelectorAll(
+      "#ratingStars button"
+    )
+    .forEach(
+      button =>
+        button.classList.remove(
+          "active"
+        )
+    );
+
+
+  const ratingMessage =
+    document.getElementById(
+      "ratingMessage"
+    );
+
+
+  if (ratingMessage) {
+
+    ratingMessage.textContent =
+      "Thank you for your review!";
+
+  }
+
+
+  renderReviews();
+
+}
+
+
+window.submitReview =
+  submitReview;
+
+
+function renderReviews() {
+
+  const reviewsList =
+    document.getElementById(
+      "reviewsList"
+    );
+
+
+  if (!reviewsList) {
+
+    return;
+
+  }
+
+
+  let reviews = [];
+
+
+  try {
+
+    reviews =
+      JSON.parse(
+        localStorage.getItem(
+          "abodhReviews"
+        ) || "[]"
+      );
+
+  } catch (error) {
+
+    reviews = [];
+
+  }
+
+
+  if (!reviews.length) {
+
+    reviewsList.innerHTML =
+      "<p>No reviews yet.</p>";
+
+    return;
+
+  }
+
+
+  reviewsList.innerHTML =
+    reviews
+      .map(review => {
+
+        const stars =
+          "★".repeat(
+            Number(review.rating) || 0
+          );
+
+
+        return `
+          <div class="card review-card"
+               style="margin-bottom:15px">
+
+            <strong>
+              ${escapeHTML(review.name)}
+            </strong>
+
+            <div
+              style="margin:6px 0"
+              aria-label="${review.rating}/5"
+            >
+              ${stars}
+            </div>
+
+            <p>
+              ${escapeHTML(review.text)}
+            </p>
+
+            <small>
+              ${escapeHTML(review.date)}
+            </small>
+
+          </div>
+        `;
+
+      })
+      .join("");
+
+}
+
+
+function escapeHTML(value) {
+
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+
+}
+
+
+renderReviews();
+
+
+/* =========================================================
+   MOBILE MENU
+   ========================================================= */
 
 const menuBtn =
-  document.getElementById("menuBtn");
+  document.getElementById(
+    "menuBtn"
+  );
 
 const mainNav =
-  document.getElementById("mainNav");
+  document.getElementById(
+    "mainNav"
+  );
 
-if (menuBtn && mainNav) {
+
+if (
+  menuBtn &&
+  mainNav
+) {
 
   menuBtn.addEventListener(
     "click",
     () => {
-      mainNav.classList.toggle("open");
+
+      mainNav.classList.toggle(
+        "open"
+      );
+
     }
   );
 
-  mainNav.querySelectorAll("a")
+
+  mainNav
+    .querySelectorAll("a")
     .forEach(link => {
+
       link.addEventListener(
         "click",
         () => {
-          mainNav.classList.remove("open");
+
+          mainNav.classList.remove(
+            "open"
+          );
+
         }
       );
+
     });
+
 }
 
-/* ================= YEAR ================= */
+
+/* =========================================================
+   YEAR
+   ========================================================= */
 
 const year =
-  document.getElementById("year");
+  document.getElementById(
+    "year"
+  );
+
 
 if (year) {
+
   year.textContent =
     new Date().getFullYear();
+
 }
 
-/* ================= DEFAULT ================= */
+
+/* =========================================================
+   DEFAULT SETTINGS
+   ========================================================= */
 
 if (countrySelect) {
-  countrySelect.value = "India";
+
+  countrySelect.value =
+    "India";
+
 }
+
 
 if (formCountry) {
-  formCountry.value = "India";
+
+  formCountry.value =
+    "India";
+
 }
+
 
 if (packageSelect) {
-  packageSelect.value = "0";
+
+  packageSelect.value =
+    "0";
+
 }
 
+
 updateCurrencyDisplay();
+
+
+/* =========================================================
+   WHATSAPP DIRECT BUTTON
+   ========================================================= */
+
+document
+  .querySelectorAll(
+    '[data-whatsapp]'
+  )
+  .forEach(button => {
+
+    button.addEventListener(
+      "click",
+      () => {
+
+        window.open(
+          "https://wa.me/918127968129",
+          "_blank",
+          "noopener"
+        );
+
+      }
+    );
+
+  });
+
+
+/* =========================================================
+   ARB WEBSITE READY
+   ========================================================= */
+
+console.log(
+  "ARB Global IT & Services frontend loaded successfully."
+);
+
+console.log(
+  "Secure backend:",
+  API_URL
+);
